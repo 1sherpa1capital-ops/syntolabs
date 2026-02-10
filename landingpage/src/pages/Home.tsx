@@ -2,20 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
-import Stats from '../components/Stats';
-import PlayfulFeatureCards from '../components/PlayfulFeatureCards';
-import FAQ from '../components/FAQ';
-import DemoCards from '../components/DemoCards';
-import Problem from '../components/Problem';
-import Comparison from '../components/Comparison';
-import AdSpendProtection from '../components/AdSpendProtection';
-import ROICalculator from '../components/ROICalculator';
-import About from '../components/About';
-import Footer from '../components/Footer';
-import AdditionalFeatures from '../components/AdditionalFeatures';
-import Pricing from '../components/Pricing';
 import AgentEcosystem from '../components/AgentEcosystem';
-import WhyUs from '../components/WhyUs';
+import Comparison from '../components/Comparison';
+import Pricing from '../components/Pricing';
+import ROICalculator from '../components/ROICalculator';
+import FAQ from '../components/FAQ';
+import Footer from '../components/Footer';
+import About from '../components/About';
+import DemoCards from '../components/DemoCards';
 import { useLenis } from '../hooks/useLenis';
 
 const Home: React.FC = () => {
@@ -42,43 +36,33 @@ const Home: React.FC = () => {
             <Header onOpenTeam={() => setIsTeamOpen(true)} />
             <main id="main-content">
                 <Hero />
-                
-                {/* Services Section - Agent-N inspired with visual mockups */}
+
+                {/* Services Section - 3 core offerings */}
                 <Services />
 
-                {/* Stats Section - Bold numbers */}
-                <Stats />
-
-                {/* The "Why" - Problem/Emotional Hook */}
-                <Problem />
-
-                {/* The "How" - Process/Features */}
-                <PlayfulFeatureCards />
-                
-                <AdSpendProtection />
-
-                {/* Agent Ecosystem - 8 Core Agents */}
+                {/* Agent Ecosystem - 6 Essential Agents */}
                 <AgentEcosystem />
 
-                {/* Why Us - Competitive Positioning */}
-                <WhyUs />
-
-                <AdditionalFeatures />
+                {/* Comparison Section - 3 key differentiators */}
                 <Comparison />
-                
-                {/* Pricing Section - 3-tier Agent-N model */}
+
+                {/* Pricing Section - 3-tier model */}
                 <Pricing />
-                
+
+                {/* ROI Calculator - Interactive */}
                 <ROICalculator />
-                
-                {/* FAQ Section - Accordion style */}
+
+                {/* FAQ Section - 5 questions */}
                 <FAQ />
-                
+
                 <Footer onOpenTeam={() => setIsTeamOpen(true)} />
             </main>
 
             {/* Global Team Modal */}
             <About isOpen={isTeamOpen} onClose={() => setIsTeamOpen(false)} />
+
+            {/* Demo Cards Modal */}
+            <DemoCards />
         </div>
     );
 };

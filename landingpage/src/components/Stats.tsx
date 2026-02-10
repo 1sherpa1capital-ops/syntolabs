@@ -1,86 +1,42 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
 interface StatItem {
     value: string;
     label: string;
-    suffix?: string;
+    context?: string;
 }
 
 const stats: StatItem[] = [
-    { value: '48', suffix: 'h', label: 'Delivery Time' },
-    { value: '15', suffix: '+', label: 'Hours Saved Weekly' },
-    { value: '$4.2', suffix: 'K', label: 'Projected Monthly Savings' },
-    { value: '100', suffix: '%', label: 'Custom Built' },
+    { value: '$4.2K', label: 'Projected Monthly Savings', context: 'Per client in labor costs' },
+    { value: '15+', label: 'Hours Saved', context: 'Per team member weekly' },
+    { value: '48h', label: 'Delivery Time', context: 'From kickoff to prototype' },
+    { value: '100%', label: 'Custom Built', context: 'No cookie-cutter solutions' },
 ];
-
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.15,
-            delayChildren: 0.1,
-        },
-    },
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.6,
-            ease: [0.23, 1, 0.32, 1] as const,
-        },
-    },
-};
 
 const Stats: React.FC = () => {
     return (
-        <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 md:px-12">
-            <div className="max-w-[1400px] mx-auto">
-                <motion.div
-                    className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                >
-                    {stats.map((stat, index) => (
-                        <motion.div
-                            key={index}
-                            variants={itemVariants}
-                            className="group relative"
+        <section className="section-padding bg-surface">
+            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                    {stats.map((stat, i) => (
+                        <div
+                            key={i}
+                            className="group relative p-6 bg-surface-elevated/50 backdrop-blur border border-border rounded-2xl transition-all duration-500 hover:border-accent/30 animate-reveal"
+                            style={{ animationDelay: `${0.1 + i * 0.1}s` }}
                         >
-                            <div className="relative overflow-hidden rounded-2xl bg-surface-elevated border border-border p-6 md:p-8 text-center transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5">
-                                {/* Background gradient on hover */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                
-                                {/* Content */}
-                                <div className="relative z-10">
-                                    <div className="flex items-baseline justify-center gap-0.5 mb-2">
-                                        <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-accent tracking-[-0.04em] leading-none">
-                                            {stat.value}
-                                        </span>
-                                        {stat.suffix && (
-                                            <span className="text-2xl sm:text-3xl md:text-4xl font-black text-accent tracking-[-0.04em]">
-                                                {stat.suffix}
-                                            </span>
-                                        )}
-                                    </div>
-                                    <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-primary">
-                                        {stat.label}
-                                    </p>
-                                </div>
-
-                                {/* Decorative corner accent */}
-                                <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-tr-2xl" />
+                            {/* Corner accent */}
+                            <div className="absolute top-0 left-0 w-16 h-16 overflow-hidden rounded-tl-2xl">
+                                <div className="absolute top-0 left-0 w-full h-[1px] bg-accent transform origin-left rotate-45 translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-8" />
                             </div>
-                        </motion.div>
+
+                            <div className="text-4xl md:text-5xl font-black text-accent mb-2">{stat.value}</div>
+                            <div className="text-[10px] font-bold uppercase tracking-wider text-text-muted">{stat.label}</div>
+                            {stat.context && (
+                                <div className="text-[9px] text-text-dim mt-1">{stat.context}</div>
+                            )}
+                        </div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );
