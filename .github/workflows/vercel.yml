@@ -1,0 +1,21 @@
+name: Deploy to Vercel (Production)
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Vercel (Production)
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: team_tCeQ2Wbx7GaiEEO0ZSrXQaW5
+          vercel-project-id: prj_C9DmWiuiorOne37cURuErw00jSt0
+          vercel-args: '--prod'
+          working-directory: ./landingpage
