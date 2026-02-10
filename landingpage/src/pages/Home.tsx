@@ -14,7 +14,6 @@ import About from '../components/About';
 import Footer from '../components/Footer';
 import AdditionalFeatures from '../components/AdditionalFeatures';
 import Pricing from '../components/Pricing';
-import CaseStudies from '../components/CaseStudies';
 import AgentEcosystem from '../components/AgentEcosystem';
 import WhyUs from '../components/WhyUs';
 import { useLenis } from '../hooks/useLenis';
@@ -57,7 +56,6 @@ const Home: React.FC = () => {
                 <PlayfulFeatureCards />
                 
                 <AdSpendProtection />
-                <CaseStudies />
 
                 {/* Agent Ecosystem - 8 Core Agents */}
                 <AgentEcosystem />

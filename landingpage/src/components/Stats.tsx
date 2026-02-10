@@ -8,10 +8,10 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-    { value: '$1.2', suffix: 'M+', label: 'Revenue Recovered' },
-    { value: '4.9', suffix: '/5', label: 'Average Rating' },
+    { value: '48', suffix: 'h', label: 'Delivery Time' },
     { value: '15', suffix: '+', label: 'Hours Saved Weekly' },
-    { value: '$15', suffix: 'K', label: 'Avg Monthly Value' },
+    { value: '$4.2', suffix: 'K', label: 'Projected Monthly Savings' },
+    { value: '100', suffix: '%', label: 'Custom Built' },
 ];
 
 const containerVariants = {

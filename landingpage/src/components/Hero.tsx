@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
                 {/* Social Proof Bar */}
                 <div className="mt-12 mb-12 text-center">
                     <p className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4">
-                        10,000+ hours saved to date across shipped AI products
+                        Built for B2B SaaS, agencies, and professional services
                     </p>
                     <div className="flex flex-wrap justify-center items-center gap-8 opacity-50">
                         {['Multi-Agent Systems', 'MFR Guardrails', 'Workflow Automation', 'Custom AI Tools'].map((tech, i) => (
@@ -72,8 +72,8 @@ const Hero: React.FC = () => {
                 {/* Visual Element - Stats with Context */}
                 <div className="mt-8 md:mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
                     {[
-                        { value: '$4.2K', label: 'Avg Monthly Savings', context: 'Per client in labor costs' },
-                        { value: '10K+', label: 'Hours Saved', context: 'Across all shipped products' },
+                        { value: '$4.2K', label: 'Projected Monthly Savings', context: 'Per client in labor costs' },
+                        { value: '15+', label: 'Hours Saved', context: 'Per team member weekly' },
                         { value: '48h', label: 'Delivery Time', context: 'From kickoff to prototype' },
                         { value: '100%', label: 'Custom Built', context: 'No cookie-cutter solutions' },
                     ].map((stat, i) => (
