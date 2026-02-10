@@ -5,7 +5,6 @@ import Services from '../components/Services';
 import Stats from '../components/Stats';
 import PlayfulFeatureCards from '../components/PlayfulFeatureCards';
 import FAQ from '../components/FAQ';
-import { Testimonials } from '../components/ExtraSections';
 import DemoCards from '../components/DemoCards';
 import Problem from '../components/Problem';
 import Comparison from '../components/Comparison';
@@ -47,12 +46,9 @@ const Home: React.FC = () => {
                 
                 {/* Services Section - Agent-N inspired with visual mockups */}
                 <Services />
-                
+
                 {/* Stats Section - Bold numbers */}
                 <Stats />
-                
-                {/* Social Proof - Testimonials */}
-                <Testimonials />
 
                 {/* The "Why" - Problem/Emotional Hook */}
                 <Problem />

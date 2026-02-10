@@ -61,11 +61,8 @@ const Pricing: React.FC = () => {
         <section className="px-4 sm:px-6 md:px-12 py-12 md:py-16 lg:py-24 bg-bg" id="pricing">
             <div className="max-w-[1400px] mx-auto">
                 <div className="text-center mb-8 md:mb-12 lg:mb-16 max-w-3xl mx-auto">
-                    <div className="inline-flex items-center gap-3 mb-4">
-                        <div className="text-[9px] font-black uppercase tracking-[0.3em] text-accent">Investment & Scale</div>
-                        <div className="px-3 py-1 bg-accent text-cta-text text-[10px] font-black uppercase tracking-wider rounded-full">
-                            7-Day Free Trial
-                        </div>
+                    <div className="text-[9px] font-black uppercase tracking-[0.3em] text-accent mb-4">
+                        Investment & Scale
                     </div>
                     <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black tracking-tighter text-primary leading-[0.95] mb-3 md:mb-4">
                         ROI-based <span className="text-accent">scale pricing.</span>
