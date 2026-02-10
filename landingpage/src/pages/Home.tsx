@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
+import WaitlistSection from '../components/WaitlistSection';
 import Services from '../components/Services';
 import AgentEcosystem from '../components/AgentEcosystem';
 import Comparison from '../components/Comparison';
@@ -36,6 +37,8 @@ const Home: React.FC = () => {
             <Header onOpenTeam={() => setIsTeamOpen(true)} />
             <main id="main-content">
                 <Hero />
+
+                <WaitlistSection />
 
                 {/* Services Section - 3 core offerings */}
                 <Services />

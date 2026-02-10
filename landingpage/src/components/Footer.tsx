@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Phone, Mail, Send } from 'lucide-react';
+import { Mail, Send } from 'lucide-react';
 import Logo from './Logo';
 import { useTryNowModal } from '../context/TryNowModalContext';
 import { BOOKING_URL } from '../config/constants';
+import WaitlistSection from './WaitlistSection';
 
 interface FooterProps {
     onOpenTeam?: () => void;
@@ -38,37 +39,9 @@ const Footer: React.FC<FooterProps> = ({ onOpenTeam }) => {
     return (
         <footer>
             <section className="px-4 sm:px-6 md:px-12 py-6 md:py-8 bg-bg">
-                {/* CTA Banner */}
-                <div className="section-padding bg-primary rounded-xl overflow-hidden mb-6 md:mb-8">
-                    <div className="container-wide text-center">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/20 text-accent text-xs font-bold uppercase tracking-widest mb-6">
-                            Custom AI Solutions
-                        </div>
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter text-text-on-primary mb-4 leading-tight">
-                            Ready to Automate Your <br className="hidden md:block" />
-                            <span className="text-accent">Repetitive Workflows?</span>
-                        </h2>
-                        <p className="text-base md:text-lg text-text-on-primary/70 max-w-2xl mx-auto mb-8">
-                            Book a free strategy call. We'll audit your workflows and show you exactly where AI can save you 15+ hours per week.
-                        </p>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <a 
-                                href={BOOKING_URL} 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                className="bg-accent hover:bg-surface-elevated text-cta-text px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-base font-black transition-all shadow-lg shadow-black/20 w-full sm:w-auto inline-flex items-center justify-center"
-                            >
-                                Book a Demo
-                            </a>
-                            <button
-                                onClick={openModal}
-                                className="bg-text-on-primary/10 hover:bg-text-on-primary/20 text-text-on-primary px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-base font-bold transition-all w-full sm:w-auto inline-flex items-center justify-center gap-2"
-                            >
-                                <Phone size={16} aria-hidden="true" />
-                                Book a Strategy Call
-                            </button>
-                        </div>
-                    </div>
+                {/* CTA Banner replaced with Waitlist */}
+                <div className="rounded-xl overflow-hidden mb-6 md:mb-8">
+                    <WaitlistSection id="footer-waitlist" className="rounded-xl" />
                 </div>
 
                 {/* Contact Section - Let's Talk! */}

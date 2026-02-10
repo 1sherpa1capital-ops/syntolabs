@@ -16,7 +16,7 @@ const services: Service[] = [
         id: 1,
         title: 'Workflow Discovery',
         price: '$2,500',
-        description: 'We audit your current processes and identify the repetitive tasks eating up your team\'s time. You get a prioritized automation roadmap with ROI projections.',
+        description: 'We find the busywork eating your team\'s time. You get a prioritized automation roadmap with ROI projections.',
         icon: Search,
         features: ['Complete workflow audit', 'Automation opportunities', 'ROI projections', 'Implementation roadmap']
     },
@@ -24,7 +24,7 @@ const services: Service[] = [
         id: 2,
         title: 'Agent Implementation',
         price: '$5K–$10K',
-        description: 'We build 1-2 custom AI workflows with MFR Guardrails for quality assurance. Integrated with your existing tools. Delivered in 48 hours.',
+        description: 'We build custom agents. MFR Guardrails prevent hallucinations. Integrated with your existing tools. Delivered in 48 hours.',
         icon: Bot,
         features: ['1-2 custom agent workflows', 'CRM, email, calendar integration', 'Team training & documentation', '30-day support included']
     },
@@ -32,7 +32,7 @@ const services: Service[] = [
         id: 3,
         title: 'Full Automation',
         price: '$10K+',
-        description: 'Multi-agent system with custom AI tools and ongoing optimization. Complete AI infrastructure for teams ready to scale.',
+        description: 'Full multi-agent infrastructure. Continuous optimization. Complete AI stack for teams ready to scale.',
         icon: Zap,
         features: ['Multi-agent system', 'Custom AI dashboards & tools', 'Quarterly performance reviews', 'Priority support']
     }

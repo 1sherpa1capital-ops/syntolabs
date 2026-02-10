@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
-import { BOOKING_URL } from '../config/constants';
+import { ArrowRight } from 'lucide-react';
+import ThreeBackground from './ThreeBackground';
 
 const Hero: React.FC = () => {
     const heroRef = useRef<HTMLDivElement>(null);
@@ -22,119 +22,74 @@ const Hero: React.FC = () => {
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
 
-    const stats = [
-        { value: '15+', label: 'Hours Saved Weekly', context: 'Per team member' },
-        { value: '48h', label: 'Delivery Time', context: 'From kickoff to prototype' },
-        { value: '100%', label: 'Custom Built', context: 'Tailored to your needs' },
-        { value: '$4.2K', label: 'Avg Monthly Savings', context: 'In labor costs' },
-    ];
-
-    const benefits = [
-        'No cookie-cutter templates',
-        'You own the code',
-        'Works with your existing tools',
-        'ROI-guaranteed or we work for free'
-    ];
+    const scrollToWaitlist = (e: React.MouseEvent) => {
+        e.preventDefault();
+        const waitlistSection = document.getElementById('waitlist');
+        if (waitlistSection) {
+            waitlistSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-noise">
-            {/* Animated gradient background */}
-            <div className="absolute inset-0 bg-gradient-accent" />
-            <div className="absolute inset-0 bg-grid opacity-30" />
-
-            {/* Floating accent orbs */}
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '0s' }} />
-            <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0f]">
+            {/* 3D Background - pointer-events-none to ensure it doesn't block interactions */}
+            <div className="absolute inset-0 pointer-events-none">
+                <ThreeBackground variant="particles" intensity={0.8} />
+            </div>
+            
+            {/* Overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80 pointer-events-none" />
 
             {/* Main content */}
-            <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 pt-24 pb-16">
-                <div className="text-center">
-                    {/* Badge */}
-                    <div
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/30 rounded-full mb-8 animate-reveal"
-                        style={{ animationDelay: '0.1s' }}
-                    >
-                        <Sparkles size={14} className="text-accent animate-pulse" />
-                        <span className="label-mono">48-Hour Delivery • Working Prototype Guaranteed</span>
-                    </div>
-
+            <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 pt-24 pb-16 w-full">
+                <div className="text-center max-w-5xl mx-auto">
                     {/* Main heading */}
-                    <h1 className="text-display mb-6">
+                    <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.9]">
                         <span className="block animate-reveal" style={{ animationDelay: '0.2s' }}>Automate the</span>
-                        <span className="block text-gradient animate-reveal" style={{ animationDelay: '0.3s' }}>Repetitive</span>
-                        <span className="block animate-reveal text-dark" style={{ animationDelay: '0.4s' }}>Work</span>
+                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-[#f97316] animate-reveal" style={{ animationDelay: '0.3s' }}>
+                            Repetitive Work
+                        </span>
                     </h1>
 
                     {/* Subheadline */}
                     <p
-                        className="text-lg sm:text-xl md:text-2xl text-text-muted font-medium leading-relaxed max-w-2xl mx-auto mb-8 animate-reveal"
-                        style={{ animationDelay: '0.5s' }}
+                        className="text-xl sm:text-2xl text-white/70 font-medium leading-relaxed max-w-3xl mx-auto mb-10 animate-reveal"
+                        style={{ animationDelay: '0.4s' }}
                     >
-                        Custom AI workflows that save <span className="text-primary font-bold">15+ hours per week</span>.
-                        Built in <span className="text-accent font-bold">48 hours</span>. Yours forever.
+                        Your team spends 15+ hours/week on busywork. We build custom agent swarms to fix it. <span className="text-[#f97316] font-bold">48-hour delivery.</span>
                     </p>
 
-                    {/* Benefits - Mini list under headline */}
+                    {/* CTA Button */}
                     <div
-                        className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-10 animate-reveal"
-                        style={{ animationDelay: '0.55s' }}
-                    >
-                        {benefits.map((benefit, i) => (
-                            <div key={i} className="flex items-center gap-2 text-sm text-text-muted">
-                                <CheckCircle2 size={14} className="text-accent flex-shrink-0" />
-                                <span>{benefit}</span>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* CTA Button - Single */}
-                    <div
-                        className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 animate-reveal"
-                        style={{ animationDelay: '0.6s' }}
+                        className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-reveal"
+                        style={{ animationDelay: '0.5s' }}
                     >
                         <a
-                            href={BOOKING_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-primary text-base px-10 py-4"
+                            href="#waitlist"
+                            onClick={scrollToWaitlist}
+                            className="group relative inline-flex items-center gap-3 px-10 py-5 rounded-full bg-[#f97316] hover:bg-orange-600 text-white font-black text-lg transition-all shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:scale-105"
                         >
-                            Book Strategy Call
-                            <ArrowRight size={18} />
+                            Join Waitlist
+                            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </a>
                     </div>
 
-                    {/* Trust indicator */}
-                    <p
-                        className="text-xs text-text-dim animate-reveal"
-                        style={{ animationDelay: '0.7s' }}
+                    {/* Stats Bar (Social Proof) */}
+                    <div
+                        className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md animate-reveal"
+                        style={{ animationDelay: '0.6s' }}
                     >
-                        Free 30-min consultation • No obligation
-                    </p>
-                </div>
-
-                {/* Stats grid - Merged from standalone Stats component */}
-                <div
-                    className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto animate-reveal"
-                    style={{ animationDelay: '0.8s' }}
-                >
-                    {stats.map((stat, i) => (
-                        <div
-                            key={i}
-                            className="group relative p-6 bg-surface/80 backdrop-blur border border-border rounded-2xl transition-all duration-500 hover:border-accent/40 shadow-sm hover:shadow-md"
-                            style={{ animationDelay: `${0.9 + i * 0.1}s` }}
-                        >
-                            <div className="text-4xl md:text-5xl font-black text-gradient mb-2">{stat.value}</div>
-                            <div className="text-[10px] font-bold uppercase tracking-wider text-primary">{stat.label}</div>
-                            <div className="text-[9px] text-text-muted mt-1">{stat.context}</div>
-                        </div>
-                    ))}
+                        <span className="text-sm sm:text-base font-bold text-white/80 tracking-wide">
+                            4 Products Shipped <span className="mx-3 text-white/20">•</span> 10,000+ Hours Saved
+                        </span>
+                    </div>
                 </div>
             </div>
 
             {/* Scroll indicator */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-                <div className="w-6 h-10 border-2 border-text-dim rounded-full flex items-start justify-center p-2">
-                    <div className="w-1 h-2 bg-accent rounded-full animate-pulse" />
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce pointer-events-none">
+                <div className="w-6 h-10 border-2 border-white/20 rounded-full flex items-start justify-center p-2">
+                    <div className="w-1 h-2 bg-[#f97316] rounded-full animate-pulse" />
                 </div>
             </div>
         </section>

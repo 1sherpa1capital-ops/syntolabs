@@ -42,8 +42,7 @@ const AdSpendProtection: React.FC = () => {
                         <span className="text-accent">Manual Work</span>
                     </h2>
                     <p className="text-base md:text-lg text-text-default font-medium leading-relaxed max-w-2xl mx-auto">
-                        Every hour your team spends on repetitive tasks is an hour not spent on growth. 
-                        Manual processes don't just cost money—they create bottlenecks that limit your scale.
+                        Manual work is a bottleneck. We remove it so your team can focus on what actually drives revenue.
                     </p>
                 </div>
 
@@ -90,7 +89,7 @@ const AdSpendProtection: React.FC = () => {
                             </div>
                             
                             <h3 className="text-xl md:text-2xl font-extrabold text-accent mb-6 leading-tight">
-                                Automate the Repetitive, Scale the Strategic
+                                Automate the Repetitive. Focus on Growth.
                             </h3>
                             
                             <div className="space-y-4 mb-8">
