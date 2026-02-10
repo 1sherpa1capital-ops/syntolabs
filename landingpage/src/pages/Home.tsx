@@ -16,6 +16,8 @@ import Footer from '../components/Footer';
 import AdditionalFeatures from '../components/AdditionalFeatures';
 import Pricing from '../components/Pricing';
 import CaseStudies from '../components/CaseStudies';
+import AgentEcosystem from '../components/AgentEcosystem';
+import WhyUs from '../components/WhyUs';
 import { useLenis } from '../hooks/useLenis';
 
 const Home: React.FC = () => {
@@ -60,6 +62,13 @@ const Home: React.FC = () => {
                 
                 <AdSpendProtection />
                 <CaseStudies />
+
+                {/* Agent Ecosystem - 8 Core Agents */}
+                <AgentEcosystem />
+
+                {/* Why Us - Competitive Positioning */}
+                <WhyUs />
+
                 <AdditionalFeatures />
                 <Comparison />
                 

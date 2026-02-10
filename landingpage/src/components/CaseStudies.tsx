@@ -13,31 +13,31 @@ interface CaseStudy {
 
 const caseStudies: CaseStudy[] = [
   {
-    id: 'musashi',
-    name: 'Musashi',
-    tagline: 'AI Sales Automation',
-    description: 'Multi-agent sales pipeline that discovers leads, researches companies, and automates personalized outreach. 95%+ scraping success rate with 4-tier progressive web scraping.',
-    tags: ['Multi-Agent', 'Web Scraping', 'Gmail Automation'],
+    id: 'syntolabs',
+    name: 'Synto Labs',
+    tagline: 'Agency Services',
+    description: 'Custom AI workflows built for B2B clients. From discovery to deployment in 48 hours, delivering multi-agent systems that save $4,200/month in average labor costs.',
+    tags: ['Agency', 'Consulting', '48h Delivery'],
     icon: Bot,
-    metrics: '10+ hours saved per campaign'
+    metrics: '$4,200/month avg client savings'
   },
   {
     id: 'chessy',
     name: 'Chessy',
     tagline: 'AI Chess Analysis',
-    description: 'Psychological profiling system that analyzes chess games and classifies players into archetypes. Features immersive 3D visualizations and blindspot detection.',
-    tags: ['AI Analysis', '3D Viz', 'Psychological Profiling'],
+    description: 'Psychological profiling system that analyzes chess games and classifies players into archetypes. Features immersive 3D visualizations and blindspot detection with Stockfish integration.',
+    tags: ['AI Analysis', '3D Viz', 'Psych Profiling'],
     icon: Brain,
-    metrics: 'Deep insights from game data'
+    metrics: '10,000+ hours saved across analysis sessions'
   },
   {
     id: 'getbeezy',
     name: 'GetBeezy',
     tagline: 'Job Hunt Automation',
-    description: 'Complete job hunting toolkit with multi-agent discovery, resume tailoring, contact finding, and outreach automation. Open-source with CRM pipeline tracking.',
-    tags: ['Automation', 'Resume AI', 'Outreach'],
+    description: 'Claude-first job hunting toolkit with 7 specialized agents: @scout, @researcher, @writer, @sender, @tracker, @optimizer, @reporter. Complete CRM pipeline tracking with 98.4% test pass rate.',
+    tags: ['Multi-Agent', 'Resume AI', 'Outreach'],
     icon: Briefcase,
-    metrics: 'End-to-end job search automation'
+    metrics: '98.4% test pass rate • 7 specialized agents'
   },
   {
     id: 'writo',
@@ -61,11 +61,11 @@ const CaseStudies: React.FC = () => {
             Our Work
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-primary mb-4">
-            4 AI Products <span className="text-accent">Shipped to Production</span>
+            4 Shipped AI Products <span className="text-accent">10,000+ Hours Saved</span>
           </h2>
           <p className="text-text-muted text-sm md:text-base max-w-2xl mx-auto">
-            We don't just talk about AI—we build it. From multi-agent sales automation to psychological profiling systems, 
-            we've shipped real solutions that save time and deliver results.
+            We don't just talk about AI—we build it. From multi-agent sales automation to psychological profiling systems,
+            we've shipped real solutions that save time and deliver results. Average client saves $4,200/month.
           </p>
         </div>
 

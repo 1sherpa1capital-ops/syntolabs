@@ -8,10 +8,10 @@ const Hero: React.FC = () => {
             <div className="max-w-[1400px] mx-auto">
                 {/* Clean, centered layout inspired by Agent-N */}
                 <div className="text-center max-w-4xl mx-auto">
-                    {/* Badge - Social Proof */}
+                    {/* Badge - 48-Hour Delivery Promise */}
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full mb-8">
                         <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-                        <span className="text-xs font-bold uppercase tracking-widest text-primary">4 AI Products Shipped • 10,000+ Hours Saved</span>
+                        <span className="text-xs font-bold uppercase tracking-widest text-primary">48-Hour Delivery • Working Prototype Guaranteed</span>
                     </div>
 
                     {/* Main Heading - Workflow Automation Focus */}
@@ -21,11 +21,10 @@ const Hero: React.FC = () => {
                         Work
                     </h1>
 
-                    {/* Subheadline - Problem Agitation + Solution */}
+                    {/* Subheadline - Brand Voice from Guidelines */}
                     <p className="text-lg sm:text-xl md:text-2xl text-text-muted font-medium leading-relaxed max-w-2xl mx-auto mb-10">
-                        Your team spends 15+ hours/week on repetitive tasks. 
-                        We build custom AI workflows that eliminate busywork—so you can 
-                        <span className="text-primary font-bold"> focus on what actually grows your business</span>.
+                        Custom AI workflows built in 48 hours. No cookie-cutter solutions.
+                        Average client saves <span className="text-primary font-bold">$4,200/month in labor costs</span>.
                     </p>
 
                     {/* CTA Buttons - Value-Focused */}
@@ -54,17 +53,17 @@ const Hero: React.FC = () => {
 
                     {/* Risk Reversal */}
                     <p className="mt-4 text-xs text-text-muted">
-                        Free 30-min consultation • No obligation • Custom solutions only
+                        Free 30-min consultation • No obligation • 15+ hours/week saved
                     </p>
                 </div>
 
                 {/* Social Proof Bar */}
                 <div className="mt-12 mb-12 text-center">
                     <p className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4">
-                        Built with the same tech stack we use for clients
+                        10,000+ hours saved to date across shipped AI products
                     </p>
                     <div className="flex flex-wrap justify-center items-center gap-8 opacity-50">
-                        {['Multi-Agent Systems', 'LLM Integration', 'Workflow Automation', 'Custom AI Tools'].map((tech, i) => (
+                        {['Multi-Agent Systems', 'MFR Guardrails', 'Workflow Automation', 'Custom AI Tools'].map((tech, i) => (
                             <span key={i} className="text-sm font-medium text-text-muted">{tech}</span>
                         ))}
                     </div>
@@ -73,9 +72,9 @@ const Hero: React.FC = () => {
                 {/* Visual Element - Stats with Context */}
                 <div className="mt-8 md:mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
                     {[
-                        { value: '4+', label: 'AI Products', context: 'Shipped to production' },
-                        { value: '10K+', label: 'Hours Saved', context: 'For end users' },
-                        { value: '48h', label: 'Avg Setup Time', context: 'From idea to working prototype' },
+                        { value: '$4.2K', label: 'Avg Monthly Savings', context: 'Per client in labor costs' },
+                        { value: '10K+', label: 'Hours Saved', context: 'Across all shipped products' },
+                        { value: '48h', label: 'Delivery Time', context: 'From kickoff to prototype' },
                         { value: '100%', label: 'Custom Built', context: 'No cookie-cutter solutions' },
                     ].map((stat, i) => (
                         <div key={i} className="text-center p-6 bg-surface-elevated border border-border-subtle rounded-2xl hover:border-accent/30 transition-colors">

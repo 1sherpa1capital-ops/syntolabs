@@ -13,7 +13,7 @@ const services: Service[] = [
   {
     id: 1,
     title: 'Workflow Discovery',
-    description: 'We audit your current processes and identify the repetitive tasks eating up your team\'s time. You get a prioritized automation roadmap with ROI projections.',
+    description: 'We audit your current processes and identify the repetitive tasks eating up your team\'s time. $2,500 investment. You get a prioritized automation roadmap with ROI projections.',
     icon: Workflow,
     illustration: (
       <div className="relative w-full h-full flex items-center justify-center">
@@ -57,7 +57,7 @@ const services: Service[] = [
   {
     id: 2,
     title: 'Multi-Agent Systems',
-    description: 'We build coordinated AI agents that handle complex workflows—like our sales automation that finds leads, researches companies, and sends personalized outreach at scale.',
+    description: 'We build coordinated AI agents with MFR Guardrails for no-hallucination guarantee. $5,000+ investment. Scout → Research → Writer → Sender workflows at scale.',
     icon: Filter,
     illustration: (
       <div className="relative w-full h-full flex items-center justify-center">
@@ -226,7 +226,8 @@ const Services: React.FC = () => {
             From <span className="text-accent">audit to deployment</span> in 48 hours
           </h2>
           <p className="text-text-muted text-sm md:text-base max-w-2xl mx-auto">
-            We don't just consult—we build. Every solution is custom-tailored to your workflows, integrated with your existing tools, and deployed fast.
+            We don't just consult—we build. Every solution is custom-tailored with MFR Guardrails for quality assurance,
+            integrated with your existing tools, and delivered in 48 hours.
           </p>
         </div>
 

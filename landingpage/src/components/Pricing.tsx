@@ -4,52 +4,55 @@ import { BOOKING_URL } from '../config/constants';
 
 const PLANS = [
     {
-        name: 'Launch',
-        priceRange: 'Starting at $2.5K',
-        monthly: 'month',
-        description: 'Perfect for small teams ready to automate repetitive tasks',
+        name: 'Discovery',
+        priceRange: '$2,500',
+        monthly: 'one-time',
+        description: 'Workflow audit with prioritized automation roadmap and ROI projections',
         features: [
-            '1-3 custom workflows (lead sync, email follow-up, data pipe)',
-            'Simple voice agents or logic flows',
-            'No heavy API logic',
-            'Optional setup fee',
-            'Typically recovers $10K+ in lost opportunities monthly'
+            'Complete workflow audit and analysis',
+            'Automation opportunity identification',
+            'ROI projections with time savings estimates',
+            'Implementation roadmap',
+            '1-week delivery'
         ],
-        bestFor: 'Lean teams wanting to escape manual ops',
+        bestFor: 'Teams ready to identify automation opportunities',
         featured: false,
-        cta: 'Get started'
+        cta: 'Get Started'
     },
     {
-        name: 'Scale',
-        priceRange: 'Starting at $5K',
-        monthly: 'month',
-        description: 'Ideal for growing businesses ready to scale operations',
+        name: 'Implementation',
+        priceRange: '$5,000–$10,000',
+        monthly: 'one-time',
+        description: '1-2 custom agent workflows with integration, training, and 30-day support',
         features: [
-            '4-7 advanced workflows with routing & enrichment',
-            'LLM agents (GPT + tools) for outreach, enrichment, support',
-            'Third-party integrations (Slack, Notion, CRMs)',
-            'Install/setup fee: $2k-$3k'
+            'Discovery + 1-2 agent workflows',
+            'Integration with existing tools (CRM, email, calendar)',
+            'Team training and documentation',
+            'MFR Guardrails for quality assurance',
+            '30-day support included',
+            '2-3 week delivery'
         ],
-        bestFor: 'Growth-stage businesses ready to scale',
+        bestFor: 'Businesses ready to deploy their first AI workflows',
         featured: true,
         badge: 'Most Popular',
-        cta: 'Get started'
+        cta: 'Get Started'
     },
     {
-        name: 'Operator',
-        priceRange: 'Custom Rate',
-        monthly: '',
-        description: 'For businesses needing custom AI infrastructure',
+        name: 'Full Automation',
+        priceRange: '$10,000+',
+        monthly: 'project',
+        description: 'Multi-agent system with custom AI tools and ongoing optimization',
         features: [
-            '8-15+ complex automations, dashboards, embedded agents',
-            'Multi-layer logic: scraping, webhooks, fallback, QA',
-            'LLM agents trained on internal data',
-            'Live dashboards, error handling',
-            'Setup fee: $5k+'
+            'Discovery + multi-agent system',
+            'Custom AI tools (dashboards, chatbots)',
+            'Ongoing optimization and updates',
+            'Quarterly performance reviews',
+            'Priority support',
+            '3-4 week delivery'
         ],
-        bestFor: 'Ops-heavy brands needing full backend',
+        bestFor: 'Companies needing comprehensive AI infrastructure',
         featured: false,
-        cta: 'Book a consultation'
+        cta: 'Book Consultation'
     }
 ];
 
