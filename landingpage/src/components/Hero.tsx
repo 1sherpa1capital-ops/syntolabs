@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
 import { BOOKING_URL } from '../config/constants';
 
 const Hero: React.FC = () => {
@@ -27,6 +27,13 @@ const Hero: React.FC = () => {
         { value: '48h', label: 'Delivery Time', context: 'From kickoff to prototype' },
         { value: '100%', label: 'Custom Built', context: 'Tailored to your needs' },
         { value: '$4.2K', label: 'Avg Monthly Savings', context: 'In labor costs' },
+    ];
+
+    const benefits = [
+        'No cookie-cutter templates',
+        'You own the code',
+        'Works with your existing tools',
+        'ROI-guaranteed or we work for free'
     ];
 
     return (
@@ -60,12 +67,25 @@ const Hero: React.FC = () => {
 
                     {/* Subheadline */}
                     <p
-                        className="text-lg sm:text-xl md:text-2xl text-text-muted font-medium leading-relaxed max-w-2xl mx-auto mb-10 animate-reveal"
+                        className="text-lg sm:text-xl md:text-2xl text-text-muted font-medium leading-relaxed max-w-2xl mx-auto mb-8 animate-reveal"
                         style={{ animationDelay: '0.5s' }}
                     >
                         Custom AI workflows that save <span className="text-primary font-bold">15+ hours per week</span>.
                         Built in <span className="text-accent font-bold">48 hours</span>. Yours forever.
                     </p>
+
+                    {/* Benefits - Mini list under headline */}
+                    <div
+                        className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-10 animate-reveal"
+                        style={{ animationDelay: '0.55s' }}
+                    >
+                        {benefits.map((benefit, i) => (
+                            <div key={i} className="flex items-center gap-2 text-sm text-text-muted">
+                                <CheckCircle2 size={14} className="text-accent flex-shrink-0" />
+                                <span>{benefit}</span>
+                            </div>
+                        ))}
+                    </div>
 
                     {/* CTA Button - Single */}
                     <div
@@ -76,7 +96,7 @@ const Hero: React.FC = () => {
                             href={BOOKING_URL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn-primary"
+                            className="btn-primary text-base px-10 py-4"
                         >
                             Book Strategy Call
                             <ArrowRight size={18} />
