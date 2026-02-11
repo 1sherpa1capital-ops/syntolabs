@@ -90,8 +90,69 @@
     }
 
     /* ═══════════════════════════════════════════════════════════════════════════
-       BUTTONS
+       BUTTONS - Double Layered (Architectural Minimalism)
        ═══════════════════════════════════════════════════════════════════════════ */
+    .btn-double-layer {
+        @apply inline-flex items-center justify-center gap-2 px-8 py-4 font-black text-sm uppercase tracking-widest;
+        position: relative;
+        background: var(--color-accent);
+        color: var(--color-text-on-accent);
+        border: 1px solid var(--color-border);
+        transition: all 0.2s ease;
+    }
+
+    /* Bottom layer (frame) - offset border/background */
+    .btn-double-layer::before {
+        content: '';
+        position: absolute;
+        inset: -3px -3px -3px -3px;
+        background: var(--color-bg);
+        border: 1px solid var(--color-border);
+        z-index: -1;
+        transition: transform 0.2s ease;
+    }
+
+    /* Hover: frame shifts opposite direction */
+    .btn-double-layer:hover {
+        transform: translate(-1px, -1px);
+    }
+
+    .btn-double-layer:hover::before {
+        transform: translate(2px, 2px);
+    }
+
+    /* Outline variant for secondary buttons */
+    .btn-double-layer-outline {
+        @apply inline-flex items-center justify-center gap-2 px-8 py-4 font-black text-sm uppercase tracking-widest;
+        position: relative;
+        background: transparent;
+        color: var(--color-text-default);
+        border: 1px solid var(--color-border);
+        transition: all 0.2s ease;
+    }
+
+    .btn-double-layer-outline::before {
+        content: '';
+        position: absolute;
+        inset: -3px -3px -3px -3px;
+        background: transparent;
+        border: 1px solid var(--color-border);
+        z-index: -1;
+        transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-double-layer-outline:hover {
+        background: var(--color-accent);
+        color: var(--color-text-on-accent);
+        transform: translate(-1px, -1px);
+    }
+
+    .btn-double-layer-outline:hover::before {
+        background: var(--color-bg);
+        transform: translate(2px, 2px);
+    }
+
+    /* Legacy button styles (kept for non-double-layer usage) */
     .btn-primary {
         @apply inline-flex items-center justify-center gap-2 px-10 py-5 bg-accent text-black font-black text-sm uppercase tracking-widest rounded-none transition-all duration-500;
         box-shadow: none;

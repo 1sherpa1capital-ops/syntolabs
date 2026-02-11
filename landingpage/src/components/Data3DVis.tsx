@@ -12,7 +12,7 @@ interface Data3DVisProps {
 const Data3DVis: React.FC<Data3DVisProps> = ({
     dataPoints,
     labels,
-    color = '#6366f1',
+    color = '#ffffff',
     height = '300px'
 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -56,17 +56,15 @@ const Data3DVis: React.FC<Data3DVisProps> = ({
         containerRef.current.appendChild(renderer.domElement);
         rendererRef.current = renderer;
 
-        // Group to hold all elements
         const group = new THREE.Group();
         scene.add(group);
 
-        // Grid floor
-        const gridHelper = new THREE.GridHelper(40, 20, 0x444444, 0x222222);
+        // Subtler monochromatic grid
+        const gridHelper = new THREE.GridHelper(40, 20, 0x222222, 0x111111);
         gridHelper.position.y = 0;
         group.add(gridHelper);
         objectsRef.current.gridHelper = gridHelper;
 
-        // Create bars
         const barWidth = 2;
         const barGap = 1;
         const totalWidth = dataPoints.length * (barWidth + barGap);
@@ -79,11 +77,10 @@ const Data3DVis: React.FC<Data3DVisProps> = ({
             const barHeight = Math.max(value, 2);
             const geometry = new THREE.BoxGeometry(barWidth, barHeight, barWidth);
 
-            // Gradient effect using vertex colors
             const material = new THREE.MeshBasicMaterial({
                 color: threeColor,
                 transparent: true,
-                opacity: 0.8
+                opacity: 0.4 // More translucent for luxury
             });
 
             const bar = new THREE.Mesh(geometry, material);
@@ -95,23 +92,21 @@ const Data3DVis: React.FC<Data3DVisProps> = ({
             bars.push(bar);
             group.add(bar);
 
-            // Add glow effect
-            const glowGeometry = new THREE.BoxGeometry(barWidth + 0.2, barHeight + 0.2, barWidth + 0.2);
-            const glowMaterial = new THREE.MeshBasicMaterial({
-                color: threeColor,
+            // Wireframe overlay for tech feel
+            const wireGeometry = new THREE.BoxGeometry(barWidth, barHeight, barWidth);
+            const wireMaterial = new THREE.MeshBasicMaterial({
+                color: 0xffffff,
+                wireframe: true,
                 transparent: true,
-                opacity: 0.2,
-                side: THREE.BackSide
+                opacity: 0.1
             });
-            const glow = new THREE.Mesh(glowGeometry, glowMaterial);
-            glow.position.copy(bar.position);
-            bar.add(glow);
+            const wire = new THREE.Mesh(wireGeometry, wireMaterial);
+            bar.add(wire);
         });
 
         objectsRef.current.bars = bars;
 
-        // Floating particles above bars
-        const particleCount = 100; // Reduced from 200
+        const particleCount = 60;
         const particleGeometry = new THREE.BufferGeometry();
         const particlePositions = new Float32Array(particleCount * 3);
         const particleTargets = new Float32Array(particleCount * 3);
@@ -125,7 +120,6 @@ const Data3DVis: React.FC<Data3DVisProps> = ({
             particleTargets[i * 3 + 1] = barHeight + Math.random() * 5 + 2;
             particleTargets[i * 3 + 2] = (Math.random() - 0.5) * barWidth;
 
-            // Start from random positions
             particlePositions[i * 3] = (Math.random() - 0.5) * 50;
             particlePositions[i * 3 + 1] = Math.random() * 30;
             particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 30;
@@ -135,10 +129,10 @@ const Data3DVis: React.FC<Data3DVisProps> = ({
         particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
 
         const particleMaterial = new THREE.PointsMaterial({
-            color: threeColor,
-            size: 0.15,
+            color: 0xffffff,
+            size: 0.08,
             transparent: true,
-            opacity: 0.6,
+            opacity: 0.4,
             blending: THREE.AdditiveBlending
         });
 
@@ -146,71 +140,53 @@ const Data3DVis: React.FC<Data3DVisProps> = ({
         group.add(particles);
         objectsRef.current.particles = particles;
 
-        // Raycaster for hover detection
         const raycaster = new THREE.Raycaster();
 
         const handleMouseMove = throttle((event: MouseEvent) => {
             if (!containerRef.current) return;
-
             const rect = containerRef.current.getBoundingClientRect();
             mouseRef.current.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
             mouseRef.current.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-
             raycaster.setFromCamera(mouseRef.current, camera);
             const intersects = raycaster.intersectObjects(bars);
-
-            if (intersects.length > 0) {
-                const index = intersects[0].object.userData.index;
-                setHoveredIndex(index);
-            } else {
-                setHoveredIndex(-1);
-            }
+            setHoveredIndex(intersects.length > 0 ? intersects[0].object.userData.index : -1);
         }, 16);
 
         containerRef.current.addEventListener('mousemove', handleMouseMove);
 
-        // Animation loop
         const animate = () => {
             animationIdRef.current = requestAnimationFrame(animate);
             timeRef.current += 0.01;
             frameCountRef.current++;
 
-            // Animate bars
             bars.forEach((bar, index) => {
                 const isHovered = index === hoveredIndex;
-                const targetScale = isHovered ? 1.1 : 1;
+                const targetScale = isHovered ? 1.05 : 1;
                 bar.scale.y += (targetScale - bar.scale.y) * 0.1;
-
-                // Gentle float
-                bar.position.y = (bar.userData.value * bar.scale.y) / 2 + Math.sin(timeRef.current + index * 0.5) * 0.1;
+                bar.position.y = (bar.userData.value * bar.scale.y) / 2 + Math.sin(timeRef.current + index * 0.5) * 0.05;
+                const mat = Array.isArray(bar.material) ? bar.material[0] : bar.material;
+                mat.opacity = isHovered ? 0.6 : 0.4;
             });
 
-            // Animate particles - only every 2nd frame
             if (frameCountRef.current % 2 === 0 && objectsRef.current.particles && particleTargetsRef.current) {
                 const positions = objectsRef.current.particles.geometry.attributes.position.array as Float32Array;
                 const targets = particleTargetsRef.current;
-                
                 for (let i = 0; i < particleCount; i++) {
                     const i3 = i * 3;
-                    positions[i3] += (targets[i3] - positions[i3]) * 0.02;
-                    positions[i3 + 1] += (targets[i3 + 1] - positions[i3 + 1]) * 0.02;
-                    positions[i3 + 2] += (targets[i3 + 2] - positions[i3 + 2]) * 0.02;
-
-                    // Add wave motion
-                    positions[i3 + 1] += Math.sin(timeRef.current * 2 + i * 0.1) * 0.01;
+                    positions[i3] += (targets[i3] - positions[i3]) * 0.01;
+                    positions[i3 + 1] += (targets[i3 + 1] - positions[i3 + 1]) * 0.01;
+                    positions[i3 + 2] += (targets[i3 + 2] - positions[i3 + 2]) * 0.01;
+                    positions[i3 + 1] += Math.sin(timeRef.current * 1.5 + i) * 0.005;
                 }
                 objectsRef.current.particles.geometry.attributes.position.needsUpdate = true;
             }
 
-            // Gentle rotation
-            group.rotation.y = Math.sin(timeRef.current * 0.3) * 0.05;
-
+            group.rotation.y = Math.sin(timeRef.current * 0.2) * 0.03;
             renderer.render(scene, camera);
         };
 
         animate();
 
-        // Handle resize
         const handleResize = () => {
             if (!containerRef.current || !cameraRef.current || !rendererRef.current) return;
             cameraRef.current.aspect = containerRef.current.clientWidth / containerRef.current.clientHeight;
@@ -220,52 +196,25 @@ const Data3DVis: React.FC<Data3DVisProps> = ({
 
         window.addEventListener('resize', handleResize);
 
-        // Cleanup
         return () => {
             containerRef.current?.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('resize', handleResize);
-            if (animationIdRef.current) {
-                cancelAnimationFrame(animationIdRef.current);
-            }
+            if (animationIdRef.current) cancelAnimationFrame(animationIdRef.current);
             if (containerRef.current && rendererRef.current?.domElement) {
                 containerRef.current.removeChild(rendererRef.current.domElement);
             }
-
-            // Dispose all geometries and materials
             objectsRef.current.bars.forEach(bar => {
                 if (bar.geometry) bar.geometry.dispose();
-                if (bar.material) {
-                    if (Array.isArray(bar.material)) {
-                        bar.material.forEach(m => m.dispose());
-                    } else {
-                        bar.material.dispose();
-                    }
-                }
-                // Dispose glow children
-                bar.children.forEach(child => {
-                    if (child instanceof THREE.Mesh) {
-                        if (child.geometry) child.geometry.dispose();
-                        if (child.material) {
-                            if (Array.isArray(child.material)) {
-                                child.material.forEach(m => m.dispose());
-                            } else {
-                                child.material.dispose();
-                            }
-                        }
-                    }
-                });
+                if (bar.material) (Array.isArray(bar.material) ? bar.material : [bar.material]).forEach(m => m.dispose());
             });
-
             if (objectsRef.current.particles) {
                 objectsRef.current.particles.geometry.dispose();
                 (objectsRef.current.particles.material as THREE.Material).dispose();
             }
-
             if (objectsRef.current.gridHelper) {
                 objectsRef.current.gridHelper.geometry.dispose();
                 (objectsRef.current.gridHelper.material as THREE.Material).dispose();
             }
-
             rendererRef.current?.dispose();
         };
     }, [dataPoints, color, hoveredIndex]);
@@ -274,31 +223,16 @@ const Data3DVis: React.FC<Data3DVisProps> = ({
         <div className="relative">
             <div
                 ref={containerRef}
-                className="w-full rounded-xl overflow-hidden"
+                className="w-full overflow-hidden"
                 style={{ height }}
             />
 
-            {/* Tooltip */}
-            {hoveredIndex >= 0 && (
-                <div className="absolute top-4 right-4 bg-surface-elevated border border-border-subtle rounded-lg px-4 py-2 shadow-lg">
-                    <div className="text-xs text-text-muted">{labels?.[hoveredIndex] || `Data Point ${hoveredIndex + 1}`}</div>
-                    <div className="text-xl font-bold text-primary">{dataPoints[hoveredIndex]}</div>
+            {hoveredIndex >= 0 && (labels?.[hoveredIndex] || dataPoints[hoveredIndex]) && (
+                <div className="absolute top-4 right-4 bg-zinc-950 border border-white/10 rounded-none px-6 py-4 shadow-2xl backdrop-blur-xl animate-reveal">
+                    <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 mb-1">{labels?.[hoveredIndex] || 'Metric'}</div>
+                    <div className="text-2xl font-black text-white">{dataPoints[hoveredIndex]}</div>
                 </div>
             )}
-
-            {/* Labels */}
-            <div className="flex justify-between mt-4 px-2">
-                {labels?.map((label, index) => (
-                    <div
-                        key={index}
-                        className={`text-xs text-center transition-all ${
-                            index === hoveredIndex ? 'text-accent font-bold scale-110' : 'text-text-muted'
-                        }`}
-                    >
-                        {label}
-                    </div>
-                ))}
-            </div>
         </div>
     );
 };
@@ -318,29 +252,21 @@ export const Ring3DChart: React.FC<Ring3DChartProps> = ({ segments, size = 200 }
     const objectsRef = useRef<{
         meshes: THREE.Mesh[];
         lines: THREE.LineSegments[];
-        centerGlow: THREE.Mesh | null;
     }>({
         meshes: [],
-        lines: [],
-        centerGlow: null
+        lines: []
     });
     const timeRef = useRef(0);
 
     useEffect(() => {
         if (!containerRef.current) return;
-
         const scene = new THREE.Scene();
         sceneRef.current = scene;
-
         const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
         camera.position.z = 15;
         cameraRef.current = camera;
 
-        const renderer = new THREE.WebGLRenderer({
-            antialias: true,
-            alpha: true,
-            powerPreference: 'high-performance'
-        });
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
         renderer.setSize(size, size);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         containerRef.current.appendChild(renderer.domElement);
@@ -355,24 +281,21 @@ export const Ring3DChart: React.FC<Ring3DChartProps> = ({ segments, size = 200 }
         const meshes: THREE.Mesh[] = [];
         const lines: THREE.LineSegments[] = [];
 
-        segments.forEach((segment) => {
-            const segmentAngle = (segment.value / total) * Math.PI * 2;
+        // Luxury monochromatic color mapping
+        const monochromaticColors = ['#ffffff', '#a1a1aa', '#71717a', '#3f3f46'];
 
-            // Create ring segment
+        segments.forEach((segment, idx) => {
+            const segmentAngle = (segment.value / total) * Math.PI * 2;
             const shape = new THREE.Shape();
-            const outerRadius = 4;
-            const innerRadius = 2.5;
+            const outerRadius = 4.5;
+            const innerRadius = 3.8;
 
             shape.absarc(0, 0, outerRadius, currentAngle, currentAngle + segmentAngle, false);
             shape.absarc(0, 0, innerRadius, currentAngle + segmentAngle, currentAngle, true);
 
-            const geometry = new THREE.ExtrudeGeometry(shape, {
-                depth: 0.5,
-                bevelEnabled: false
-            });
-
+            const geometry = new THREE.ExtrudeGeometry(shape, { depth: 0.2, bevelEnabled: false });
             const material = new THREE.MeshBasicMaterial({
-                color: new THREE.Color(segment.color),
+                color: new THREE.Color(monochromaticColors[idx % monochromaticColors.length]),
                 transparent: true,
                 opacity: 0.8
             });
@@ -382,9 +305,8 @@ export const Ring3DChart: React.FC<Ring3DChartProps> = ({ segments, size = 200 }
             group.add(mesh);
             meshes.push(mesh);
 
-            // Add edge highlight
             const edges = new THREE.EdgesGeometry(geometry);
-            const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.3 });
+            const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.1 });
             const line = new THREE.LineSegments(edges, lineMaterial);
             line.rotation.x = Math.PI / 2;
             group.add(line);
@@ -396,84 +318,34 @@ export const Ring3DChart: React.FC<Ring3DChartProps> = ({ segments, size = 200 }
         objectsRef.current.meshes = meshes;
         objectsRef.current.lines = lines;
 
-        // Center glow
-        const centerGlow = new THREE.Mesh(
-            new THREE.CircleGeometry(2, 32),
-            new THREE.MeshBasicMaterial({
-                color: new THREE.Color(segments[0]?.color || '#6366f1'),
-                transparent: true,
-                opacity: 0.3
-            })
-        );
-        centerGlow.position.z = 0.26;
-        group.add(centerGlow);
-        objectsRef.current.centerGlow = centerGlow;
-
-        // Animation
         const animate = () => {
             animationIdRef.current = requestAnimationFrame(animate);
             timeRef.current += 0.01;
-
-            group.rotation.z = Math.sin(timeRef.current * 0.5) * 0.1;
-            centerGlow.scale.setScalar(1 + Math.sin(timeRef.current * 2) * 0.05);
-
+            group.rotation.z = timeRef.current * 0.1;
             renderer.render(scene, camera);
         };
-
         animate();
 
         return () => {
-            if (animationIdRef.current) {
-                cancelAnimationFrame(animationIdRef.current);
-            }
-            if (containerRef.current && rendererRef.current?.domElement) {
-                containerRef.current.removeChild(rendererRef.current.domElement);
-            }
-
-            // Dispose all geometries and materials
+            if (animationIdRef.current) cancelAnimationFrame(animationIdRef.current);
+            if (containerRef.current && rendererRef.current?.domElement) containerRef.current.removeChild(rendererRef.current.domElement);
             objectsRef.current.meshes.forEach(mesh => {
-                if (mesh.geometry) mesh.geometry.dispose();
-                if (mesh.material) {
-                    if (Array.isArray(mesh.material)) {
-                        mesh.material.forEach(m => m.dispose());
-                    } else {
-                        mesh.material.dispose();
-                    }
-                }
+                mesh.geometry.dispose();
+                (Array.isArray(mesh.material) ? mesh.material : [mesh.material]).forEach(m => m.dispose());
             });
-
-            objectsRef.current.lines.forEach(line => {
-                if (line.geometry) line.geometry.dispose();
-                if (line.material) {
-                    if (Array.isArray(line.material)) {
-                        line.material.forEach(m => m.dispose());
-                    } else {
-                        line.material.dispose();
-                    }
-                }
-            });
-
-            if (objectsRef.current.centerGlow) {
-                objectsRef.current.centerGlow.geometry.dispose();
-                (objectsRef.current.centerGlow.material as THREE.Material).dispose();
-            }
-
             rendererRef.current?.dispose();
         };
     }, [segments, size]);
 
     return (
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col items-center gap-12">
             <div ref={containerRef} style={{ width: size, height: size }} />
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-x-12 gap-y-6">
                 {segments.map((segment, index) => (
-                    <div key={index} className="flex items-center gap-2">
-                        <div
-                            className="w-3 h-3 rounded-full"
-                            style={{ backgroundColor: segment.color }}
-                        />
-                        <span className="text-sm text-text-muted">{segment.label}</span>
-                        <span className="text-sm font-bold text-text-default">{segment.value}%</span>
+                    <div key={index} className="flex items-center gap-4">
+                        <div className="w-1 h-1 rounded-full bg-white/40" />
+                        <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/50">{segment.label}</span>
+                        <span className="text-sm font-black text-white">{segment.value}%</span>
                     </div>
                 ))}
             </div>
