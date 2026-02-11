@@ -6,33 +6,33 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 @theme {
     /* Core Palette - Pure, Monochromatic, High-End */
-    --color-bg: #000000;               /* Pure Black */
-    --color-surface: #09090b;          /* Zinc 950 */
-    --color-surface-elevated: #18181b; /* Zinc 900 */
+    --color-bg: #0d1d0d;               /* Deep Matcha Black */
+    --color-surface: #152915;          /* Forest Green Surface */
+    --color-surface-elevated: #1a3320; /* Matcha Green Elevated */
 
-    --color-accent: #ffffff;           /* White (The Ultimate Accent) */
-    --color-primary: #a1a1aa;          /* Zinc 400 */
-    --color-dark: #ffffff;             /* Headings */
+    --color-accent: #c8e6c9;           /* Matcha Cream (Light Green) */
+    --color-primary: #7c9c6c;          /* Sage Green */
+    --color-dark: #d4e8d4;             /* Cream White (Headings) */
 
     /* Role Tokens */
-    --color-text-default: #fafafa;     /* Zinc 50 */
-    --color-text-muted: #a1a1aa;       /* Zinc 400 */
-    --color-text-dim: #52525b;         /* Zinc 600 */
-    
-    --color-text-on-accent: #000000;   /* Black on White */
-    --color-text-on-primary: #000000;  
-    --color-cta-text: #000000;
-    
-    --color-border: #27272a;           /* Zinc 800 */
-    --color-border-subtle: #18181b;    
-    --color-muted-bg: #09090b;
+    --color-text-default: #d4e8d4;     /* Cream White */
+    --color-text-muted: #7c9c6c;       /* Sage Muted */
+    --color-text-dim: #4a6741;         /* Deep Green Dim */
+
+    --color-text-on-accent: #0d1d0d;   /* Dark on Matcha Cream */
+    --color-text-on-primary: #0d1d0d;
+    --color-cta-text: #0d1d0d;
+
+    --color-border: #2d4a2d;           /* Forest Border */
+    --color-border-subtle: #1a3320;
+    --color-muted-bg: #152915;
 
     /* State Tokens */
-    --color-cta-hover: #e4e4e7;        /* Zinc 200 */
-    --color-cta-active: #d4d4d8;       /* Zinc 300 */
-    --color-focus-ring: rgba(255, 255, 255, 0.5);
-    --color-accent-glow: rgba(255, 255, 255, 0.05);
-    --color-accent-bright: #ffffff;
+    --color-cta-hover: #b5ddb4;        /* Lighter Matcha */
+    --color-cta-active: #a2d3a0;       /* Muted Matcha */
+    --color-focus-ring: rgba(200, 230, 201, 0.4);
+    --color-accent-glow: rgba(200, 230, 201, 0.08);
+    --color-accent-bright: #e8f5e8;
 
     /* Typography */
     --font-display: "Geist", sans-serif;
@@ -185,25 +185,25 @@
     .card-feature:hover {
         @apply border-white/40;
         transform: translateY(-2px);
-        background: #0c0c0e;
+        background: #1a3320;
     }
 
     .card-gradient-blue {
-        background: linear-gradient(135deg, #18181b 0%, #000000 100%);
+        background: linear-gradient(135deg, #1a3320 0%, #0d1d0d 100%);
     }
 
     .card-gradient-blue-soft {
-        background: #09090b;
+        background: #152915;
     }
 
-    .card-gradient-green { 
-        background: linear-gradient(135deg, #18181b 0%, #000000 100%);
+    .card-gradient-green {
+        background: linear-gradient(135deg, #1a3320 0%, #0d1d0d 100%);
     }
-    .card-gradient-green-soft { 
-        background: #09090b;
+    .card-gradient-green-soft {
+        background: #152915;
     }
-    .card-gradient-teal { 
-        background: linear-gradient(135deg, #09090b 0%, #18181b 100%);
+    .card-gradient-teal {
+        background: linear-gradient(135deg, #152915 0%, #1a3320 100%);
     }
 
     /* ═══════════════════════════════════════════════════════════════════════════
@@ -212,19 +212,19 @@
     .bg-grid {
         background-size: 60px 60px;
         background-image:
-            linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            linear-gradient(to right, rgba(200, 230, 201, 0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(200, 230, 201, 0.05) 1px, transparent 1px);
     }
 
     .bg-grid-accent {
         background-size: 60px 60px;
         background-image:
-            linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            linear-gradient(to right, rgba(200, 230, 201, 0.08) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(200, 230, 201, 0.08) 1px, transparent 1px);
     }
 
     .bg-gradient-radial {
-        background: radial-gradient(circle at center, #18181b 0%, #000000 100%);
+        background: radial-gradient(circle at center, #1a3320 0%, #0d1d0d 100%);
     }
 
     /* ═══════════════════════════════════════════════════════════════════════════
@@ -240,7 +240,7 @@
 
     .text-gradient {
         @apply bg-clip-text text-transparent;
-        background-image: linear-gradient(to bottom, #ffffff 0%, #a1a1aa 100%);
+        background-image: linear-gradient(to bottom, #d4e8d4 0%, #7c9c6c 100%);
     }
 
     .label-mono {
@@ -287,6 +287,6 @@
 .bg-grid-subtle {
     background-size: 40px 40px;
     background-image:
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        linear-gradient(to right, rgba(200, 230, 201, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(200, 230, 201, 0.03) 1px, transparent 1px);
 }
