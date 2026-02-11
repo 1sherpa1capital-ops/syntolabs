@@ -2,33 +2,33 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   SYNTO LABS BRAND COLORS - Soft Green Palette
+   SYNTO LABS BRAND COLORS - Cyber-Pragmatic (Dark Mode)
    ═══════════════════════════════════════════════════════════════════════════ */
 @theme {
-    /* Core Palette - Soft, Refined Green */
-    --color-accent: #90AB8B;           /* soft sage green */
-    --color-primary: #5A7863;          /* medium olive green */
-    --color-dark: #3B4953;             /* dark greenish-gray */
-    --color-bg: #F8F9FA;               /* warm white/off-white */
-    --color-surface: #FFFFFF;          /* pure white */
-    --color-surface-elevated: #F0F2F1; /* light gray-green tint */
+    /* Core Palette - Dark, High Contrast */
+    --color-accent: #f97316;           /* Alert Orange */
+    --color-primary: #22c55e;          /* Terminal Green */
+    --color-dark: #ffffff;             /* White (for headings in dark mode) */
+    --color-bg: #0a0a0a;               /* Void Black */
+    --color-surface: #171717;          /* Neutral 900 */
+    --color-surface-elevated: #262626; /* Neutral 800 */
 
     /* Role Tokens */
-    --color-text-default: #3B4953;
-    --color-text-muted: #5A7863;
-    --color-text-dim: #8A9A8E;
-    --color-text-on-accent: #FFFFFF;
-    --color-text-on-primary: #FFFFFF;
-    --color-border: #E0E6E1;
-    --color-border-subtle: #D5DDD6;
-    --color-muted-bg: #F0F2F1;
+    --color-text-default: #e5e5e5;     /* Neutral 200 */
+    --color-text-muted: #a3a3a3;       /* Steel (Neutral 400) */
+    --color-text-dim: #525252;         /* Neutral 600 */
+    --color-text-on-accent: #ffffff;
+    --color-text-on-primary: #0a0a0a;  /* Black text on green */
+    --color-border: #262626;           /* Neutral 800 */
+    --color-border-subtle: #171717;    /* Neutral 900 */
+    --color-muted-bg: #171717;         /* Neutral 900 */
 
     /* State Tokens */
-    --color-cta-hover: #7A9B77;
-    --color-cta-active: #5A7863;
-    --color-focus-ring: rgba(144, 171, 139, 0.4);
-    --color-accent-glow: rgba(144, 171, 139, 0.15);
-    --color-accent-bright: #A8C4A3;
+    --color-cta-hover: #ea580c;        /* Orange 600 */
+    --color-cta-active: #c2410c;       /* Orange 700 */
+    --color-focus-ring: rgba(249, 115, 22, 0.5);
+    --color-accent-glow: rgba(249, 115, 22, 0.2);
+    --color-accent-bright: #fb923c;    /* Orange 400 */
 
     /* Typography */
     --font-display: "Geist", sans-serif;

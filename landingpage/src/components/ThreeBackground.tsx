@@ -67,8 +67,8 @@ const ThreeBackground: React.FC<ThreeBackgroundProps> = ({
             const positions = new Float32Array(count * 3);
             const colors = new Float32Array(count * 3);
 
-            const color1 = new THREE.Color(0x6366f1);
-            const color2 = new THREE.Color(0x06b6d4);
+            const color1 = new THREE.Color(0xf97316); // Orange
+            const color2 = new THREE.Color(0x22c55e); // Green
 
             for (let i = 0; i < count; i++) {
                 const i3 = i * 3;
@@ -123,7 +123,7 @@ const ThreeBackground: React.FC<ThreeBackgroundProps> = ({
             const count = 50; // Reduced from 100
             const geometry = new THREE.PlaneGeometry(50, 50, count - 1, count - 1);
             const material = new THREE.MeshBasicMaterial({
-                color: 0x6366f1,
+                color: 0xf97316,
                 wireframe: true,
                 transparent: true,
                 opacity: 0.3
@@ -175,7 +175,7 @@ const ThreeBackground: React.FC<ThreeBackgroundProps> = ({
 
             // Create nodes
             const nodeGeometry = new THREE.SphereGeometry(0.15, 8, 8);
-            const nodeMaterial = new THREE.MeshBasicMaterial({ color: 0x6366f1 });
+            const nodeMaterial = new THREE.MeshBasicMaterial({ color: 0xf97316 });
 
             for (let i = 0; i < nodeCount; i++) {
                 const node = new THREE.Vector3(
@@ -195,7 +195,7 @@ const ThreeBackground: React.FC<ThreeBackgroundProps> = ({
 
             // Create connections
             const lineMaterial = new THREE.LineBasicMaterial({
-                color: 0x6366f1,
+                color: 0xf97316,
                 transparent: true,
                 opacity: 0.2
             });

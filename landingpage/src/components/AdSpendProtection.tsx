@@ -61,7 +61,7 @@ const AdSpendProtection: React.FC = () => {
                         <div className="space-y-4">
                             {painPoints.map((point, i) => (
                                 <div key={i} className="flex items-start gap-4 pb-4 border-b border-border-subtle last:border-0 last:pb-0">
-                                    <div className="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center flex-shrink-0">
+                                    <div className="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0">
                                         <point.icon size={18} className="text-red-400" />
                                     </div>
                                     <p className="text-sm md:text-base text-text-default font-medium leading-relaxed pt-2">
@@ -71,8 +71,8 @@ const AdSpendProtection: React.FC = () => {
                             ))}
                         </div>
 
-                        <div className="mt-6 p-4 rounded-lg bg-red-50/50 border border-red-100">
-                            <p className="text-xs text-red-600/80 font-medium">
+                        <div className="mt-6 p-4 rounded-lg bg-red-500/10 border border-red-500/20">
+                            <p className="text-xs text-red-400 font-medium">
                                 <span className="font-black">The math:</span> A 5-person team spending 15 hrs/week on manual tasks = $117,000/year in labor costs.
                             </p>
                         </div>
