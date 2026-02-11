@@ -2,11 +2,7 @@ import React from 'react';
 
 /**
  * Logo component with SVG gradient
- * Note: SVG linearGradient stop-color doesn't support CSS variables in most browsers,
- * so we use hardcoded hex values here that match our design system:
- * - #5A7863 = primary
- * - #90AB8B = accent  
- * - #3B4953 = dark
+ * Updated to Deep Tech Enterprise Theme (Cosmic Blue)
  */
 const Logo: React.FC<{ className?: string }> = ({ className }) => {
     return (
@@ -22,10 +18,10 @@ const Logo: React.FC<{ className?: string }> = ({ className }) => {
         >
             <defs>
                 <linearGradient id="pipeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#5A7863" />
-                    <stop offset="30%" stopColor="#90AB8B" />
-                    <stop offset="60%" stopColor="#5A7863" />
-                    <stop offset="100%" stopColor="#3B4953" />
+                    <stop offset="0%" stopColor="#3b82f6" />
+                    <stop offset="30%" stopColor="#6366f1" />
+                    <stop offset="60%" stopColor="#3b82f6" />
+                    <stop offset="100%" stopColor="#1e293b" />
                 </linearGradient>
             </defs>
 

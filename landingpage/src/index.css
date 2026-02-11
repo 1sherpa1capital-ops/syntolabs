@@ -2,36 +2,37 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   SYNTO LABS BRAND COLORS - Green Tea Theme (Dark Matcha)
+   SYNTO LABS BRAND COLORS - Deep Tech Enterprise Theme (Cosmic Blue)
    ═══════════════════════════════════════════════════════════════════════════ */
 @theme {
-    /* Core Palette - Organic, Calming, Tech-Forward */
-    --color-bg: #0f1612;               /* Deepest Tea Leaf */
-    --color-surface: #18221c;          /* Steeped Dark Green */
-    --color-surface-elevated: #212d26; /* Mossy Green */
+    /* Core Palette - Professional, Deep Space, Trustworthy */
+    --color-bg: #020617;               /* Slate 950 (Deep Space) */
+    --color-surface: #0f172a;          /* Slate 900 */
+    --color-surface-elevated: #1e293b; /* Slate 800 */
 
-    --color-accent: #a3e635;           /* Fresh Lime/Matcha (High Vis) */
-    --color-primary: #4ade80;          /* Leaf Green */
-    --color-dark: #f0fdf4;             /* Mint Cream (Headings) */
+    --color-accent: #6366f1;           /* Indigo 500 (Primary Brand) */
+    --color-primary: #3b82f6;          /* Blue 500 (Secondary Brand) */
+    --color-dark: #f8fafc;             /* Slate 50 (Headings) */
 
     /* Role Tokens */
-    --color-text-default: #ecfdf5;     /* Green-50 (Creamy White) */
-    --color-text-muted: #86a78f;       /* Sage Grey */
-    --color-text-dim: #4d6658;         /* Dark Sage */
+    --color-text-default: #e2e8f0;     /* Slate 200 */
+    --color-text-muted: #94a3b8;       /* Slate 400 */
+    --color-text-dim: #64748b;         /* Slate 500 */
     
-    --color-text-on-accent: #0f1612;   /* Dark text on bright accent */
-    --color-text-on-primary: #0f1612;  
+    --color-text-on-accent: #ffffff;   /* White text on accent */
+    --color-text-on-primary: #ffffff;  
+    --color-cta-text: #ffffff;
     
-    --color-border: #212d26;           /* Mossy Border */
-    --color-border-subtle: #18221c;    
-    --color-muted-bg: #18221c;
+    --color-border: #1e293b;           /* Slate 800 */
+    --color-border-subtle: #0f172a;    
+    --color-muted-bg: #0f172a;
 
     /* State Tokens */
-    --color-cta-hover: #84cc16;        /* Deep Lime */
-    --color-cta-active: #65a30d;       
-    --color-focus-ring: rgba(163, 230, 53, 0.5);
-    --color-accent-glow: rgba(163, 230, 53, 0.15);
-    --color-accent-bright: #bef264;    
+    --color-cta-hover: #4f46e5;        /* Indigo 600 */
+    --color-cta-active: #4338ca;       /* Indigo 700 */
+    --color-focus-ring: rgba(99, 102, 241, 0.5);
+    --color-accent-glow: rgba(99, 102, 241, 0.15);
+    --color-accent-bright: #818cf8;    /* Indigo 400 */
 
     /* Typography */
     --font-display: "Geist", sans-serif;
@@ -157,13 +158,24 @@
         box-shadow: 0 8px 30px -10px var(--color-accent-glow);
     }
 
-    /* Green gradient for cards */
-    .card-gradient-green {
+    /* Blue gradient for cards */
+    .card-gradient-blue {
         background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
     }
 
+    .card-gradient-blue-soft {
+        background: linear-gradient(180deg, #F8FAFF 0%, #F1F5F9 100%);
+    }
+
+    /* Legacy compatibility (mapped to blue) */
+    .card-gradient-green {
+        background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+    }
     .card-gradient-green-soft {
-        background: linear-gradient(180deg, #F8FAF8 0%, #F0F4F1 100%);
+        background: linear-gradient(180deg, #F8FAFF 0%, #F1F5F9 100%);
+    }
+    .card-gradient-teal { 
+        background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
     }
 
     /* ═══════════════════════════════════════════════════════════════════════════
@@ -174,15 +186,15 @@
     .bg-grid {
         background-size: 40px 40px;
         background-image:
-            linear-gradient(to right, rgba(58, 73, 83, 0.04) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(58, 73, 83, 0.04) 1px, transparent 1px);
+            linear-gradient(to right, rgba(226, 232, 240, 0.04) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(226, 232, 240, 0.04) 1px, transparent 1px);
     }
 
     .bg-grid-accent {
         background-size: 40px 40px;
         background-image:
-            linear-gradient(to right, rgba(144, 171, 139, 0.08) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(144, 171, 139, 0.08) 1px, transparent 1px);
+            linear-gradient(to right, rgba(99, 102, 241, 0.08) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
     }
 
     /* Gradient backgrounds */
@@ -423,6 +435,6 @@
 .bg-grid-subtle {
     background-size: 32px 32px;
     background-image:
-        linear-gradient(to right, rgba(58, 73, 83, 0.06) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(58, 73, 83, 0.06) 1px, transparent 1px);
+        linear-gradient(to right, rgba(226, 232, 240, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(226, 232, 240, 0.06) 1px, transparent 1px);
 }

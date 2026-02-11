@@ -38,7 +38,7 @@ const ThreeHero: React.FC = () => {
 
         // Scene Setup
         const scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2(0x0a0a0f, 0.0015);
+        scene.fog = new THREE.FogExp2(0x020617, 0.0015);
         sceneRef.current = scene;
 
         // Camera
@@ -60,7 +60,7 @@ const ThreeHero: React.FC = () => {
         });
         renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        renderer.setClearColor(0x0a0a0f, 1);
+        renderer.setClearColor(0x020617, 1);
         containerRef.current.appendChild(renderer.domElement);
         rendererRef.current = renderer;
 
@@ -73,9 +73,9 @@ const ThreeHero: React.FC = () => {
 
         const colorPalette = [
             new THREE.Color(0x6366f1), // Indigo
-            new THREE.Color(0x8b5cf6), // Violet
-            new THREE.Color(0x06b6d4), // Cyan
-            new THREE.Color(0x10b981), // Emerald
+            new THREE.Color(0x818cf8), // Light Indigo
+            new THREE.Color(0x3b82f6), // Blue
+            new THREE.Color(0x60a5fa), // Light Blue
         ];
 
         for (let i = 0; i < particleCount; i++) {
@@ -133,7 +133,7 @@ const ThreeHero: React.FC = () => {
 
         // Glass material
         const glassMaterial = new THREE.MeshBasicMaterial({
-            color: 0x8b5cf6,
+            color: 0x3b82f6,
             transparent: true,
             opacity: 0.15,
             side: THREE.DoubleSide
@@ -179,7 +179,7 @@ const ThreeHero: React.FC = () => {
         // ============ TORUS RING ============
         const torusGeometry = new THREE.TorusGeometry(8, 0.05, 16, 100);
         const torusMaterial = new THREE.MeshBasicMaterial({
-            color: 0x06b6d4,
+            color: 0x6366f1,
             transparent: true,
             opacity: 0.3
         });
@@ -191,7 +191,7 @@ const ThreeHero: React.FC = () => {
 
         const torus2Geometry = new THREE.TorusGeometry(12, 0.03, 16, 100);
         const torus2Material = new THREE.MeshBasicMaterial({
-            color: 0x8b5cf6,
+            color: 0x3b82f6,
             transparent: true,
             opacity: 0.2
         });
@@ -238,7 +238,7 @@ const ThreeHero: React.FC = () => {
         pointLight1.position.set(10, 10, 10);
         scene.add(pointLight1);
 
-        const pointLight2 = new THREE.PointLight(0x06b6d4, 2, 100);
+        const pointLight2 = new THREE.PointLight(0x3b82f6, 2, 100);
         pointLight2.position.set(-10, -10, 10);
         scene.add(pointLight2);
 
@@ -390,7 +390,7 @@ const ThreeHero: React.FC = () => {
 
             {/* Loading State */}
             {isLoading && (
-                <div className="absolute inset-0 flex items-center justify-center bg-[#0a0a0f] z-10">
+                <div className="absolute inset-0 flex items-center justify-center bg-[#020617] z-10">
                     <div className="flex flex-col items-center gap-4">
                         <div className="w-12 h-12 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
                         <p className="text-white/60 text-sm">Loading experience...</p>
@@ -406,14 +406,14 @@ const ThreeHero: React.FC = () => {
                 <div className="w-full max-w-4xl">
                     {/* Badge */}
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8">
-                        <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                        <div className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
                         <span className="text-white/80 text-sm font-medium">AI-Powered Call Answering</span>
                     </div>
 
                     {/* Heading */}
                     <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black tracking-[-0.04em] text-white leading-[0.9] mb-6">
                         Stop Losing Leads <br />
-                        <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-blue-400 bg-clip-text text-transparent">
                             From Your Ads.
                         </span>
                     </h1>
@@ -430,9 +430,9 @@ const ThreeHero: React.FC = () => {
                             href={BOOKING_URL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 text-white font-black text-base shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 transition-all duration-300 hover:scale-105"
+                            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-black text-base shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 transition-all duration-300 hover:scale-105"
                         >
-                            <span className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
+                            <span className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 to-blue-500 blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
                             <span className="relative flex items-center gap-2">
                                 Book a Demo <ArrowRight size={18} aria-hidden="true" />
                             </span>

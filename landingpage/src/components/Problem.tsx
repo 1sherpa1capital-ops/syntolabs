@@ -18,12 +18,12 @@ const Problem: React.FC = () => {
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest mb-4">
                             The Problem
                         </div>
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter text-primary leading-[0.9] mb-6 md:mb-8">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter text-dark leading-[0.9] mb-6 md:mb-8">
                             Your team is drowning<br className="hidden sm:block" />
-                            <span className="text-accent">in repetitive busywork.</span>
+                            <span className="text-gradient">in repetitive busywork.</span>
                         </h2>
 
-                        <div className="space-y-4 md:space-y-6 text-base md:text-lg text-text-default font-medium leading-relaxed max-w-xl">
+                        <div className="space-y-4 md:space-y-6 text-base md:text-lg text-text-muted font-medium leading-relaxed max-w-xl">
                             <p>
                                 Data entry. Report generation. Email sorting. Follow-up reminders. <span className="text-primary font-black">Your best people spend 15+ hours/week on tasks that don't require human judgment.</span>
                             </p>
@@ -32,17 +32,17 @@ const Problem: React.FC = () => {
                             </p>
 
                             <div className="pt-4">
-                                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-accent font-bold text-lg hover:gap-5 transition-all group uppercase tracking-widest bg-primary px-8 py-4 rounded-full shadow-lg">
+                                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary rounded-full group">
                                     Find Your Automation Opportunities <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                                 </a>
-                                <p className="mt-3 text-xs text-text-muted">Free workflow audit • No obligation</p>
+                                <p className="mt-3 text-xs text-text-dim">Free workflow audit • No obligation</p>
                             </div>
                         </div>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                         {stats.map((stat, i) => (
-                            <div key={i} className="relative p-5 md:p-6 bg-primary border border-text-on-primary/5 rounded-xl group transition-all duration-500 flex flex-col justify-between min-h-[220px] md:min-h-[260px]">
+                            <div key={i} className="relative p-5 md:p-6 bg-surface border border-border rounded-xl group transition-all duration-500 flex flex-col justify-between min-h-[220px] md:min-h-[260px] hover:border-accent/40">
                                 {/* Corner Brackets */}
                                 <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-accent/20 -translate-x-1 -translate-y-1 group-hover:border-accent group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500" />
                                 <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-accent/20 translate-x-1 translate-y-1 group-hover:border-accent group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500" />
@@ -52,23 +52,23 @@ const Problem: React.FC = () => {
                                         <div className="w-4 h-4 rounded-sm bg-accent/10 flex items-center justify-center text-accent">
                                             <Link size={8} />
                                         </div>
-                                        <div className="text-[8px] font-black uppercase tracking-[0.3em] text-text-on-primary/40 group-hover:text-accent transition-colors">
+                                        <div className="text-[8px] font-black uppercase tracking-[0.3em] text-text-dim group-hover:text-accent transition-colors">
                                             {stat.label}
                                         </div>
                                     </div>
 
-                                    <div className="text-3xl md:text-4xl font-black text-text-on-primary tracking-tighter mb-3 md:mb-4 group-hover:translate-x-1 transition-transform">
+                                    <div className="text-3xl md:text-4xl font-black text-primary tracking-tighter mb-3 md:mb-4 group-hover:translate-x-1 transition-transform">
                                         {stat.value}
                                     </div>
 
-                                    <div className="w-6 h-px bg-text-on-primary/10 mb-3 md:mb-4" />
+                                    <div className="w-6 h-px bg-border mb-3 md:mb-4" />
 
-                                    <p className="text-xs text-text-on-primary/60 font-medium leading-relaxed">
+                                    <p className="text-xs text-text-muted font-medium leading-relaxed">
                                         {stat.desc}
                                     </p>
                                 </div>
 
-                                <a href="#roi" className="mt-8 flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.3em] text-accent hover:text-text-on-primary transition-colors">
+                                <a href="#roi" className="mt-8 flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.3em] text-accent hover:text-primary transition-colors">
                                     VIEW IMPACT <ArrowRight size={12} />
                                 </a>
                             </div>
@@ -78,7 +78,7 @@ const Problem: React.FC = () => {
                 
                 {/* Disclaimer */}
                 <div className="mt-8 text-center">
-                    <p className="text-[10px] text-text-muted font-medium uppercase tracking-widest">
+                    <p className="text-[10px] text-text-dim font-medium uppercase tracking-widest">
                         Stats based on internal estimates and industry research. Actual results vary by business.
                     </p>
                 </div>

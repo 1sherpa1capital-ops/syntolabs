@@ -54,7 +54,7 @@ const ROICalculator: React.FC = () => {
             set: setHoursPerWeek, 
             min: 5, 
             max: 40, 
-            step: 1,
+            step: 1, 
             unit: ' hrs'
         }
     ];
@@ -67,11 +67,11 @@ const ROICalculator: React.FC = () => {
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest mb-4">
                             ROI Calculator
                         </div>
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter text-primary leading-[0.9] mb-6 md:mb-8">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter text-dark leading-[0.9] mb-6 md:mb-8">
                             Calculate your <br className="hidden sm:block" />
-                            <span className="text-accent">time savings.</span>
+                            <span className="text-gradient">time savings.</span>
                         </h2>
-                        <p className="text-base md:text-lg text-text-default font-medium leading-relaxed max-w-xl mb-6 md:mb-8">
+                        <p className="text-base md:text-lg text-text-muted font-medium leading-relaxed max-w-xl mb-6 md:mb-8">
                             See how much your team spends on repetitive tasks—and how much you could save with AI automation.
                         </p>
 
@@ -100,7 +100,7 @@ const ROICalculator: React.FC = () => {
                                         step={input.step}
                                         value={input.value}
                                         onChange={(e) => input.set(Number(e.target.value))}
-                                        className="w-full h-1.5 bg-muted-bg rounded-lg appearance-none cursor-pointer accent-accent"
+                                        className="w-full h-1.5 bg-surface-elevated rounded-lg appearance-none cursor-pointer accent-accent"
                                         aria-label={input.label}
                                         aria-valuemin={input.min}
                                         aria-valuemax={input.max}
@@ -111,7 +111,7 @@ const ROICalculator: React.FC = () => {
                             ))}
                         </div>
 
-                        <div className="mt-6 p-4 rounded-lg bg-muted-bg border border-border-subtle">
+                        <div className="mt-6 p-4 rounded-lg bg-surface border border-border">
                             <div className="flex items-start gap-2 text-text-muted">
                                 <HelpCircle size={14} className="flex-shrink-0 mt-0.5" aria-hidden="true" />
                                 <span className="text-xs font-medium leading-relaxed">
@@ -122,50 +122,50 @@ const ROICalculator: React.FC = () => {
                     </div>
 
                     <div 
-                        className="p-6 md:p-8 lg:p-10 rounded-xl bg-primary text-text-on-primary relative overflow-hidden flex flex-col justify-between min-h-[400px] lg:min-h-[500px]"
+                        className="p-6 md:p-8 lg:p-10 rounded-3xl bg-surface-elevated border border-accent/20 text-text-default relative overflow-hidden flex flex-col justify-between min-h-[400px] lg:min-h-[500px]"
                         aria-live="polite"
                         aria-atomic="true"
                     >
-                        <div className="absolute inset-0 bg-grid-subtle opacity-[0.05] invert pointer-events-none" aria-hidden="true" />
+                        <div className="absolute inset-0 bg-grid-subtle opacity-[0.05] pointer-events-none" aria-hidden="true" />
 
                         <div className="relative z-10">
                             <div className="flex items-center gap-2 mb-6 md:mb-8">
                                 <Zap className="text-accent" size={18} fill="currentColor" aria-hidden="true" />
-                                <span className="text-[10px] font-black tracking-[0.3em] uppercase">Modeled Cost Impact</span>
+                                <span className="text-[10px] font-black tracking-[0.3em] uppercase text-accent">Modeled Cost Impact</span>
                             </div>
 
                             <div className="space-y-6 md:space-y-8">
                                 <div>
-                                    <div className="text-sm font-bold uppercase tracking-widest text-text-on-primary/50 mb-2">Current Monthly Cost</div>
-                                    <div className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter text-red-300 leading-none">
+                                    <div className="text-sm font-bold uppercase tracking-widest text-text-muted mb-2">Current Monthly Cost</div>
+                                    <div className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter text-dark leading-none">
                                         ${(results.monthlyCost / 1000).toFixed(1)}k
                                     </div>
-                                    <p className="text-xs text-text-on-primary/50 mt-1">Manual task labor costs</p>
+                                    <p className="text-xs text-text-muted mt-1">Manual task labor costs</p>
                                 </div>
                                 
-                                <div className="w-full h-px bg-text-on-primary/10" aria-hidden="true" />
+                                <div className="w-full h-px bg-border" aria-hidden="true" />
                                 
                                 <div>
-                                    <div className="text-sm font-bold uppercase tracking-widest text-text-on-primary/50 mb-2">Potential Monthly Savings</div>
-                                    <div className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter text-accent leading-none mb-1 md:mb-2">
+                                    <div className="text-sm font-bold uppercase tracking-widest text-accent mb-2">Potential Monthly Savings</div>
+                                    <div className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter text-primary leading-none mb-1 md:mb-2">
                                         ${(results.potentialSavings / 1000).toFixed(1)}k<span className="text-2xl">/mo</span>
                                     </div>
-                                    <p className="text-sm font-medium text-text-on-primary/70">Based on 70% automation efficiency</p>
+                                    <p className="text-sm font-medium text-text-muted">Based on 70% automation efficiency</p>
                                 </div>
 
-                                <div>
-                                    <div className="text-sm font-bold uppercase tracking-widest text-text-on-primary/50 mb-2">Hours Saved Weekly</div>
-                                    <div className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tighter text-text-on-primary leading-none mb-1 md:mb-2">
-                                        {results.hoursSaved.toFixed(0)} hours
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <div className="text-[10px] font-bold uppercase tracking-widest text-text-dim mb-1">Hours Saved</div>
+                                        <div className="text-xl sm:text-2xl font-black tracking-tighter text-dark">
+                                            {results.hoursSaved.toFixed(0)}h
+                                        </div>
                                     </div>
-                                    <p className="text-sm font-medium text-text-on-primary/50">Reclaimed for high-value work</p>
-                                </div>
-
-                                <div>
-                                    <div className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tighter text-text-on-primary leading-none mb-1 md:mb-2">
-                                        ${(results.annualSavings / 1000).toFixed(0)}k
+                                    <div>
+                                        <div className="text-[10px] font-bold uppercase tracking-widest text-text-dim mb-1">Annual Impact</div>
+                                        <div className="text-xl sm:text-2xl font-black tracking-tighter text-dark">
+                                            ${(results.annualSavings / 1000).toFixed(0)}k
+                                        </div>
                                     </div>
-                                    <p className="text-sm font-medium text-text-on-primary/50">Projected Annual Savings</p>
                                 </div>
                             </div>
                         </div>
@@ -176,20 +176,20 @@ const ROICalculator: React.FC = () => {
                                     href={BOOKING_URL}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex-1 flex items-center justify-center gap-2 bg-accent text-cta-text px-6 py-4 rounded-full text-sm font-black hover:bg-surface-elevated transition-colors"
+                                    className="btn-primary rounded-full flex-1"
                                 >
                                     Book a Strategy Call <ArrowRight size={16} aria-hidden="true" />
                                 </a>
                                 <button
                                     onClick={openModal}
-                                    className="flex-1 flex items-center justify-center gap-2 bg-text-on-primary/10 text-text-on-primary px-6 py-4 rounded-full text-sm font-bold hover:bg-text-on-primary/20 transition-colors"
+                                    className="btn-secondary rounded-full flex-1"
                                 >
-                                    Get Free Workflow Audit
+                                    Free Workflow Audit
                                 </button>
                             </div>
 
                             <div className="text-center">
-                                <span className="text-[10px] font-bold uppercase tracking-widest text-accent/50">Custom AI Solutions • 48h Implementation</span>
+                                <span className="text-[10px] font-bold uppercase tracking-widest text-text-dim">Custom AI Solutions • 48h Implementation</span>
                             </div>
                         </div>
                     </div>

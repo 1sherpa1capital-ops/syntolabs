@@ -11,7 +11,7 @@ export const Testimonials: React.FC = () => {
                         <Sparkles size={14} />
                         Client Success Stories
                     </div>
-                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black tracking-tighter text-primary mb-4">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black tracking-tighter text-dark mb-4">
                         Why Businesses Are <span className="text-accent">Switching to AI</span>
                     </h2>
                     <p className="text-text-muted text-sm md:text-base max-w-2xl mx-auto">
@@ -22,9 +22,9 @@ export const Testimonials: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                     {/* Quote Placeholder 1 */}
                     <div className="card-feature flex flex-col h-full">
-                        <div className="card-visual card-gradient-green-soft">
+                        <div className="card-visual card-gradient-blue-soft">
                             <div className="text-center">
-                                <div className="w-16 h-16 rounded-full bg-muted-bg flex items-center justify-center mx-auto mb-3">
+                                <div className="w-16 h-16 rounded-full bg-surface-elevated flex items-center justify-center mx-auto mb-3">
                                     <Quote size={24} className="text-text-muted" />
                                 </div>
                                 <div className="text-xs font-bold uppercase tracking-widest text-text-muted">
@@ -57,16 +57,16 @@ export const Testimonials: React.FC = () => {
                     <div className="card-feature flex flex-col h-full border-2 border-accent/20">
                         <div className="card-visual card-gradient-teal">
                             <div className="text-center">
-                                <div className="text-4xl md:text-5xl font-black text-primary tracking-tighter mb-2">
+                                <div className="text-4xl md:text-5xl font-black text-dark tracking-tighter mb-2">
                                     $15k
                                 </div>
-                                <div className="text-xs font-bold uppercase tracking-widest text-accent">
+                                <div className="text-xs font-bold uppercase tracking-widest text-dark/80">
                                     Projected Monthly Recovery
                                 </div>
                             </div>
                         </div>
                         <div className="card-content flex flex-col flex-1">
-                            <div className="inline-flex items-center gap-2 px-2 py-1 rounded bg-amber-50 text-amber-700 text-[10px] font-bold uppercase tracking-widest mb-4 w-fit">
+                            <div className="inline-flex items-center gap-2 px-2 py-1 rounded bg-accent/10 text-accent text-[10px] font-bold uppercase tracking-widest mb-4 w-fit">
                                 Projected Results
                             </div>
                             <p className="text-text-default text-sm leading-relaxed mb-6 flex-1">
@@ -81,27 +81,27 @@ export const Testimonials: React.FC = () => {
                     </div>
 
                     {/* Early Access CTA Card */}
-                    <div className="card-feature flex flex-col h-full bg-primary">
-                        <div className="card-visual bg-primary/50 border-b border-text-on-primary/10">
+                    <div className="card-feature flex flex-col h-full bg-surface-elevated border-accent/30">
+                        <div className="card-visual bg-accent/10 border-b border-border">
                             <div className="text-center">
                                 <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center mx-auto mb-3">
-                                    <Users size={24} className="text-cta-text" />
+                                    <Users size={24} className="text-white" />
                                 </div>
                                 <div className="text-xs font-bold uppercase tracking-widest text-accent">
                                     Limited Availability
                                 </div>
                             </div>
                         </div>
-                        <div className="card-content flex flex-col flex-1 bg-primary">
-                            <h3 className="text-lg font-bold text-text-on-primary mb-3">Start Your Free Trial</h3>
-                            <p className="text-text-on-primary/70 text-sm leading-relaxed mb-6 flex-1">
+                        <div className="card-content flex flex-col flex-1">
+                            <h3 className="text-lg font-bold text-dark mb-3">Start Your Free Trial</h3>
+                            <p className="text-text-muted text-sm leading-relaxed mb-6 flex-1">
                                 We're accepting a limited number of new clients each month to ensure quality implementation and support.
                             </p>
                             <a
                                 href={BOOKING_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center gap-2 bg-accent text-cta-text px-6 py-3 rounded-full text-sm font-bold hover:bg-surface-elevated transition-colors w-full"
+                                className="btn-primary rounded-full w-full"
                             >
                                 Start Your Free Trial <ArrowRight size={16} />
                             </a>
@@ -164,14 +164,14 @@ export const FAQ: React.FC = () => {
     };
 
     return (
-        <section className="px-4 sm:px-6 md:px-12 py-12 md:py-16 lg:py-24 bg-muted-bg" id="faq">
+        <section className="px-4 sm:px-6 md:px-12 py-12 md:py-16 lg:py-24 bg-surface" id="faq">
             <script type="application/ld+json">
                 {JSON.stringify(schema)}
             </script>
             <div className="max-w-[900px] mx-auto">
                 <div className="text-center mb-8 md:mb-12 lg:mb-16">
                     <div className="text-[9px] font-black uppercase tracking-[0.3em] text-accent mb-3 md:mb-4">Common Questions</div>
-                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black tracking-tighter text-primary">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black tracking-tighter text-dark">
                         Questions from <span className="text-accent">business owners.</span>
                     </h2>
                 </div>
@@ -188,8 +188,8 @@ export const FAQ: React.FC = () => {
                                 aria-controls={`faq-answer-${i}`}
                                 className="w-full p-5 md:p-6 flex items-center justify-between text-left group"
                             >
-                                <span className="text-base md:text-lg font-bold text-primary pr-4">{f.q}</span>
-                                <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all ${openIdx === i ? 'bg-accent text-text-on-primary' : 'bg-accent/10 text-accent'}`} aria-hidden="true">
+                                <span className="text-base md:text-lg font-bold text-dark pr-4 transition-colors group-hover:text-primary">{f.q}</span>
+                                <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all ${openIdx === i ? 'bg-accent text-white' : 'bg-accent/10 text-accent'}`} aria-hidden="true">
                                     {openIdx === i ? (
                                         <Minus size={16} strokeWidth={3} />
                                     ) : (

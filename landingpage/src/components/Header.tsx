@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { useTryNowModal } from '../context/TryNowModalContext';
 import Logo from './Logo';
 
 import { BOOKING_URL } from '../config/constants';
@@ -25,7 +24,6 @@ const navLinks: NavLink[] = [
 ];
 
 const Header: React.FC<HeaderProps> = ({ onOpenTeam }) => {
-    const { openModal } = useTryNowModal();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -125,21 +123,15 @@ const Header: React.FC<HeaderProps> = ({ onOpenTeam }) => {
                         ))}
                     </nav>
 
-                    {/* Right: CTA Buttons + Mobile Menu Toggle */}
+                    {/* Right: CTA Button + Mobile Menu Toggle */}
                     <div className="flex items-center gap-2">
-                        {/* CTA Buttons - Desktop/Tablet */}
+                        {/* CTA Button - Desktop/Tablet */}
                         <div className="hidden sm:flex items-center bg-bg/80 backdrop-blur-xl border border-border shadow-sm rounded-full p-1.5 h-14">
-                            <button
-                                onClick={openModal}
-                                className="px-6 h-full flex items-center text-[11px] font-black uppercase tracking-widest text-primary hover:text-accent transition-colors rounded-full bg-surface-elevated shadow-sm"
-                            >
-                                Hear It Live
-                            </button>
                             <a
                                 href={BOOKING_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex px-6 h-full items-center text-[11px] font-black uppercase tracking-widest text-cta-text bg-accent hover:bg-cta-hover transition-colors rounded-full shadow-md ml-1.5"
+                                className="flex px-6 h-full items-center text-[11px] font-black uppercase tracking-widest text-cta-text bg-accent hover:bg-cta-hover transition-colors rounded-full shadow-md"
                             >
                                 Book Demo
                             </a>
@@ -243,17 +235,8 @@ const Header: React.FC<HeaderProps> = ({ onOpenTeam }) => {
                         </ul>
                     </div>
 
-                    {/* Mobile Menu Footer - CTAs */}
-                    <div className="p-6 border-t border-border space-y-3">
-                        <button
-                            onClick={() => {
-                                openModal();
-                                setIsMobileMenuOpen(false);
-                            }}
-                            className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-surface-elevated border border-border text-primary font-bold text-sm hover:bg-muted-bg transition-colors"
-                        >
-                            Hear It Live
-                        </button>
+                    {/* Mobile Menu Footer - CTA */}
+                    <div className="p-6 border-t border-border">
                         <a
                             href={BOOKING_URL}
                             target="_blank"
