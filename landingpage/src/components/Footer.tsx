@@ -143,7 +143,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenTeam }) => {
 
                                      <button
                                         type="submit"
-                                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-dark text-text-on-primary px-8 py-4 rounded-lg font-black text-sm uppercase tracking-widest transition-all shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30"
+                                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-cta-hover text-text-on-primary px-8 py-4 rounded-lg font-black text-sm uppercase tracking-widest transition-all shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30"
                                     >
                                         <Send size={16} />
                                         Book Free Strategy Call
