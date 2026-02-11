@@ -2,33 +2,36 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   SYNTO LABS BRAND COLORS - Cyber-Pragmatic (Dark Mode)
+   SYNTO LABS BRAND COLORS - Green Tea Theme (Dark Matcha)
    ═══════════════════════════════════════════════════════════════════════════ */
 @theme {
-    /* Core Palette - Dark, High Contrast */
-    --color-accent: #f97316;           /* Alert Orange */
-    --color-primary: #22c55e;          /* Terminal Green */
-    --color-dark: #ffffff;             /* White (for headings in dark mode) */
-    --color-bg: #0a0a0a;               /* Void Black */
-    --color-surface: #171717;          /* Neutral 900 */
-    --color-surface-elevated: #262626; /* Neutral 800 */
+    /* Core Palette - Organic, Calming, Tech-Forward */
+    --color-bg: #0f1612;               /* Deepest Tea Leaf */
+    --color-surface: #18221c;          /* Steeped Dark Green */
+    --color-surface-elevated: #212d26; /* Mossy Green */
+
+    --color-accent: #a3e635;           /* Fresh Lime/Matcha (High Vis) */
+    --color-primary: #4ade80;          /* Leaf Green */
+    --color-dark: #f0fdf4;             /* Mint Cream (Headings) */
 
     /* Role Tokens */
-    --color-text-default: #e5e5e5;     /* Neutral 200 */
-    --color-text-muted: #a3a3a3;       /* Steel (Neutral 400) */
-    --color-text-dim: #525252;         /* Neutral 600 */
-    --color-text-on-accent: #ffffff;
-    --color-text-on-primary: #0a0a0a;  /* Black text on green */
-    --color-border: #262626;           /* Neutral 800 */
-    --color-border-subtle: #171717;    /* Neutral 900 */
-    --color-muted-bg: #171717;         /* Neutral 900 */
+    --color-text-default: #ecfdf5;     /* Green-50 (Creamy White) */
+    --color-text-muted: #86a78f;       /* Sage Grey */
+    --color-text-dim: #4d6658;         /* Dark Sage */
+    
+    --color-text-on-accent: #0f1612;   /* Dark text on bright accent */
+    --color-text-on-primary: #0f1612;  
+    
+    --color-border: #212d26;           /* Mossy Border */
+    --color-border-subtle: #18221c;    
+    --color-muted-bg: #18221c;
 
     /* State Tokens */
-    --color-cta-hover: #ea580c;        /* Orange 600 */
-    --color-cta-active: #c2410c;       /* Orange 700 */
-    --color-focus-ring: rgba(249, 115, 22, 0.5);
-    --color-accent-glow: rgba(249, 115, 22, 0.2);
-    --color-accent-bright: #fb923c;    /* Orange 400 */
+    --color-cta-hover: #84cc16;        /* Deep Lime */
+    --color-cta-active: #65a30d;       
+    --color-focus-ring: rgba(163, 230, 53, 0.5);
+    --color-accent-glow: rgba(163, 230, 53, 0.15);
+    --color-accent-bright: #bef264;    
 
     /* Typography */
     --font-display: "Geist", sans-serif;

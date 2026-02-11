@@ -67,7 +67,7 @@ const Hero: React.FC = () => {
                         <a
                             href="#waitlist"
                             onClick={scrollToWaitlist}
-                            className="group relative inline-flex items-center gap-3 px-10 py-5 rounded-full bg-accent hover:bg-cta-hover text-white font-black text-lg transition-all shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:scale-105"
+                            className="group relative inline-flex items-center gap-3 px-10 py-5 rounded-full bg-accent hover:bg-cta-hover text-text-on-accent font-black text-lg transition-all shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:scale-105"
                         >
                             Join Waitlist
                             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
