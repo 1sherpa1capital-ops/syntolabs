@@ -4,83 +4,60 @@ import { BOOKING_URL } from '../config/constants';
 
 const Problem: React.FC = () => {
     const stats = [
-        { label: 'Time Wasted Weekly', value: '15+ hrs', desc: 'Average time teams spend on repetitive manual tasks that could be automated with AI workflows.' },
-        { label: 'Cost of Busywork', value: '$2K/mo', desc: 'Monthly cost of manual work at $30/hr—money that could be reinvested in growth activities.' },
-        { label: 'Error Rate', value: '5-10%', desc: 'Human error rate in repetitive data entry and processing tasks that AI eliminates completely.' },
-        { label: 'Growth Opportunity', value: '3x', desc: 'Potential productivity multiplier when your team focuses on high-value work instead of admin tasks.' }
+        { label: 'Time Wasted Weekly', value: '15+ hrs', desc: 'Average time teams spend on repetitive manual tasks that could be automated.' },
+        { label: 'Cost of Busywork', value: '$2K/mo', desc: 'Monthly cost of manual work at $30/hr—money that could be reinvested.' },
+        { label: 'Error Rate', value: '5-10%', desc: 'Human error rate in repetitive data entry that AI eliminates completely.' },
+        { label: 'Growth Opportunity', value: '3x', desc: 'Potential productivity multiplier when your team focuses on high-value work.' }
     ];
 
     return (
-        <section className="px-4 sm:px-6 md:px-12 py-12 md:py-16 lg:py-24 bg-bg" id="problem">
-            <div className="max-w-[1400px] mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
-                    <div className="lg:sticky lg:top-32">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest mb-4">
-                            The Problem
+        <section className="container-wide section-padding bg-black" id="problem">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-start">
+                <div className="lg:sticky lg:top-48">
+                    <div className="label-mono mb-8">The Challenge</div>
+                    <h2 className="text-display mb-12">
+                        Your team is <br />
+                        drowning in <br />
+                        <span className="text-gradient">busywork.</span>
+                    </h2>
+
+                    <div className="space-y-8 text-xl text-white/60 font-medium leading-relaxed max-w-xl">
+                        <p>
+                            Data entry. Report generation. Email sorting. <span className="text-white">Your best people spend 15+ hours/week on tasks that don't require human judgment.</span>
+                        </p>
+                        <p>
+                            As you grow, so does the administrative burden. We stop the cycle by deploying custom AI agents that handle the mundane.
+                        </p>
+
+                        <div className="pt-8">
+                            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary group">
+                                Start Audit <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                            </a>
                         </div>
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter text-dark leading-[0.9] mb-6 md:mb-8">
-                            Your team is drowning<br className="hidden sm:block" />
-                            <span className="text-gradient">in repetitive busywork.</span>
-                        </h2>
-
-                        <div className="space-y-4 md:space-y-6 text-base md:text-lg text-text-muted font-medium leading-relaxed max-w-xl">
-                            <p>
-                                Data entry. Report generation. Email sorting. Follow-up reminders. <span className="text-primary font-black">Your best people spend 15+ hours/week on tasks that don't require human judgment.</span>
-                            </p>
-                            <p>
-                                The worst part? This busywork scales linearly with your growth. More customers = more admin work = less time for strategy, sales, and innovation.
-                            </p>
-
-                            <div className="pt-4">
-                                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary rounded-full group">
-                                    Find Your Automation Opportunities <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                                </a>
-                                <p className="mt-3 text-xs text-text-dim">Free workflow audit • No obligation</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                        {stats.map((stat, i) => (
-                            <div key={i} className="relative p-5 md:p-6 bg-surface border border-border rounded-xl group transition-all duration-500 flex flex-col justify-between min-h-[220px] md:min-h-[260px] hover:border-accent/40">
-                                {/* Corner Brackets */}
-                                <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-accent/20 -translate-x-1 -translate-y-1 group-hover:border-accent group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500" />
-                                <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-accent/20 translate-x-1 translate-y-1 group-hover:border-accent group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500" />
-
-                                <div className="relative z-10">
-                                    <div className="flex items-center gap-2 mb-4 md:mb-6">
-                                        <div className="w-4 h-4 rounded-sm bg-accent/10 flex items-center justify-center text-accent">
-                                            <Link size={8} />
-                                        </div>
-                                        <div className="text-[8px] font-black uppercase tracking-[0.3em] text-text-dim group-hover:text-accent transition-colors">
-                                            {stat.label}
-                                        </div>
-                                    </div>
-
-                                    <div className="text-3xl md:text-4xl font-black text-primary tracking-tighter mb-3 md:mb-4 group-hover:translate-x-1 transition-transform">
-                                        {stat.value}
-                                    </div>
-
-                                    <div className="w-6 h-px bg-border mb-3 md:mb-4" />
-
-                                    <p className="text-xs text-text-muted font-medium leading-relaxed">
-                                        {stat.desc}
-                                    </p>
-                                </div>
-
-                                <a href="#roi" className="mt-8 flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.3em] text-accent hover:text-primary transition-colors">
-                                    VIEW IMPACT <ArrowRight size={12} />
-                                </a>
-                            </div>
-                        ))}
                     </div>
                 </div>
-                
-                {/* Disclaimer */}
-                <div className="mt-8 text-center">
-                    <p className="text-[10px] text-text-dim font-medium uppercase tracking-widest">
-                        Stats based on internal estimates and industry research. Actual results vary by business.
-                    </p>
+
+                <div className="grid grid-cols-1 gap-6">
+                    {stats.map((stat, i) => (
+                        <div key={i} className="group p-10 border border-white/5 bg-zinc-950 transition-all duration-700 hover:border-white/20">
+                            <div className="flex justify-between items-start mb-8">
+                                <div className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/30 group-hover:text-white transition-colors">
+                                    {stat.label}
+                                </div>
+                                <div className="p-2 border border-white/10 rounded-full">
+                                    <Link size={12} className="text-white/40" />
+                                </div>
+                            </div>
+
+                            <div className="text-5xl md:text-6xl font-black text-white tracking-tighter mb-6">
+                                {stat.value}
+                            </div>
+
+                            <p className="text-sm text-white/50 leading-relaxed max-w-md">
+                                {stat.desc}
+                            </p>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

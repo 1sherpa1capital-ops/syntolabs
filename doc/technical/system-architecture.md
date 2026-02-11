@@ -1,420 +1,206 @@
 # Synto Labs System Architecture
 
-**Version:** 1.0  
-**Date:** February 9, 2026  
-**Purpose:** Technical blueprint for multi-agent AI automation systems
+**Version:** 2.0
+**Date:** February 10, 2026
+**Purpose:** Comprehensive technical blueprint for the scalable, multi-agent AI automation platform.
 
 ---
 
 ## 1. Architecture Overview
 
-### High-Level Design
+This document outlines the system architecture for Synto Labs' autonomous agent platform. The architecture follows a **Microservices-based, Event-Driven** pattern designed for high scalability, fault tolerance, and observability.
 
+### 1.1 High-Level Design
+
+```mermaid
+graph TD
+    User[Client / Dashboard] -->|REST/GraphQL| Gateway[API Gateway / Load Balancer]
+    
+    subgraph "Orchestration Layer"
+        Gateway --> Orchestrator[Workflow Orchestrator (Temporal/LangGraph)]
+        Orchestrator --> StateMgr[State Manager (Redis)]
+    end
+    
+    subgraph "Agent Service Mesh"
+        Orchestrator -->|Task Queue| Scout[Scout Agent]
+        Orchestrator -->|Task Queue| Research[Research Agent]
+        Orchestrator -->|Task Queue| Writer[Writer Agent]
+        Orchestrator -->|Task Queue| Sender[Sender Agent]
+        Orchestrator -->|Task Queue| Quality[Quality Agent]
+    end
+    
+    subgraph "Data & Memory Layer"
+        Scout & Research & Writer & Sender & Quality --> VectorDB[(Vector DB - Qdrant)]
+        Scout & Research & Writer & Sender & Quality --> RelationalDB[(Relational DB - Postgres)]
+        Scout & Research & Writer & Sender & Quality --> Cache[(Cache - Redis)]
+    end
+    
+    subgraph "External Integrations"
+        Scout -->|HTTP| Web[Web Sources]
+        Sender -->|API| Email[Email Providers]
+        Sales[Sales Agent] -->|API| CRM[CRM Systems]
+    end
+
+    subgraph "Guardrails & Observability"
+        AgentOutput --> MFR[MFR Validator]
+        MFR -->|Log| Observability[Observability (OpenTelemetry)]
+    end
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                         CLIENT LAYER                             │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐        │
-│  │   CRM    │  │  Email   │  │ Calendar │  │ Database │        │
-│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘        │
-└───────┼────────────┼────────────┼────────────┼────────────────┘
-         │            │            │            │
-         └────────────┼────────────┼────────────┘
-                      │            │
-┌─────────────────────┼────────────┼──────────────────────────────┐
-│                   INTEGRATION LAYER                          │
-│  ┌────────────────────────────────────────────────────────┐  │
-│  │            API Gateway / Orchestration                │  │
-│  └────────────────────────────────────────────────────────┘  │
-└─────────────────────┼────────────┼──────────────────────────────┘
-                      │            │
-┌─────────────────────┼────────────┼──────────────────────────────┐
-│                   AGENT LAYER                                │
-│  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐│
-│  │ Scout   │→│Research │→│ Writer  │→│ Sender  │ │ Quality ││
-│  │ Agent   │ │ Agent   │ │ Agent   │ │ Agent   │ │ Agent   ││
-│  └────┬────┘ └────┬────┘ └────┬────┘ └────┬────┘ └────┬────┘│
-│       │           │           │           │          │    │
-└───────┼───────────┼───────────┼───────────┼──────────┼────┘
-        │           │           │           │          │
-┌───────┼───────────┼───────────┼───────────┼──────────┼────┐
-│              ┌───┴────┐ ┌────┴─────┐ ┌─┴────────┐           │
-│              │ MFR    │ │Knowledge │ │  Video   │ (optional)│
-│              │Layer   │ │  Agent  │ │  Agent   │           │
-│              └────────┘ └──────────┘ └──────────┘           │
-└──────────────────────────────────────────────────────────────┘
-```
+
+### 1.2 Core Design Principles
+
+1.  **Event-Driven Communication:** Agents communicate asynchronously via message queues (e.g., RabbitMQ, Redis Streams) to decouple execution and handle backpressure.
+2.  **Stateless Agents:** Agents are stateless compute units. Execution context and history are stored in the State Manager and Vector Database.
+3.  **Idempotency:** All agent actions (especially side effects like sending emails or updating CRMs) are designed to be idempotent to allow safe retries.
+4.  **Observability First:** Every step of the agent execution chain emits structured logs and traces to enable full visibility into decision-making paths.
 
 ---
 
-## 2. Agent Ecosystem
+## 2. Orchestration & Workflow
 
-### Core Agents
+We utilize a durable execution framework (e.g., Temporal or a persistent State Machine) to manage complex, multi-step agent workflows.
 
-#### Research Agent
-**Purpose:** Web scraping, data extraction, document generation
+### 2.1 Workflow Patterns
 
-**Capabilities:**
-- Neural web scraping (Crawl4AI, Firecrawl)
-- PDF generation
-- Hormozi value layer (business logic first)
+#### A. The "Outbound" Pipeline (Linear with Feedback)
+1.  **Scout:** Identifies potential targets based on ICP (Ideal Customer Profile).
+2.  **Enrichment:** Aggregates data from multiple sources (Clearbit, Apollo, Web).
+3.  **Research:** Performs deep-dive analysis on specific targets (Web scraping, PDF analysis).
+4.  **Drafting:** Generates personalized content.
+5.  **Review (MFR):** Automated quality checks. *Feedback Loop:* If rejected, returns to Drafting with specific critique.
+6.  **Dispatch:** Sends via appropriate channel (Email, DM).
 
-**Tools:**
-- Crawl4AI (primary), Firecrawl (fallback)
-- Puppeteer/Playwright for dynamic content
-- PDF generation libraries
+#### B. The "Inbound" Pipeline (Event-Triggered)
+1.  **Trigger:** Webhook from CRM or Form Submit.
+2.  **Triage:** Intent classification.
+3.  **Routing:** Dispatched to specialized handler (Sales Agent, Support Agent).
+4.  **Action:** Booking, Answering, or Escalating.
 
----
-
-#### Voice Agent
-**Purpose:** Phone-based automation, inbound qualification, outbound follow-up
-
-**Capabilities:**
-- 0.2s response time
-- 50+ concurrent calls
-- CRM native integration
-
-**Tools:**
-- Bland AI, Vapi.ai (providers)
-- Twilio for telephony
-- Custom ASR/TTS pipelines
+### 2.2 State Management
+-   **Hot State:** Current execution step, retries, temporary variables (Redis).
+-   **Cold State:** Completed workflows, audit logs, billing records (PostgreSQL).
+-   **Semantic State:** Agent memory, document embeddings, past interactions (Qdrant).
 
 ---
 
-#### Sales Agent
-**Purpose:** Pipeline management, meeting booking
+## 3. Agent Ecosystem & Specifications
 
-**Capabilities:**
-- Cal.com native integration
-- Intent scoring
-- Persistence logic (follow-up sequences)
+### 3.1 Scout Agent
+*   **Role:** Discovery and Qualification.
+*   **Input:** ICP definition (Industry, Role, Tech Stack).
+*   **Process:** Queries search indices, LinkedIn, and directories.
+*   **Output:** List of verified leads with metadata.
+*   **Tech:** Custom search adaptors, SerpApi, specialized scrapers.
 
-**Tools:**
-- Cal.com API
-- HubSpot/Salesforce APIs
-- Custom scoring models
+### 3.2 Research Agent
+*   **Role:** Deep Intelligence Gathering.
+*   **Input:** Domain URL or Company Name.
+*   **Process:**
+    *   **Crawl:** Navigates sitemaps, "About Us", "News".
+    *   **Analyze:** Extracts value propositions, pain points, decision makers.
+    *   **Synthesize:** Creates a structured "Company Dossier".
+*   **Tech:** Crawl4AI (Headless browsing), LLM for extraction, PDF parsers.
 
----
+### 3.3 Writer Agent
+*   **Role:** Content Generation & Personalization.
+*   **Input:** Company Dossier + Campaign Template + Goal.
+*   **Process:**
+    *   Selects tone/voice.
+    *   Injects research findings into template hooks.
+    *   Generates subject lines and body copy.
+*   **Tech:** LLM (Claude 3.5 Sonnet / GPT-4o), Prompt Engineering templates.
 
-#### Enrichment Agent
-**Purpose:** Data enhancement, contact discovery
-
-**Capabilities:**
-- Waterfall enrichment (multiple sources)
-- Tech stack analysis
-- Intent verification
-
-**Tools:**
-- Clearbit, Apollo, Hunter (enrichment sources)
-- BuiltWith (tech stack)
-- Custom APIs
-
----
-
-#### Quality Agent
-**Purpose:** Output validation, brand enforcement
-
-**Capabilities:**
-- Brand voice guard
-- Fact verification
-- Tone analysis
-
-**Tools:**
-- Custom validation rules
-- Style guide enforcement
-- Sentiment analysis APIs
+### 3.4 Quality (MFR) Agent
+*   **Role:** Guardrails and Validation.
+*   **Process:** Runs a deterministic checklist against generated content.
+    *   *Hallucination Check:* Verifies claims against Research data.
+    *   *Safety Check:* PII removal, sentiment analysis.
+    *   *Formatting:* JSON schema validation.
+*   **Tech:** Lightweight LLM (Haiku/GPT-3.5) + Rule-based Logic (Python).
 
 ---
 
-#### Knowledge Agent
-**Purpose:** Context management, memory
+## 4. Integration & Data Layer
 
-**Capabilities:**
-- Vector memory (Qdrant, Supabase)
-- Real-time learning
-- Context injection
+### 4.1 Data Pipeline
+*   **Ingestion:** Webhooks (Stripe, Typeform), API Polling (CRM), File Uploads.
+*   **Normalization:** All incoming data is mapped to a unified internal schema (Zod schemas).
+*   **Storage Strategy:**
+    *   *Structured:* PostgreSQL (Supabase) for relational data (Users, Campaigns, Logs).
+    *   *Unstructured:* S3-compatible storage for raw HTML, PDFs, screenshots.
+    *   *Vector:* Qdrant for semantic search (e.g., "Find companies similar to Stripe").
 
-**Tools:**
-- Qdrant (vector database)
-- OpenAI Embeddings
-- Custom context management
-
----
-
-#### Video Agent
-**Purpose:** Video content generation
-
-**Capabilities:**
-- Avatar generation
-- Script personalization
-- HeyGen integration
-
-**Tools:**
-- HeyGen API
-- Custom avatar systems
-- Video editing pipelines
+### 4.2 API Gateway
+*   **Rate Limiting:** Token bucket algorithm per user/tenant.
+*   **Authentication:** JWT verification via Clerk/Supabase Auth.
+*   **Routing:** Directs traffic to appropriate microservices or serverless functions.
 
 ---
 
-#### Brand Agent
-**Purpose:** Voice consistency, persona management
+## 5. Resilience & Error Handling
 
-**Capabilities:**
-- Voice cloning
-- Style guide enforcement
-- Persona management
+### 5.1 Circuit Breaker Pattern
+Implemented at the Integration Layer to prevent cascading failures.
+*   **State: Closed (Normal):** Requests pass through.
+*   **State: Open (Failed):** Fast fail for a timeout period if error threshold reached (e.g., 50% failures in 1 min).
+*   **State: Half-Open:** Allow test requests to check if upstream service recovered.
 
-**Tools:**
-- Custom voice models
-- Style guide parsers
-- Prompt engineering
+### 5.2 Retry Logic
+*   **Transient Errors (Network, 503):** Exponential backoff with jitter.
+    *   `delay = min(cap, base * 2 ** attempt + jitter)`
+*   **Terminal Errors (401, 400, Validation):** Immediate failure, routed to Dead Letter Queue (DLQ).
 
----
-
-## 3. MFR Guardrails Layer
-
-### Architecture
-
-```
-Agent Output → MFR Validator → Business Rules → Approval/Rejection
-                  ↓
-           Rejection → Retry with Guardrails → Re-validate
-```
-
-### Components
-
-| Component | Purpose | Implementation |
-|-----------|---------|----------------|
-| **No-Hallucination** | Prevent AI from making things up | Fact verification against source |
-| **Business Logic** | Enforce rules | "Don't email competitors" |
-| **Brand Voice** | Consistent tone | Style guide matching |
-| **Quality Check** | Output quality | Grammar, formatting checks |
-
-### Example Implementation
-
-```python
-class MFRGuardrails:
-    def validate(self, agent_output, context):
-        # 1. Check for hallucinations
-        if not self.fact_verify(agent_output, context):
-            return ValidationResult.REJECT
-        
-        # 2. Check business rules
-        if not self.business_rules(agent_output, context):
-            return ValidationResult.REJECT
-        
-        # 3. Check brand voice
-        if not self.brand_voice(agent_output, context):
-            return ValidationResult.REJECT_RETRY
-        
-        return ValidationResult.APPROVE
-```
+### 5.3 Dead Letter Queue (DLQ)
+Messages that fail processing after max retries are moved to a DLQ.
+*   **Recovery:** Admin dashboard allows inspection and manual "Replay" of DLQ messages after fixing the root cause.
 
 ---
 
-## 4. Integration Patterns
+## 6. Scalability & Performance
 
-### CRM Integration
+### 6.1 Horizontal Scaling
+*   **Agents:** Containerized (Docker) and deployed on Kubernetes/ECS. Auto-scaled based on Queue Depth (KEDA).
+*   **Database:** Read replicas for heavy query loads. Connection pooling (PgBouncer).
 
-**Supported CRMs:**
-- HubSpot (primary)
-- Salesforce
-- Notion (as database)
-- Airtable (as database)
+### 6.2 Caching Strategy
+*   **L1 Cache (In-Memory):** Agent config, prompt templates.
+*   **L2 Cache (Redis):** API responses (e.g., repeated scrapes of the same URL within 24h), user sessions.
 
-**Integration Pattern:**
-```
-Agent → CRM API → Webhook/Queue → Agent Processing → Update CRM
-```
-
-**Error Handling:**
-- Retry with exponential backoff
-- Queue for offline processing
-- Dead letter queue for manual review
+### 6.3 Optimization
+*   **Batch Processing:** Embeddings and classification tasks are batched to maximize GPU utilization and reduce API costs.
+*   **Streaming:** UI receives token streams from Writer Agent for perceived latency reduction.
 
 ---
 
-### Email Integration
+## 7. Technology Stack
 
-**Platforms:**
-- Gmail API (primary)
-- SendGrid (bulk sending)
-- Outlook (via Graph API)
-
-**Pattern:**
-```
-Writer Agent → Email Queue → Sending Service → BCC → Tracking
-```
-
-**Rate Limiting:**
-- Respect provider limits
-- Throttle sending during peak hours
-- Distribute across multiple accounts
+| Layer | Technology | Justification |
+| :--- | :--- | :--- |
+| **Frontend** | React, TypeScript, Tailwind | Component reuse, type safety. |
+| **Backend API** | Node.js / Python (FastAPI) | Async capabilities, rich ML ecosystem. |
+| **Orchestration** | Temporal / Inngest | Durable execution, reliable retries. |
+| **LLM Interface** | Vercel AI SDK / LangChain | Model agnosticism, streaming support. |
+| **Vector DB** | Qdrant / Pinecone | Scalable similarity search. |
+| **Database** | PostgreSQL (Supabase) | Reliable, relational + JSON support. |
+| **Queue** | Redis / RabbitMQ | High-throughput message passing. |
+| **Browser** | Playwright / Puppeteer | Robust headless browsing. |
+| **Monitoring** | OpenTelemetry, Sentry | Full stack observability. |
 
 ---
 
-### Calendar Integration
+## 8. Deployment Strategy
 
-**Platforms:**
-- Cal.com (primary)
-- Google Calendar
-- Outlook Calendar
+### 8.1 Environments
+*   **Dev:** Local Docker Compose or Minikube.
+*   **Staging:** Mirror of production, connects to sandbox external APIs.
+*   **Production:** Multi-AZ deployment for high availability.
 
-**Pattern:**
-```
-Sales Agent → Cal.com API → Book Meeting → Update CRM
-```
-
----
-
-## 5. Error Handling & Resilience
-
-### Error Categories
-
-| Error Type | Handling Strategy |
-|------------|-------------------|
-| **API Failure** | Retry with exponential backoff (3 attempts) |
-| **Data Missing** | Log and skip, notify client |
-| **Rate Limit** | Queue and throttle |
-| **Invalid Output** | MFR catches and retries |
-| **Timeout** | Increase timeout, retry once |
-
-### Fallback Cascade
-
-```
-Primary Tool → Fails → Secondary Tool → Fails → Manual Notification
-```
-
-### Monitoring
-
-**Track:**
-- API success rates
-- Agent output quality
-- System response times
-- Error rates by type
-
-**Alert On:**
-- Success rate < 95%
-- Response time > 5s
-- Error rate spike
+### 8.2 CI/CD Pipeline
+1.  **Lint & Test:** Code formatting, Unit Tests, Integration Tests.
+2.  **Build:** Docker image creation, Security Scan (Trivy).
+3.  **Deploy:** Blue/Green deployment to ensure zero downtime.
+4.  **Smoke Test:** Automated E2E verification of critical paths.
 
 ---
 
-## 6. Security Architecture
-
-### Data Flow
-
-```
-Client Data → Encrypted at Rest → Encrypted in Transit → Processed → Deleted
-```
-
-### Security Measures
-
-| Layer | Implementation |
-|-------|----------------|
-| **Data at Rest** | AES-256 encryption |
-| **Data in Transit** | TLS 1.3+ |
-| **Access Control** | Principle of least privilege |
-| **Audit Logging** | All actions logged |
-| **Secrets Management** | Environment variables, never in code |
-
-### Data Lifecycle
-
-1. **Ingestion:** Client data received via secure channels
-2. **Processing:** Data used for agent execution only
-3. **Storage:** Encrypted, isolated per client
-4. **Deletion:** Automatic deletion after 90 days (or on request)
-
----
-
-## 7. Performance Optimization
-
-### Optimization Strategies
-
-**API Calls:**
-- Batch requests where possible
-- Cache frequently accessed data
-- Parallel independent requests
-
-**Agent Execution:**
-- Lazy loading of agent capabilities
-- Connection pooling for databases
-- Async processing where possible
-
-**Monitoring:**
-- Track API usage and costs
-- Optimize based on real data
-- Implement caching for expensive operations
-
----
-
-## 8. Technology Stack
-
-### Core
-
-| Component | Technology | Purpose |
-|-----------|------------|---------|
-| **Agent Framework** | Claude Code, OpenAI API | LLM orchestration |
-| **Tool Integration** | Composio | External API connections |
-| **Web Scraping** | Crawl4AI, Firecrawl | Data extraction |
-| **Database** | Qdrant, Supabase | Vector storage, relational data |
-| **Hosting** | Vercel, Railway | Application hosting |
-
-### Development
-
-| Component | Technology | Purpose |
-|-----------|------------|---------|
-| **Language** | Python 3.11+, TypeScript | Agent development |
-| **Version Control** | Git + GitHub | Code management |
-| **Project Mgmt** | Linear | Task tracking |
-| **Documentation** | Markdown | All docs in MD format |
-
----
-
-## 9. Deployment Architecture
-
-### Environments
-
-```
-Development → Staging → Production
-```
-
-### Deployment Process
-
-1. **Development:** Local development, test with sample data
-2. **Staging:** Deploy to staging, client testing
-3. **Production:** Deploy to production, monitoring enabled
-
-### CI/CD (Future)
-
-When team scales:
-- Automated testing on push
-- Staging deployment on merge to main
-- Production deployment after approval
-
----
-
-## 10. Monitoring & Observability
-
-### Metrics to Track
-
-| Category | Metric | Target |
-|----------|--------|--------|
-| **Performance** | Agent response time | <5s |
-| **Reliability** | API success rate | >95% |
-| **Quality** | MFR pass rate | >98% |
-| **Cost** | API cost per execution | Track and optimize |
-
-### Logging Strategy
-
-```
-[INFO] Agent X started with input: {input}
-[DEBUG] Intermediate result: {result}
-[ERROR] API call failed: {error}
-[INFO] Agent X completed: {output}
-```
-
----
-
-**Document End**
-
-*Architecture evolves. Principles stay the same.*
+**Architecture is a living document.** This blueprint represents our current best practices and will evolve with our capabilities and scale.

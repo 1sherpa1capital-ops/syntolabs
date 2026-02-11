@@ -61,26 +61,27 @@ const ThreeBackground: React.FC<ThreeBackgroundProps> = ({
         let nodes: THREE.Mesh[] = [];
         let lines: THREE.Line[] = [];
 
+        // Monochromatic Palette for Luxury feel
+        const white = new THREE.Color(0xffffff);
+        const gray = new THREE.Color(0x52525b);
+
         if (variant === 'particles') {
-            const count = Math.floor(1000 * intensity); // Reduced from 2000
+            const count = Math.floor(800 * intensity);
             const geometry = new THREE.BufferGeometry();
             const positions = new Float32Array(count * 3);
             const colors = new Float32Array(count * 3);
 
-            const color1 = new THREE.Color(0x6366f1); // Indigo
-            const color2 = new THREE.Color(0x3b82f6); // Royal Blue
-
             for (let i = 0; i < count; i++) {
                 const i3 = i * 3;
-                const radius = Math.random() * 40;
+                const radius = Math.random() * 50;
                 const theta = Math.random() * Math.PI * 2;
                 const phi = Math.random() * Math.PI;
 
                 positions[i3] = radius * Math.sin(phi) * Math.cos(theta);
-                positions[i3 + 1] = (Math.random() - 0.5) * 20;
+                positions[i3 + 1] = (Math.random() - 0.5) * 30;
                 positions[i3 + 2] = radius * Math.sin(phi) * Math.sin(theta);
 
-                const mixedColor = color1.clone().lerp(color2, Math.random());
+                const mixedColor = white.clone().lerp(gray, Math.random());
                 colors[i3] = mixedColor.r;
                 colors[i3 + 1] = mixedColor.g;
                 colors[i3 + 2] = mixedColor.b;
@@ -90,10 +91,10 @@ const ThreeBackground: React.FC<ThreeBackgroundProps> = ({
             geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
             const material = new THREE.PointsMaterial({
-                size: 0.1,
+                size: 0.08,
                 vertexColors: true,
                 transparent: true,
-                opacity: 0.6,
+                opacity: 0.4,
                 blending: THREE.AdditiveBlending
             });
 
@@ -105,32 +106,31 @@ const ThreeBackground: React.FC<ThreeBackgroundProps> = ({
                 animationIdRef.current = requestAnimationFrame(animate);
                 frameCountRef.current++;
 
-                // Only update every 2nd frame
                 if (frameCountRef.current % 2 !== 0) return;
 
-                targetMouseRef.current.x += (mouseRef.current.x - targetMouseRef.current.x) * 0.03;
-                targetMouseRef.current.y += (mouseRef.current.y - targetMouseRef.current.y) * 0.03;
+                targetMouseRef.current.x += (mouseRef.current.x - targetMouseRef.current.x) * 0.02;
+                targetMouseRef.current.y += (mouseRef.current.y - targetMouseRef.current.y) * 0.02;
 
-                particles.rotation.y += 0.0003;
-                particles.rotation.x = targetMouseRef.current.y * 0.05;
-                particles.rotation.z = targetMouseRef.current.x * 0.05;
+                particles.rotation.y += 0.0002;
+                particles.rotation.x = targetMouseRef.current.y * 0.03;
+                particles.rotation.z = targetMouseRef.current.x * 0.03;
 
                 renderer.render(scene, camera);
             };
 
             animate();
         } else if (variant === 'waves') {
-            const count = 50; // Reduced from 100
-            const geometry = new THREE.PlaneGeometry(50, 50, count - 1, count - 1);
+            const count = 40;
+            const geometry = new THREE.PlaneGeometry(60, 60, count - 1, count - 1);
             const material = new THREE.MeshBasicMaterial({
-                color: 0x6366f1,
+                color: 0xffffff,
                 wireframe: true,
                 transparent: true,
-                opacity: 0.3
+                opacity: 0.05
             });
 
             mesh = new THREE.Mesh(geometry, material);
-            mesh.rotation.x = -Math.PI / 3;
+            mesh.rotation.x = -Math.PI / 2.5;
             scene.add(mesh);
             objectsRef.current.mesh = mesh;
 
@@ -140,10 +140,9 @@ const ThreeBackground: React.FC<ThreeBackgroundProps> = ({
             let time = 0;
             const animate = () => {
                 animationIdRef.current = requestAnimationFrame(animate);
-                time += 0.016;
+                time += 0.01;
                 frameCountRef.current++;
 
-                // Only update every 2nd frame
                 if (frameCountRef.current % 2 !== 0) return;
 
                 for (let i = 0; i < count * count; i++) {
@@ -151,36 +150,31 @@ const ThreeBackground: React.FC<ThreeBackgroundProps> = ({
                     const x = originalPositions[i3];
                     const y = originalPositions[i3 + 1];
                     positions[i3 + 2] =
-                        Math.sin(x * 0.2 + time) * 2 +
-                        Math.cos(y * 0.15 + time) * 2;
+                        Math.sin(x * 0.15 + time) * 1.5 +
+                        Math.cos(y * 0.1 + time) * 1.5;
                 }
 
                 geometry.attributes.position.needsUpdate = true;
-
-                targetMouseRef.current.x += (mouseRef.current.x - targetMouseRef.current.x) * 0.03;
-                targetMouseRef.current.y += (mouseRef.current.y - targetMouseRef.current.y) * 0.03;
-
-                mesh!.rotation.z = targetMouseRef.current.x * 0.1;
-                mesh!.rotation.x = -Math.PI / 3 + targetMouseRef.current.y * 0.1;
+                targetMouseRef.current.x += (mouseRef.current.x - targetMouseRef.current.x) * 0.02;
+                mesh!.rotation.z = targetMouseRef.current.x * 0.05;
 
                 renderer.render(scene, camera);
             };
 
             animate();
         } else if (variant === 'network') {
-            const nodeCount = 30; // Reduced from 50
+            const nodeCount = 25;
             const nodePositions: THREE.Vector3[] = [];
             lines = [];
             nodes = [];
 
-            // Create nodes
-            const nodeGeometry = new THREE.SphereGeometry(0.15, 8, 8);
-            const nodeMaterial = new THREE.MeshBasicMaterial({ color: 0x6366f1 });
+            const nodeGeometry = new THREE.SphereGeometry(0.1, 8, 8);
+            const nodeMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.5 });
 
             for (let i = 0; i < nodeCount; i++) {
                 const node = new THREE.Vector3(
-                    (Math.random() - 0.5) * 30,
-                    (Math.random() - 0.5) * 20,
+                    (Math.random() - 0.5) * 35,
+                    (Math.random() - 0.5) * 25,
                     (Math.random() - 0.5) * 20
                 );
                 nodePositions.push(node);
@@ -193,17 +187,16 @@ const ThreeBackground: React.FC<ThreeBackgroundProps> = ({
 
             objectsRef.current.nodes = nodes;
 
-            // Create connections
             const lineMaterial = new THREE.LineBasicMaterial({
-                color: 0x6366f1,
+                color: 0xffffff,
                 transparent: true,
-                opacity: 0.2
+                opacity: 0.1
             });
 
             for (let i = 0; i < nodeCount; i++) {
                 for (let j = i + 1; j < nodeCount; j++) {
                     const distance = nodePositions[i].distanceTo(nodePositions[j]);
-                    if (distance < 8) {
+                    if (distance < 10) {
                         const geometry = new THREE.BufferGeometry().setFromPoints([
                             nodePositions[i],
                             nodePositions[j]
@@ -217,48 +210,41 @@ const ThreeBackground: React.FC<ThreeBackgroundProps> = ({
 
             objectsRef.current.lines = lines;
 
-            // Animate
             let time = 0;
             const animate = () => {
                 animationIdRef.current = requestAnimationFrame(animate);
-                time += 0.016;
+                time += 0.01;
                 frameCountRef.current++;
 
-                // Only update every 2nd frame
                 if (frameCountRef.current % 2 !== 0) return;
 
                 nodePositions.forEach((node, i) => {
-                    node.y += Math.sin(time * 0.5 + i * 0.5) * 0.01;
+                    node.y += Math.sin(time * 0.4 + i) * 0.008;
                     nodes[i].position.copy(node);
                 });
 
-                // Update lines
                 let lineIndex = 0;
                 for (let i = 0; i < nodeCount; i++) {
                     for (let j = i + 1; j < nodeCount; j++) {
                         const distance = nodePositions[i].distanceTo(nodePositions[j]);
-                        if (distance < 8 && lineIndex < lines.length) {
+                        if (distance < 10 && lineIndex < lines.length) {
                             const line = lines[lineIndex];
-                            const positions = line.geometry.attributes.position.array as Float32Array;
-                            positions[0] = nodePositions[i].x;
-                            positions[1] = nodePositions[i].y;
-                            positions[2] = nodePositions[i].z;
-                            positions[3] = nodePositions[j].x;
-                            positions[4] = nodePositions[j].y;
-                            positions[5] = nodePositions[j].z;
+                            const pos = line.geometry.attributes.position.array as Float32Array;
+                            pos[0] = nodePositions[i].x; pos[1] = nodePositions[i].y; pos[2] = nodePositions[i].z;
+                            pos[3] = nodePositions[j].x; pos[4] = nodePositions[j].y; pos[5] = nodePositions[j].z;
                             line.geometry.attributes.position.needsUpdate = true;
                             const mat = Array.isArray(line.material) ? line.material[0] : line.material;
-                            mat.opacity = 1 - distance / 8;
+                            mat.opacity = (1 - distance / 10) * 0.2;
                             lineIndex++;
                         }
                     }
                 }
 
-                targetMouseRef.current.x += (mouseRef.current.x - targetMouseRef.current.x) * 0.03;
-                targetMouseRef.current.y += (mouseRef.current.y - targetMouseRef.current.y) * 0.03;
+                targetMouseRef.current.x += (mouseRef.current.x - targetMouseRef.current.x) * 0.02;
+                targetMouseRef.current.y += (mouseRef.current.y - targetMouseRef.current.y) * 0.02;
 
-                camera.position.x = targetMouseRef.current.x * 2;
-                camera.position.y = targetMouseRef.current.y * 2;
+                camera.position.x = targetMouseRef.current.x * 3;
+                camera.position.y = targetMouseRef.current.y * 3;
                 camera.lookAt(0, 0, 0);
 
                 renderer.render(scene, camera);
@@ -283,45 +269,33 @@ const ThreeBackground: React.FC<ThreeBackgroundProps> = ({
         window.addEventListener('resize', handleResize);
 
         return () => {
-            if (animationIdRef.current) {
-                cancelAnimationFrame(animationIdRef.current);
-            }
+            if (animationIdRef.current) cancelAnimationFrame(animationIdRef.current);
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('resize', handleResize);
             if (containerRef.current && rendererRef.current?.domElement) {
                 containerRef.current.removeChild(rendererRef.current.domElement);
             }
 
-            // Dispose geometries and materials
             if (objectsRef.current.particles) {
                 objectsRef.current.particles.geometry.dispose();
                 (objectsRef.current.particles.material as THREE.Material).dispose();
             }
-
             if (objectsRef.current.mesh) {
                 objectsRef.current.mesh.geometry.dispose();
                 (objectsRef.current.mesh.material as THREE.Material).dispose();
             }
-
             objectsRef.current.nodes.forEach(node => {
                 if (node.geometry) node.geometry.dispose();
                 if (node.material) {
-                    if (Array.isArray(node.material)) {
-                        node.material.forEach(m => m.dispose());
-                    } else {
-                        node.material.dispose();
-                    }
+                    if (Array.isArray(node.material)) node.material.forEach(m => m.dispose());
+                    else node.material.dispose();
                 }
             });
-
             objectsRef.current.lines.forEach(line => {
                 if (line.geometry) line.geometry.dispose();
                 if (line.material) {
-                    if (Array.isArray(line.material)) {
-                        line.material.forEach(m => m.dispose());
-                    } else {
-                        line.material.dispose();
-                    }
+                    if (Array.isArray(line.material)) line.material.forEach(m => m.dispose());
+                    else line.material.dispose();
                 }
             });
 

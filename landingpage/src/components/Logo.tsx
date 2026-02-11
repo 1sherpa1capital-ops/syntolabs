@@ -2,7 +2,7 @@ import React from 'react';
 
 /**
  * Logo component with SVG gradient
- * Updated to Deep Tech Enterprise Theme (Cosmic Blue)
+ * Updated to Obsidian & Silver Theme (Luxury Tech)
  */
 const Logo: React.FC<{ className?: string }> = ({ className }) => {
     return (
@@ -17,35 +17,24 @@ const Logo: React.FC<{ className?: string }> = ({ className }) => {
             role="img"
         >
             <defs>
-                <linearGradient id="pipeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#3b82f6" />
-                    <stop offset="30%" stopColor="#6366f1" />
-                    <stop offset="60%" stopColor="#3b82f6" />
-                    <stop offset="100%" stopColor="#1e293b" />
+                <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#ffffff" />
+                    <stop offset="50%" stopColor="#a1a1aa" />
+                    <stop offset="100%" stopColor="#52525b" />
                 </linearGradient>
             </defs>
 
-            {/* Pipe Body with Gradient */}
-            <rect x="6" y="12" width="20" height="20" fill="url(#pipeGradient)" stroke="#000" strokeWidth="0.5" strokeOpacity="0.1" />
-
-            {/* Pipe Top with Gradient */}
-            <rect x="4" y="4" width="24" height="8" fill="url(#pipeGradient)" stroke="#000" strokeWidth="0.5" strokeOpacity="0.1" />
-
-            {/* Specular High-Light (The "Shiny" line) */}
-            <rect x="8" y="4" width="3" height="28" fill="white" fillOpacity="0.4" />
-            <rect x="13" y="4" width="1" height="28" fill="white" fillOpacity="0.15" />
-
-            {/* Core Shadow for Depth */}
-            <rect x="22" y="4" width="4" height="28" fill="black" fillOpacity="0.15" />
-
-            {/* Top Rim Highlight */}
-            <rect x="4" y="4" width="24" height="1.5" fill="white" fillOpacity="0.3" />
-
-            {/* Bottom Edge Shadow for the Top Part */}
-            <rect x="4" y="11" width="24" height="1" fill="black" fillOpacity="0.2" />
-
-            {/* Connecting Shadow */}
-            <rect x="6" y="12" width="20" height="1.5" fill="black" fillOpacity="0.3" />
+            {/* Simple Geometric Pipe Shape */}
+            <path 
+                d="M8 12V28H24V12H8ZM6 4H26V10H6V4Z" 
+                fill="url(#silverGradient)" 
+                stroke="white" 
+                strokeWidth="0.5" 
+                strokeOpacity="0.2" 
+            />
+            
+            {/* Minimal High-Light */}
+            <rect x="10" y="4" width="1" height="24" fill="white" fillOpacity="0.3" />
         </svg>
     );
 };

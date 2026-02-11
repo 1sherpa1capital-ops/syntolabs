@@ -1,8 +1,9 @@
 # Synto Labs Business Requirements Document (BRD)
 
-**Document Version:** 1.0
-**Date:** February 9, 2026
-**Status:** Draft
+**Document Version:** 2.0
+**Date:** February 10, 2026
+**Status:** Approved
+**Philosophy:** 48-Hour Delivery | Value-Based Pricing | Direct Execution
 
 ---
 
@@ -11,7 +12,7 @@
 Synto Labs is an AI automation agency that builds custom multi-agent workflows to eliminate repetitive business tasks. We help B2B companies save 15+ hours per week through AI-powered automation of research, outreach, and closing workflows.
 
 ### 1.1 Vision
-Become the go-to agency for AI workflow automation, helping SMBs reclaim time and scale operations without headcount increases.
+Become the go-to agency for AI workflow automation, helping SMBs reclaim time and scale operations without headcount increases. We replace busywork with intelligent agents.
 
 ### 1.2 Mission
 Deploy autonomous agent swarms that automate every phase of B2B operations—research, outreach, and closing—with perfect logic and infinite scale.
@@ -29,11 +30,18 @@ Deploy autonomous agent swarms that automate every phase of B2B operations—res
 | **Case Studies Delivered** | 4 (Musashi, Chessy, GetBeezy, Writo) | 8+ | 12+ |
 | **Team Size** | Solo (founder) | Solo + 2-3 subcontractors | Solo + 3-5 subcontractors |
 
-### 2.2 Success Metrics
-- **Client Retention Rate**: >80%
-- **Average Project Value**: $5,000-$15,000
-- **Time-to-Value**: 48 hours from kickoff to working prototype
-- **Client NPS**: >50
+### 2.2 Success Metrics (RICE Prioritized)
+We prioritize initiatives based on Reach, Impact, Confidence, and Effort.
+
+*   **Financial Health:**
+    *   **Gross Margin:** >70% on Retainers, >60% on Projects.
+    *   **CAC Payback:** <1 month (organic driven).
+    *   **LTV:CAC:** >10:1.
+
+*   **Customer Success:**
+    *   **Time-to-Value:** 48 hours (Strict SLA).
+    *   **Client NPS:** >60 (World-class service).
+    *   **Retention:** >85% after 3 months.
 
 ---
 
@@ -45,24 +53,24 @@ Deploy autonomous agent swarms that automate every phase of B2B operations—res
 |-----------|---------------|
 | **Company Stage** | SMB ($500k-$5M ARR) |
 | **Company Size** | 5-50 employees |
-| **Industry** | B2B SaaS, agencies, professional services |
+| **Industry** | B2B SaaS, Agencies, Professional Services |
 | **Key Decision Maker** | Founder, COO, VP Operations |
 | **Budget** | $3k-$15k for initial project |
 | **Pain Points** | Manual lead qualification, repetitive proposals, scattered outreach, no systematic follow-up |
 
 ### 3.2 Target Customer Segments (Priority Order)
 
-1. **Tier 1: B2B SaaS Companies ($1M-$3M ARR)**
-   - Clear growth pains, budget for tools
-   - Need: Lead qualification, proposal automation, outbound scaling
+1.  **Tier 1: B2B SaaS Companies ($1M-$3M ARR)**
+    *   *Why:* Clear growth pains, budget for tools, value speed over cost.
+    *   *Need:* Lead qualification, proposal automation, outbound scaling.
 
-2. **Tier 2: Digital Agencies ($500k-$2M ARR)**
-   - Understand value of automation
-   - Need: Client onboarding, reporting, workflow optimization
+2.  **Tier 2: Digital Agencies ($500k-$2M ARR)**
+    *   *Why:* Understand automation value, need to scale delivery without hiring.
+    *   *Need:* Client onboarding, reporting, workflow optimization.
 
-3. **Tier 3: Professional Services (Consulting, Coaching)**
-   - Time-constrained founders
-   - Need: Inbox triage, scheduling, CRM automation
+3.  **Tier 3: Professional Services (Consulting, Coaching)**
+    *   *Why:* Time-constrained founders need personal leverage.
+    *   *Need:* Inbox triage, scheduling, CRM automation.
 
 ### 3.3 Customer Personas
 
@@ -87,30 +95,27 @@ Deploy autonomous agent swarms that automate every phase of B2B operations—res
 
 ### 4.2 Service Tiers
 
-**Tier 1: Discovery ($2,500)**
-- Workflow audit
-- Automation opportunity analysis
-- ROI projections
-- Implementation roadmap
+**Tier 1: Discovery Prototype ($2,500)**
+*   **Deliverable:** Detailed Audit + Working Prototype of *one* core agent (e.g., Scout).
+*   **Goal:** Prove value and reduce risk.
+*   **Timeline:** 48 hours from kickoff.
 
-**Tier 2: Implementation ($5,000-$10,000)**
-- Discovery + 1-2 agent workflows
-- Integration with existing tools
-- Team training
-- 30-day support
+**Tier 2: Production Implementation ($5,000-$10,000)**
+*   **Deliverable:** Full Multi-Agent System (Scout → Research → Writer).
+*   **Inclusions:** Integration with CRM/Email, Team Training, 30-day Support.
+*   **Timeline:** 2-3 weeks.
 
-**Tier 3: Full Automation ($10,000+)**
-- Discovery + multi-agent system
-- Custom AI tools
-- Ongoing optimization
-- Quarterly reviews
+**Tier 3: Full Automation Ecosystem ($10,000+)**
+*   **Deliverable:** Complex system with multiple workflows, custom UI, and Voice.
+*   **Inclusions:** Ongoing optimization, quarterly reviews.
+*   **Timeline:** 3-6 weeks.
 
 ### 4.3 Add-On Services
 
 | Add-On | Price | Description |
 |--------|-------|-------------|
 | **Monthly Retainer** | $2,000-$5,000/mo | Ongoing optimization, new workflows, priority support |
-| **Hourly Rate** | $200/hour | Additional work outside retainer scope |
+| **Hourly Rate** | $250/hour | Additional work outside retainer scope (Premium pricing) |
 | **Training Workshop** | $1,500 | Team training on AI workflows and best practices |
 | **Emergency Support** | $500/mo add-on | 24-hour response time for critical issues |
 
@@ -143,10 +148,10 @@ Deploy autonomous agent swarms that automate every phase of B2B operations—res
 
 ### 5.2 Pricing Philosophy
 
-1. **Value-Based Pricing**: Price based on value delivered (time saved, revenue impact)
-2. **Tiered Access**: Lower entry point with upsell path
-3. **Retainer Incentive**: Hourly rates 20% higher for non-retainer clients
-4. **Success Bonuses**: Optional performance-based bonuses for exceeding targets
+1.  **Value-Based Pricing**: Price based on value delivered (time saved, revenue impact), not hours worked.
+2.  **Tiered Access**: Lower entry point ($2.5k) reduces friction, with clear upsell path to Retainer.
+3.  **Retainer Incentive**: Hourly rates are 20% higher for non-retainer clients to drive recurring revenue.
+4.  **No Discounts**: Reduce scope, never price. Protects brand value.
 
 ---
 
@@ -165,16 +170,14 @@ Deploy autonomous agent swarms that automate every phase of B2B operations—res
 ### 6.2 Content Strategy
 
 **Personal Brand (Build-in-Public)**
-- Daily tweets on AI automation learnings
-- Weekly LinkedIn deep-dive posts
-- Monthly case study breakdowns
-- Q1 roadmap progress updates
+*   **Daily:** Tweets on AI automation learnings, failures, and wins.
+*   **Weekly:** LinkedIn deep-dive posts (Case Study breakdowns).
+*   **Monthly:** "State of the Agency" revenue and roadmap updates.
 
 **Content Marketing**
-- SEO blog: "How to Automate X with AI"
-- Video demos of agent workflows
-- Client case studies with ROI numbers
-- Comparison guides (manual vs AI workflows)
+*   **SEO:** "How to Automate [Specific Task] with AI".
+*   **Video:** 30-second Loom demos of agent workflows.
+*   **Case Studies:** Focus on "Before/After" metrics (Hours Saved, $$$ Reclaimed).
 
 ### 6.3 Outreach Sequences
 
@@ -227,19 +230,13 @@ Deploy autonomous agent swarms that automate every phase of B2B operations—res
 ### 7.3 Team Structure
 
 **Phase 1 (Months 1-3): Solo + Subcontractors**
-- Founder: Sales, delivery, strategy
-- Subcontractors: Development overflow, specialized work
+*   **Founder:** Sales, delivery, strategy.
+*   **Subcontractors:** Development overflow, specialized work (UI/Voice).
 
 **Phase 2 (Months 4-6): Core Team**
-- Founder: Sales, strategy
-- Developer (FT): Agent development, integrations
-- Delivery Lead (contractor): Client success, training
-
-**Phase 3 (Months 7-12): Full Agency**
-- Founder: CEO
-- 2 Developers: Agent systems
-- 1 Sales: Outbound, pipeline
-- 1 Delivery Lead: Client success
+*   **Founder:** Sales, strategy.
+*   **Developer (FT):** Agent development, integrations.
+*   **Delivery Lead (contractor):** Client success, training.
 
 ### 7.4 Subcontractor Network
 
