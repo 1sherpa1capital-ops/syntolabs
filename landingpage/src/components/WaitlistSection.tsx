@@ -22,7 +22,7 @@ const WaitlistSection: React.FC<{ className?: string; id?: string }> = ({ classN
         <section id={id} className={`py-24 bg-bg relative overflow-hidden ${className}`}>
             {/* Background Elements */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-surface-elevated/50 via-bg to-bg opacity-50" />
-            
+
             <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -30,17 +30,16 @@ const WaitlistSection: React.FC<{ className?: string; id?: string }> = ({ classN
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-white/10 text-text-muted text-xs font-medium uppercase tracking-widest mb-8">
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                    <div className="inline-block px-3 py-1 rounded-full bg-accent/10 text-primary text-xs font-bold uppercase tracking-widest mb-8">
                         Limited Capacity
                     </div>
-                    
+
                     <h2 className="text-4xl md:text-6xl font-black text-text-default tracking-tight mb-6">
                         Secure Your Spot.
                     </h2>
-                    
+
                     <p className="text-xl text-text-muted max-w-xl mx-auto mb-10 leading-relaxed">
-                        We accept 4 clients per month to ensure quality.
+                        We accept 5 clients per month to ensure quality.
                         <br className="hidden sm:block" />
                         Join the waitlist to get early access.
                     </p>

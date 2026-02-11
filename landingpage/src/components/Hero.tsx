@@ -38,10 +38,10 @@ const Hero: React.FC = () => {
             <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 pt-24 pb-16 w-full">
                 <div className="text-center max-w-5xl mx-auto">
                     {/* Main heading */}
-                    <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.9]">
-                        <span className="block animate-reveal" style={{ animationDelay: '0.2s' }}>Automate the</span>
+                    <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.95]">
+                        <span className="block animate-reveal" style={{ animationDelay: '0.2s' }}>Stop losing</span>
                         <span className="block text-accent animate-reveal" style={{ animationDelay: '0.3s' }}>
-                            Repetitive Work
+                            $15K+ monthly to missed calls
                         </span>
                     </h1>
 
@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
                         className="text-xl sm:text-2xl text-text-muted font-medium leading-relaxed max-w-3xl mx-auto mb-10 animate-reveal"
                         style={{ animationDelay: '0.4s' }}
                     >
-                        Your team spends 15+ hours/week on busywork. We build custom agent swarms to fix it. <span className="text-accent font-bold">48-hour delivery.</span>
+                        Our AI answers every inquiry in under 2 seconds, qualifies serious prospects, and books appointments directly into your calendar—while you focus on treatments.
                     </p>
 
                     {/* CTA Button */}
@@ -68,13 +68,23 @@ const Hero: React.FC = () => {
                         </a>
                     </div>
 
+                    {/* Urgency Badge */}
+                    <div
+                        className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-surface/50 border border-white/10 backdrop-blur-md animate-reveal mb-8"
+                        style={{ animationDelay: '0.6s' }}
+                    >
+                        <span className="text-sm font-bold text-text-default tracking-wide">
+                            Limited to 5 new clients per month
+                        </span>
+                    </div>
+
                     {/* Stats Bar (Social Proof) */}
                     <div
                         className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-surface/50 border border-white/10 backdrop-blur-md animate-reveal"
-                        style={{ animationDelay: '0.6s' }}
+                        style={{ animationDelay: '0.7s' }}
                     >
                         <span className="text-sm sm:text-base font-bold text-text-default tracking-wide">
-                            4 Products Shipped <span className="mx-3 text-text-muted">•</span> 10,000+ Hours Saved
+                            $1.2M+ Revenue Recovered <span className="mx-3 text-text-muted">•</span> 15K+ Calls Answered
                         </span>
                     </div>
                 </div>

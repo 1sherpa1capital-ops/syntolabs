@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Bot, Zap, ArrowRight, Workflow } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { BOOKING_URL } from '../config/constants';
 
 interface Service {
@@ -7,7 +7,6 @@ interface Service {
     title: string;
     price: string;
     description: string;
-    icon: React.ElementType;
     features: string[];
 }
 
@@ -16,25 +15,22 @@ const services: Service[] = [
         id: 1,
         title: 'Workflow Discovery',
         price: '$2,500',
-        description: 'We find the busywork eating your team\'s time. You get a prioritized automation roadmap with ROI projections.',
-        icon: Search,
-        features: ['Complete workflow audit', 'Automation opportunities', 'ROI projections', 'Implementation roadmap']
+        description: 'We find the busywork eating your team time. You get a prioritized automation roadmap with ROI projections.',
+        features: ['Complete workflow audit', 'Automation opportunities identified', 'ROI projections included', 'Implementation roadmap']
     },
     {
         id: 2,
         title: 'Agent Implementation',
-        price: '$5K–$10K',
-        description: 'We build custom agents. MFR Guardrails prevent hallucinations. Integrated with your existing tools. Delivered in 48 hours.',
-        icon: Bot,
-        features: ['1-2 custom agent workflows', 'CRM, email, calendar integration', 'Team training & documentation', '30-day support included']
+        price: '$5,000',
+        description: 'We build custom agent workflows. MFR Guardrails prevent hallucinations. Integrated with your existing tools. Delivered in 48 hours.',
+        features: ['1-2 custom agent workflows', 'CRM, email, calendar integration', 'Team training and documentation', '30-day support included']
     },
     {
         id: 3,
         title: 'Full Automation',
-        price: '$10K+',
+        price: '$10,000+',
         description: 'Full multi-agent infrastructure. Continuous optimization. Complete AI stack for teams ready to scale.',
-        icon: Zap,
-        features: ['Multi-agent system', 'Custom AI dashboards & tools', 'Quarterly performance reviews', 'Priority support']
+        features: ['Multi-agent system', 'Custom AI dashboards and tools', 'Quarterly performance reviews', 'Priority support']
     }
 ];
 
@@ -44,15 +40,14 @@ const Services: React.FC = () => {
             <div className="max-w-[1400px] mx-auto">
                 {/* Header */}
                 <div className="text-center mb-10 md:mb-14">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-primary text-xs font-medium mb-4">
-                        <Workflow size={12} />
+                    <div className="inline-block px-3 py-1 rounded-full bg-accent/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">
                         Our Services
                     </div>
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-dark mb-4">
                         Three ways to <span className="text-gradient">get started</span>
                     </h2>
                     <p className="text-text-muted text-sm md:text-base max-w-2xl mx-auto">
-                        Choose the level of engagement that fits your needs. Every solution is custom-built with MFR Guardrails
+                        Choose your level of engagement. Every solution is custom-built with MFR Guardrails
                         for quality assurance and integrated with your existing tools.
                     </p>
                 </div>
@@ -61,12 +56,7 @@ const Services: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                     {services.map((service) => (
                         <div key={service.id} className="card-feature flex flex-col h-full group">
-                            {/* Icon */}
-                            <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                                <service.icon size={28} className="text-accent" />
-                            </div>
-
-                            {/* Title & Price */}
+                            {/* Title and Price */}
                             <h3 className="text-xl font-black text-dark mb-1">{service.title}</h3>
                             <div className="text-2xl font-black text-gradient mb-4">{service.price}</div>
 
