@@ -91,7 +91,9 @@ const Pricing: React.FC = () => {
                             href={BOOKING_URL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`w-full py-5 font-black text-xs uppercase tracking-widest transition-all text-center flex items-center justify-center gap-3 ${plan.featured ? 'bg-white text-black' : 'border border-white/10 text-white hover:bg-white hover:text-black'}`}
+                            className={`w-full py-5 font-black text-xs uppercase tracking-widest text-center flex items-center justify-center gap-3 ${
+                                plan.featured ? 'btn-double-layer' : 'btn-double-layer-outline'
+                            }`}
                         >
                             {plan.cta} <ArrowRight size={14} />
                         </a>

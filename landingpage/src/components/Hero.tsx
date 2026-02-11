@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
-import ThreeBackground from './ThreeBackground';
 
 const Hero: React.FC = () => {
     const heroRef = useRef<HTMLDivElement>(null);
@@ -31,14 +30,9 @@ const Hero: React.FC = () => {
     };
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-bg">
-            {/* 3D Background - pointer-events-none to ensure it doesn't block interactions */}
-            <div className="absolute inset-0 pointer-events-none">
-                <ThreeBackground variant="particles" intensity={0.8} />
-            </div>
-            
-            {/* Overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-b from-bg/50 via-transparent to-bg/80 pointer-events-none" />
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid bg-bg">
+            {/* Pure CSS background with subtle gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-radial opacity-30 pointer-events-none" />
 
             {/* Main content */}
             <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 pt-24 pb-16 w-full">
@@ -67,7 +61,7 @@ const Hero: React.FC = () => {
                         <a
                             href="#waitlist"
                             onClick={scrollToWaitlist}
-                            className="group relative inline-flex items-center gap-3 px-10 py-5 rounded-full bg-accent hover:bg-cta-hover text-text-on-accent font-black text-lg transition-all shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:scale-105"
+                            className="btn-double-layer group relative inline-flex items-center gap-3 text-lg"
                         >
                             Join Waitlist
                             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />

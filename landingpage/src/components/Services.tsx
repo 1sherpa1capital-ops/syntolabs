@@ -90,7 +90,7 @@ const Services: React.FC = () => {
                                 href={BOOKING_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 text-accent font-bold text-sm uppercase tracking-wider hover:gap-3 transition-all"
+                                className="btn-double-layer-outline inline-flex items-center gap-2"
                             >
                                 Get Started
                                 <ArrowRight size={16} />

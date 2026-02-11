@@ -58,7 +58,7 @@ const WaitlistSection: React.FC<{ className?: string; id?: string }> = ({ classN
                             <button
                                 type="submit"
                                 disabled={status !== 'idle' || !email}
-                                className="absolute right-1.5 top-1.5 bottom-1.5 px-6 rounded-full bg-accent hover:bg-cta-hover text-text-on-accent font-bold text-sm transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-2"
+                                className="btn-double-layer absolute right-1.5 top-1.5 bottom-1.5 px-6 disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-2"
                             >
                                 {status === 'loading' ? (
                                     <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />

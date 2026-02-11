@@ -139,7 +139,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenTeam }) => {
                                 href={BOOKING_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex px-6 h-full items-center text-[11px] font-black uppercase tracking-widest text-cta-text bg-accent hover:bg-cta-hover transition-colors rounded-full shadow-md ml-1.5"
+                                className="btn-double-layer flex px-6 h-full items-center ml-1.5"
                             >
                                 Book Demo
                             </a>
