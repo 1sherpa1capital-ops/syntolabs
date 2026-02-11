@@ -1,7 +1,7 @@
 # Synto Labs Brand Guidelines
 
-**Version:** 1.0
-**Date:** February 9, 2026
+**Version:** 1.1
+**Date:** February 11, 2026
 **Status:** Living Document
 
 ---
@@ -90,16 +90,29 @@ Our voice is **direct, confident, and action-oriented**. We don't do fluff, buzz
 
 ## 3. Visual Identity
 
-### 3.1 Color Palette
+### 3.1 Color Palette (Green Tea Theme)
 
 | Color Name | Hex | Usage |
 |------------|-----|-------|
+| **Background** | `#0d1d0d` | Page background, dark sections |
+| **Surface** | `#152915` | Cards, elevated sections, form inputs |
+| **Accent** | `#c8e6c9` | CTAs, highlights, links, emphasis |
+| **Text Primary** | `#e8ece8` | Headings, primary text |
+| **Text Muted** | `#a3b8a3` | Secondary text, labels, descriptions |
+| **Border** | `#1f3d1f` | Dividers, card borders |
+
+**Theme Notes:**
+- Monochromatic green palette (matcha/tea inspired)
+- High contrast for readability while maintaining organic feel
+- Accent provides subtle warmth without breaking the monochromatic discipline
+
+**Legacy Palette (v1.0 - Orange Accent):**
+| Color Name | Hex | Usage |
+|------------|-----|-------|
 | **Primary** | `#1a1a1a` | Headings, text, primary UI elements |
-| **Accent** | `#f59e0b` | CTAs, highlights, emphasis |
+| **Accent** | `#f59e0b` | CTAs, highlights, emphasis (orange) |
 | **Dark** | `#0a0a0a` | Backgrounds, cards, dark sections |
 | **Surface** | `#f5f5f5` | Light backgrounds, cards |
-| **Border** | `#e5e5e5` | Dividers, borders |
-| **Text Muted** | `#737373` | Secondary text, labels |
 
 ### 3.2 Typography
 
@@ -118,11 +131,12 @@ Small/Captions:    text-xs to text-sm (font-bold, uppercase tracking-wider)
 
 ### 3.3 Design Principles
 
-1. **Bold & Direct** - Large type, high contrast, confident
-2. **Minimal & Clean** - White space, no clutter, focused hierarchy
-3. **Accent-Driven** - Accent color draws eye to CTAs and key metrics
-4. **Card-Based** - Rounded corners (2xl-3xl), subtle shadows, clear borders
-5. **Motion-With-Purpose** - GSAP animations for scroll, hover states on interaction
+1. **Monochromatic Discipline** - Single-color palette (green tea), no competing colors
+2. **Bold & Direct** - Large type, high contrast, confident
+3. **Minimal & Clean** - Generous white space, no clutter, focused hierarchy
+4. **Rounded & Soft** - Rounded corners (2xl+), subtle shadows, organic feel
+5. **Motion-With-Purpose** - Smooth animations, purposeful transitions, Framer Motion
+6. **Double-Layered CTAs** - Signature "offset frame" button style with depth
 
 ---
 
@@ -417,6 +431,12 @@ As the brand evolves:
 - Update this document with new learnings
 - Archive outdated messaging with rationale
 - Maintain voice consistency while adapting content
+
+### 10.4 Change History
+| Version | Date | Changes |
+|---------|------|--------|
+| 1.1 | Feb 11, 2026 | Updated to Green Tea theme (monochromatic green palette) |
+| 1.0 | Feb 9, 2026 | Initial brand guidelines with orange accent |
 
 ---
 
