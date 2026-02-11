@@ -61,7 +61,7 @@ const WhyUs: React.FC = () => {
         </div>
 
         {/* Differentiators Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 mb-12">
           {differentiators.map((item) => (
             <div
               key={item.id}
@@ -101,6 +101,18 @@ const WhyUs: React.FC = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Process Guarantees */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+            <div className="bg-surface-elevated rounded-xl p-6 border border-border hover:border-accent/30 transition-all duration-300">
+                <h4 className="font-black text-lg mb-2 text-primary">No Black Box Solutions</h4>
+                <p className="text-text-muted text-sm">Every workflow is built in open-source tools you own. No vendor lock-in, full control over your automation stack.</p>
+            </div>
+            <div className="bg-surface-elevated rounded-xl p-6 border border-border hover:border-accent/30 transition-all duration-300">
+                <h4 className="font-black text-lg mb-2 text-primary">Risk-Free Validation</h4>
+                <p className="text-text-muted text-sm">See your automation working before we build the full system. Pay only for results that move the needle.</p>
+            </div>
         </div>
 
         {/* Bottom CTA */}

@@ -4,9 +4,9 @@ import AgentsHeader from '../components/agents/AgentsHeader';
 import AgentsFooter from '../components/agents/AgentsFooter';
 
 import {
-    Bot, Sparkles, Zap, Shield, Cpu,
+    Bot, Sparkles, Zap, Shield,
     X, Check, FileText, Send, Loader2,
-    ShieldCheck, Terminal, Search, Video, Palette, Brain
+    ShieldCheck, Terminal, Search, BookOpen, PenTool
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { AnimatedSection, MagneticButton, AnimatedNumber } from '../components/GSAPAnimations';
@@ -149,7 +149,7 @@ Result: a personalized 12-page strategy deck in 181 seconds. Scraped ${demoData.
 
 The demo is attached. No pitch, no calendar link, no follow-up sequence. Just wanted you to see what's possible.
 
-If it's useful, reply and I'll explain how we built it. If not, no worries — keep the demo.
+If it's useful, reply and I'll explain how we built it. If not, no worries — keep demo.
 
 — Rhigden
 Founder, Synto Labs
@@ -195,8 +195,8 @@ P.S. This email also took under 60 seconds to generate.`;
                     >
                         <div className="flex justify-between items-center mb-8">
                             <h3 id="proposal-modal-title" className="text-2xl font-black text-primary">The {demoData.companyName} Opportunity</h3>
-                            <button 
-                                onClick={() => setShowProposalModal(false)} 
+                            <button
+                                onClick={() => setShowProposalModal(false)}
                                 className="text-gray-400 hover:text-black"
                                 aria-label="Close modal"
                             >
@@ -220,7 +220,7 @@ P.S. This email also took under 60 seconds to generate.`;
                             </section>
 
                             <section>
-                                <p className="text-lg font-black text-primary mb-4 uppercase tracking-tight">3. How Synto Changes the Math</p>
+                                <p className="text-lg font-black text-primary mb-4 uppercase tracking-tight">3. How Synto Changes Math</p>
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="p-4 bg-gray-50 border border-gray-200">
                                         <p className="text-[10px] font-black text-primary uppercase mb-1">↑ Outcome</p>
@@ -288,67 +288,50 @@ P.S. This email also took under 60 seconds to generate.`;
                     <AnimatedSection animation="fadeUp" className="max-w-3xl mb-16 md:mb-24">
                         <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 text-accent rounded-full text-[10px] font-black uppercase tracking-widest mb-6 border border-accent/20">
                             <Sparkles size={12} aria-hidden="true" />
-                            Multi-Agent Ecosystem
+                            Custom Workflow Examples
                         </div>
                         <h1 className="text-4xl md:text-7xl font-black tracking-tighter text-primary leading-[0.9] mb-8">
-                            Autonomous <br />
-                            <span className="text-gray-400">Agent Swarm.</span>
+                            Every workflow is <br className="hidden sm:block" />
+                            <span className="text-gray-400">built to order.</span>
                         </h1>
                         <p className="text-xl text-gray-500 font-medium max-w-2xl">
-                            We deploy parallel agent swarms that automate every phase of your B2B operations—research, outreach, and closing—with perfect logic and infinite scale.
+                            We don't sell pre-packaged software. We analyze your unique processes and build agent swarms tailored to your business—from sales automation to ops workflows.
                         </p>
                     </AnimatedSection>
 
                     <div className="mb-24">
-                        <AnimatedSection animation="fadeUp" className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <AnimatedSection animation="fadeUp" className="max-w-4xl mx-auto mb-12">
+                            <h3 className="text-2xl md:text-3xl font-black text-primary mb-6">Example: Sales Outreach Workflow</h3>
+                            <p className="text-gray-500 text-base max-w-2xl">
+                                This is ONE example of a custom workflow we've built. Each client gets agents designed for their specific processes, tools, and goals.
+                            </p>
+                        </AnimatedSection>
+
+                        <AnimatedSection animation="fadeUp" className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                             {[
                                 {
-                                    title: "Research Agent",
-                                    icon: Bot,
-                                    description: "Scours the web for deep business intelligence and generates high-conversion strategy decks.",
-                                    features: ["Neural Web Scraping", "Hormozi Value Layer", "Automated PDFs"]
-                                },
-                                {
-                                    title: "Voice Agent",
-                                    icon: Cpu,
-                                    description: "Ultra-low latency conversational AI handles inbound qualification and outbound follow-ups 24/7.",
-                                    features: ["0.2s Response Time", "50+ Concurrent Calls", "CRM Native"]
-                                },
-                                {
-                                    title: "Sales Agent",
-                                    icon: Zap,
-                                    description: "Manages pipeline, qualifies intent, and books meetings directly via native integrations.",
-                                    features: ["Cal.com Native", "Intent Scoring", "Persistence Logic"]
-                                },
-                                {
-                                    title: "Enrichment Agent",
+                                    title: "Scout Agent",
                                     icon: Search,
-                                    description: "Uncovers hidden contacts, tech stacks, and intent signals from sparse data points.",
-                                    features: ["Waterfall Enrichment", "Tech Stack Analysis", "Intent Verification"]
+                                    description: "Finds and qualifies prospects using web scraping and data enrichment.",
+                                    features: ["Web Scraping", "Data Enrichment", "Prospect Qualification"]
                                 },
                                 {
-                                    title: "Quality Agent",
-                                    icon: ShieldCheck,
-                                    description: "Critiques and refines every output against your brand guidelines before it ships.",
-                                    features: ["Brand Voice Guard", "Fact Verification", "Tone Analysis"]
+                                    title: "Research Agent",
+                                    icon: BookOpen,
+                                    description: "Deep research on prospects, companies, and opportunities.",
+                                    features: ["Company Analysis", "Decision Maker Research", "Opportunity Mapping"]
                                 },
                                 {
-                                    title: "Knowledge Agent",
-                                    icon: Brain,
-                                    description: "Ingests URLs and docs to build a dynamic knowledge base for context-aware decisions.",
-                                    features: ["Vector Memory", "Real-time Learning", "Context Injection"]
+                                    title: "Writer Agent",
+                                    icon: PenTool,
+                                    description: "Generates personalized outreach emails and proposals.",
+                                    features: ["Personalized Email", "Proposal Generation", "Brand Voice Matching"]
                                 },
                                 {
-                                    title: "Video Agent",
-                                    icon: Video,
-                                    description: "Generates personalized video scripts and avatars for hyper-engaging outreach.",
-                                    features: ["Avatar Generation", "Script Personalization", "HeyGen Integration"]
-                                },
-                                {
-                                    title: "Brand Agent",
-                                    icon: Palette,
-                                    description: "Defines and enforces your unique voice across all automated communications.",
-                                    features: ["Voice Cloning", "Style Guide Enforcement", "Persona Mgmt"]
+                                    title: "Sender Agent",
+                                    icon: Send,
+                                    description: "Executes outbound campaigns with Gmail API integration.",
+                                    features: ["Gmail API Native", "Campaign Management", "Response Tracking"]
                                 }
                             ].map((agent, i) => {
                                 const Icon = agent.icon;
@@ -380,16 +363,42 @@ P.S. This email also took under 60 seconds to generate.`;
                         </AnimatedSection>
                     </div>
 
+                    {/* Other Workflows Section */}
+                    <AnimatedSection animation="fadeUp" className="max-w-4xl mx-auto mb-16">
+                        <div className="bg-white p-8 md:p-10 rounded-[2rem] border-2 border-gray-200">
+                            <h3 className="text-xl md:text-2xl font-black text-primary mb-4">More Than Just Sales</h3>
+                            <p className="text-gray-500 text-base mb-6">
+                                We build custom automation for any repetitive business task. Here are other workflows our clients use:
+                            </p>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {[
+                                    { workflow: "Client Onboarding", desc: "Automated intake, document collection, account setup" },
+                                    { workflow: "Internal Reporting", desc: "Pull data from 5+ tools, generate weekly reports" },
+                                    { workflow: "Invoice Processing", desc: "Extract line items, match to POs, flag disputes" },
+                                    { workflow: "Content Scheduling", desc: "Research topics, assign writers, schedule posts" }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex gap-2 items-start">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
+                                        <div>
+                                            <p className="font-bold text-primary text-sm">{item.workflow}</p>
+                                            <p className="text-gray-500 text-sm">{item.desc}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </AnimatedSection>
+
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 md:gap-24 items-start">
                         {/* Left: Interactive Demo (2/3 width on desktop) */}
                         <div className="lg:col-span-2 space-y-12">
                             <section>
                                 <div className="mb-8">
                                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 text-primary rounded-full text-[9px] font-black uppercase tracking-widest mb-4 border border-primary/10">
-                                        Live Simulation
+                                        Live Demo
                                     </div>
-                                    <h3 className="text-3xl font-black text-primary mb-2 uppercase tracking-tight">The Proposal Engine</h3>
-                                    <p className="text-gray-500 text-sm">Experience the speed: Agent 01 building a personalized 12-page strategy deck from a URL.</p>
+                                    <h3 className="text-3xl font-black text-primary mb-2 uppercase tracking-tight">See It In Action</h3>
+                                    <p className="text-gray-500 text-sm">Watch how our agents work together. This is just one example—we'll build workflows tailored to YOUR needs.</p>
                                 </div>
 
                                 <div className="bg-dark rounded-[3rem] border-4 border-primary shadow-[24px_24px_0] shadow-bg overflow-hidden">
@@ -451,10 +460,10 @@ P.S. This email also took under 60 seconds to generate.`;
                                     {/* Pipeline Steps */}
                                     <div className="p-8 space-y-6">
                                         {[
-                                            { id: 1, title: 'Scanning Website', desc: demoComplete || currentStep >= 1 ? `Found ${demoData.decisionMakers} decision makers` : 'Waiting...' },
-                                            { id: 2, title: 'Extracting Pain Points', desc: demoComplete || currentStep >= 2 ? `Mapped: ${demoData.painPoint}` : 'Waiting...' },
-                                            { id: 3, title: 'Quantifying ROI', desc: demoComplete || currentStep >= 3 ? `Projected: $${demoData.savings.toLocaleString()}/mo` : 'Waiting...' },
-                                            { id: 4, title: 'Logic Construction', desc: demoComplete || currentStep >= 4 ? '12-page strategy deck finalized' : 'Waiting...' }
+                                            { id: 1, title: 'Scouting Prospects', desc: demoComplete || currentStep >= 1 ? `Found ${demoData.decisionMakers} decision makers` : 'Waiting...' },
+                                            { id: 2, title: 'Researching Company', desc: demoComplete || currentStep >= 2 ? `Mapped: ${demoData.painPoint}` : 'Waiting...' },
+                                            { id: 3, title: 'Writing Proposal', desc: demoComplete || currentStep >= 3 ? `Projected: $${demoData.savings.toLocaleString()}/mo` : 'Waiting...' },
+                                            { id: 4, title: 'Sending Email', desc: demoComplete || currentStep >= 4 ? 'Email ready to send' : 'Waiting...' }
                                         ].map((step) => (
                                             <div key={step.id} className={`flex gap-4 items-start transition-opacity duration-500 ${currentStep >= step.id || demoComplete ? 'opacity-100' : 'opacity-20'}`}>
                                                 <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 border-2 ${currentStep === step.id && demoRunning ? 'border-accent text-accent' : currentStep > step.id || demoComplete ? 'bg-accent border-accent text-black' : 'border-white/20 text-white/20'}`}>
@@ -501,7 +510,7 @@ P.S. This email also took under 60 seconds to generate.`;
                                 </div>
                                 <h3 className="text-2xl font-black text-primary mb-4">MFR Guardrails</h3>
                                 <p className="text-gray-500 text-sm leading-relaxed mb-8">
-                                    Every agent action is filtered through our Model-First Reasoning (MFR) layer. This ensures infinite scale without sacrificing the logic of your business.
+                                    Every agent action is filtered through our Model-First Reasoning (MFR) layer. This ensures infinite scale without sacrificing logic of your business.
                                 </p>
                                 <ul className="space-y-4 mb-10">
                                     {[

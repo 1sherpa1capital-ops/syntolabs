@@ -3,46 +3,31 @@ import { Briefcase, ShoppingCart, HeartPulse, Code, Megaphone, Building2, ArrowR
 
 const industries = [
     {
-        icon: Briefcase,
-        name: 'Professional Services',
-        desc: 'Accounting, legal, and consulting firms automating client onboarding, document processing, and reporting workflows.',
-        useCases: ['Client intake automation', 'Report generation', 'Document processing'],
-        gradient: 'blue'
-    },
-    {
-        icon: ShoppingCart,
-        name: 'E-commerce & Retail',
-        desc: 'Online stores and retail chains streamlining inventory management, customer service, and order processing.',
-        useCases: ['Inventory tracking', 'Customer support', 'Order automation'],
-        gradient: 'teal'
-    },
-    {
-        icon: HeartPulse,
-        name: 'Healthcare & Wellness',
-        desc: 'Medical practices and wellness businesses automating appointment scheduling, patient follow-ups, and record management.',
-        useCases: ['Appointment booking', 'Patient reminders', 'Data entry'],
-        gradient: 'blue'
-    },
-    {
         icon: Code,
-        name: 'Technology & SaaS',
-        desc: 'Tech companies and startups automating user onboarding, data analysis, and internal tooling workflows.',
-        useCases: ['User onboarding', 'Data analysis', 'Internal tools'],
-        gradient: 'teal'
+        name: 'B2B SaaS',
+        desc: 'SaaS companies ($1M-$3M ARR) automating lead qualification, proposal generation, and outbound scaling.',
+        useCases: ['Lead qualification', 'Proposal automation', 'Outbound scaling'],
+        before: 'SREs spending 20+ hours/week on manual research',
+        after: 'Qualified leads increased 3x, proposal volume doubled',
+        gradient: 'blue'
     },
     {
         icon: Megaphone,
-        name: 'Marketing & Creative',
-        desc: 'Agencies and creative teams automating content workflows, client reporting, and campaign management.',
-        useCases: ['Content workflows', 'Client reporting', 'Campaign tracking'],
-        gradient: 'blue'
+        name: 'Digital Agencies',
+        desc: 'Agencies ($500k-$2M ARR) automating client onboarding, reporting, and workflow optimization.',
+        useCases: ['Client onboarding', 'Automated reporting', 'Workflow optimization'],
+        before: 'Teams drowning in client deliverables',
+        after: '95% of onboarding automated, 10+ hours/week saved',
+        gradient: 'teal'
     },
     {
-        icon: Building2,
-        name: 'Real Estate & Property',
-        desc: 'Property managers and agents automating lead qualification, viewing schedules, and tenant communications.',
-        useCases: ['Lead qualification', 'Schedule coordination', 'Tenant comms'],
-        gradient: 'teal'
+        icon: Briefcase,
+        name: 'Professional Services',
+        desc: 'Consulting and coaching firms automating inbox triage, scheduling, and CRM workflows.',
+        useCases: ['Inbox triage', 'Scheduling automation', 'CRM updates'],
+        before: 'Founders losing 30% of leads to slow follow-up',
+        after: '100% of leads followed up within 5 minutes, inbox zero maintained',
+        gradient: 'blue'
     }
 ];
 
@@ -63,7 +48,7 @@ const Industries: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
                     {industries.map((industry) => (
                         <div key={industry.name} className="card-feature flex flex-col h-full group">
                             {/* Visual Area - Icon Display */}
@@ -81,13 +66,28 @@ const Industries: React.FC = () => {
                                 {/* Use Cases Tags */}
                                 <div className="flex flex-wrap gap-2 mt-4 mb-6">
                                     {industry.useCases.map((useCase) => (
-                                        <span 
+                                        <span
                                             key={useCase}
                                             className="px-2 py-1 bg-muted-bg rounded text-[9px] font-bold uppercase tracking-wider text-text-muted border border-border"
                                         >
                                             {useCase}
                                         </span>
                                     ))}
+                                </div>
+
+                                {/* Before/After Comparison */}
+                                <div className="mt-4 pt-4 border-t border-border">
+                                    <div className="text-[10px] font-bold uppercase tracking-wider text-text-muted mb-2">Transformation</div>
+                                    <div className="space-y-2 text-xs">
+                                        <div className="flex items-start gap-2">
+                                            <span className="text-text-muted shrink-0">Before:</span>
+                                            <span className="text-text-muted">{industry.before}</span>
+                                        </div>
+                                        <div className="flex items-start gap-2">
+                                            <span className="text-accent shrink-0 font-bold">After:</span>
+                                            <span className="text-primary">{industry.after}</span>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <button className="inline-flex items-center gap-2 text-accent font-bold text-xs uppercase tracking-widest hover:gap-3 transition-all">

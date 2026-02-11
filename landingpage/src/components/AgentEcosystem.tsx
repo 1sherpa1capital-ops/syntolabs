@@ -5,7 +5,6 @@ interface Agent {
     id: string;
     name: string;
     description: string;
-    capability: string;
     icon: React.ElementType;
 }
 
@@ -14,42 +13,36 @@ const agents: Agent[] = [
         id: 'research',
         name: 'Research',
         description: 'Finds and qualifies prospects using web scraping and data enrichment.',
-        capability: 'Crawl4AI • Firecrawl • Lead Discovery',
         icon: Search
     },
     {
         id: 'voice',
         name: 'Voice',
         description: 'Handles inbound/outbound calls with natural conversation and intent detection.',
-        capability: 'Bland AI • Vapi.ai • Call Transcripts',
         icon: Mic
     },
     {
         id: 'sales',
         name: 'Sales',
         description: 'Manages pipeline, books meetings, and updates your CRM automatically.',
-        capability: 'Cal.com • CRM APIs • Pipeline Mgmt',
         icon: TrendingUp
     },
     {
         id: 'knowledge',
         name: 'Knowledge',
         description: 'Retrieves relevant context from your documents and data for accurate responses.',
-        capability: 'Vector DB • Context Injection • Memory',
         icon: BookOpen
     },
     {
         id: 'quality',
         name: 'Quality',
         description: 'Validates all outputs against business rules and style guides.',
-        capability: 'Fact Checking • Style Guides • Validation',
         icon: ShieldCheck
     },
     {
         id: 'coordinator',
         name: 'Coordinator',
         description: 'Orchestrates multi-agent workflows and handles error recovery.',
-        capability: 'Workflow Orchestration • Error Handling',
         icon: Settings
     }
 ];
@@ -69,7 +62,7 @@ const AgentEcosystem: React.FC = () => {
                 </div>
 
                 {/* Agents Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 mb-10">
                     {agents.map((agent) => (
                         <div
                             key={agent.id}
@@ -86,17 +79,9 @@ const AgentEcosystem: React.FC = () => {
                             </div>
 
                             {/* Description */}
-                            <p className="text-sm text-text-muted leading-relaxed mb-4">
+                            <p className="text-sm text-text-muted leading-relaxed">
                                 {agent.description}
                             </p>
-
-                            {/* Capability Badge */}
-                            <div className="flex items-center gap-2 pt-4 border-t border-border">
-                                <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-text-muted">
-                                    {agent.capability}
-                                </span>
-                            </div>
                         </div>
                     ))}
                 </div>

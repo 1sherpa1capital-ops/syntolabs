@@ -18,10 +18,11 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-    { name: 'About', href: '#problem' },
+    { name: 'How It Works', href: '#how-it-works' },
     { name: 'Services', href: '#services' },
-    { name: 'Features', href: '#features' },
     { name: 'Pricing', href: '#pricing' },
+    { name: 'Agents', href: '/agents' },
+    { name: 'About', href: '/about' },
 ];
 
 const Header: React.FC<HeaderProps> = ({ onOpenTeam }) => {

@@ -4,46 +4,57 @@ import { BOOKING_URL } from '../config/constants';
 
 const PLANS = [
     {
-        name: 'Discovery',
+        name: 'Discovery Prototype',
+        tierLabel: 'Tier 1',
         price: '$2,500',
         term: 'one-time',
-        description: 'Workflow audit with prioritized automation roadmap. Typically recovers $15K+ in first 90 days.',
+        description: 'Detailed Audit + Working Prototype. Prove value in 48 hours.',
         features: [
             'Complete workflow audit',
+            'Working prototype (1 agent)',
             'ROI projections',
-            'Implementation roadmap',
-            '1-week delivery'
+            'Implementation roadmap'
         ],
+        deliverable: 'Working prototype + ROI roadmap',
+        timeline: '48 hours',
+        example: '"Client had a working lead research agent by day 2"',
         cta: 'Start Discovery'
     },
     {
-        name: 'Professional',
+        name: 'Production Implementation',
+        tierLabel: 'Tier 2',
         price: '$5,000',
         term: 'one-time',
-        description: 'Custom agent workflows with full integration. Most clients see 5x ROI within 90 days.',
+        description: 'Full Multi-Agent System (Scout → Research → Writer). Integration + Training + 30-day Support.',
         features: [
-            '1-2 custom agent workflows',
-            'Full tool integration',
-            'Team training',
-            '30-day support',
-            '2-week delivery'
+            'Multi-agent system (3+ agents)',
+            'CRM/Email integration',
+            'Team training and documentation',
+            '30-day support included'
         ],
+        deliverable: 'Full 3-agent system deployed',
+        timeline: '2-3 weeks',
+        example: '"Client automated 80% of outreach within 4 weeks"',
         featured: true,
-        cta: 'Book Professional'
+        cta: 'Book Implementation'
     },
     {
-        name: 'Enterprise',
+        name: 'Full Automation Ecosystem',
+        tierLabel: 'Tier 3',
         price: '$10,000+',
         term: 'project',
-        description: 'Full multi-agent systems with unlimited scaling for enterprise teams.',
+        description: 'Complex system with multiple workflows, custom UI, Voice AI. Ongoing optimization included.',
         features: [
             'Multi-agent ecosystem',
-            'Custom AI tools',
-            'Ongoing optimization',
-            'Priority support',
-            '4-week delivery'
+            'Custom AI dashboards',
+            'Voice AI capabilities',
+            'Quarterly performance reviews',
+            'Priority support'
         ],
-        cta: 'Contact Enterprise'
+        deliverable: 'Multi-workflow system with custom UI',
+        timeline: '3-6 weeks',
+        example: '"Client replaced 3 FTEs with agent workflows"',
+        cta: 'Contact Us'
     }
 ];
 
@@ -53,11 +64,11 @@ const Pricing: React.FC = () => {
             <div className="text-center mb-24">
                 <div className="label-mono mb-8">Investment</div>
                 <h2 className="text-heading mb-8">
-                    Pricing that <br />
-                    <span className="text-gradient">pays for itself.</span>
+                    Custom work,<br />
+                    <span className="text-gradient">clear pricing.</span>
                 </h2>
                 <p className="text-xl text-white/50 max-w-2xl mx-auto">
-                    Every plan includes 72-hour deployment. If you don't see measurable results in 90 days, we work for free until you do.
+                    Every project is built around your needs. We don't sell subscriptions or pre-packaged software—you own what we build.
                 </p>
             </div>
 
@@ -67,9 +78,9 @@ const Pricing: React.FC = () => {
                         key={plan.name}
                         className={`p-12 md:p-16 flex flex-col h-full bg-black transition-all duration-700 hover:bg-zinc-950 group ${plan.featured ? 'z-10 ring-1 ring-white/20' : ''}`}
                     >
-                        <div className="label-mono mb-12 group-hover:text-white transition-colors">{plan.name}</div>
-
                         <div className="mb-12">
+                            <div className="label-mono mb-2 group-hover:text-white transition-colors">{plan.tierLabel}</div>
+                            <div className="text-2xl font-black text-white mb-2">{plan.name}</div>
                             <div className="text-6xl font-black text-white tracking-tighter mb-2">{plan.price}</div>
                             <div className="text-xs uppercase tracking-widest text-white/30">{plan.term}</div>
                         </div>
@@ -77,6 +88,18 @@ const Pricing: React.FC = () => {
                         <p className="text-base text-white/60 mb-12 leading-relaxed h-12">
                             {plan.description}
                         </p>
+
+                        {/* Outcome Info */}
+                        <div className="mb-8 space-y-2">
+                            <div className="flex items-center gap-2 text-sm">
+                                <span className="text-accent font-bold">Deliverable:</span>
+                                <span className="text-white/70">{plan.deliverable}</span>
+                            </div>
+                            <div className="flex items-center gap-2 text-sm">
+                                <span className="text-white/40">Timeline:</span>
+                                <span className="text-white/70">{plan.timeline}</span>
+                            </div>
+                        </div>
 
                         <ul className="space-y-6 mb-16 flex-1">
                             {plan.features.map((feature, i) => (
@@ -86,6 +109,11 @@ const Pricing: React.FC = () => {
                                 </li>
                             ))}
                         </ul>
+
+                        {/* Example Result */}
+                        <div className="mb-8 p-4 bg-white/5 rounded-lg border border-white/10">
+                            <p className="text-sm text-white/50 italic">{plan.example}</p>
+                        </div>
 
                         <a
                             href={BOOKING_URL}

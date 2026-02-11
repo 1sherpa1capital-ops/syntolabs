@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
+import HowItWorks from '../components/HowItWorks';
 import WaitlistSection from '../components/WaitlistSection';
 import Services from '../components/Services';
+import Results from '../components/Results';
 import AgentEcosystem from '../components/AgentEcosystem';
 import Comparison from '../components/Comparison';
 import Pricing from '../components/Pricing';
@@ -38,10 +40,16 @@ const Home: React.FC = () => {
             <main id="main-content">
                 <Hero />
 
+                {/* How It Works - 4-step process */}
+                <HowItWorks />
+
                 <WaitlistSection />
 
-                {/* Services Section - 3 core offerings */}
+                {/* Services Section - 4 core offerings with process visualization */}
                 <Services />
+
+                {/* Results - Key metrics */}
+                <Results />
 
                 {/* Agent Ecosystem - 6 Essential Agents */}
                 <AgentEcosystem />
@@ -49,7 +57,7 @@ const Home: React.FC = () => {
                 {/* Comparison Section - 3 key differentiators */}
                 <Comparison />
 
-                {/* Pricing Section - 3-tier model */}
+                {/* Pricing Section - 3-tier model with outcomes */}
                 <Pricing />
 
                 {/* ROI Calculator - Interactive */}

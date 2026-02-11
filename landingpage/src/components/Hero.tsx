@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { BOOKING_URL } from '../config/constants';
 
 const Hero: React.FC = () => {
     const heroRef = useRef<HTMLDivElement>(null);
@@ -21,14 +22,6 @@ const Hero: React.FC = () => {
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
 
-    const scrollToWaitlist = (e: React.MouseEvent) => {
-        e.preventDefault();
-        const waitlistSection = document.getElementById('waitlist');
-        if (waitlistSection) {
-            waitlistSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid bg-bg">
             {/* Pure CSS background with subtle gradient overlay */}
@@ -39,9 +32,9 @@ const Hero: React.FC = () => {
                 <div className="text-center max-w-5xl mx-auto">
                     {/* Main heading */}
                     <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.95]">
-                        <span className="block animate-reveal" style={{ animationDelay: '0.2s' }}>Stop losing</span>
+                        <span className="block animate-reveal" style={{ animationDelay: '0.2s' }}>Turn Chaos</span>
                         <span className="block text-accent animate-reveal" style={{ animationDelay: '0.3s' }}>
-                            $15K+ monthly to missed calls
+                            into Clarity
                         </span>
                     </h1>
 
@@ -50,7 +43,7 @@ const Hero: React.FC = () => {
                         className="text-xl sm:text-2xl text-text-muted font-medium leading-relaxed max-w-3xl mx-auto mb-10 animate-reveal"
                         style={{ animationDelay: '0.4s' }}
                     >
-                        Our AI answers every inquiry in under 2 seconds, qualifies serious prospects, and books appointments directly into your calendar—while you focus on treatments.
+                        Custom AI workflows that eliminate your team's busiest work—built in 48 hours, not weeks. Stop trading senior time for busywork.
                     </p>
 
                     {/* CTA Button */}
@@ -59,11 +52,12 @@ const Hero: React.FC = () => {
                         style={{ animationDelay: '0.5s' }}
                     >
                         <a
-                            href="#waitlist"
-                            onClick={scrollToWaitlist}
+                            href={BOOKING_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="btn-double-layer group relative inline-flex items-center gap-3 text-lg"
                         >
-                            Join Waitlist
+                            Book Strategy Call
                             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </a>
                     </div>
@@ -84,7 +78,7 @@ const Hero: React.FC = () => {
                         style={{ animationDelay: '0.7s' }}
                     >
                         <span className="text-sm sm:text-base font-bold text-text-default tracking-wide">
-                            $1.2M+ Revenue Recovered <span className="mx-3 text-text-muted">•</span> 15K+ Calls Answered
+                            15+ Hours Saved Weekly <span className="mx-3 text-text-muted">•</span> 48-Hour Prototypes <span className="mx-3 text-text-muted">•</span> $2.5M+ Revenue Delivered
                         </span>
                     </div>
                 </div>
