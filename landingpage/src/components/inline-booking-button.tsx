@@ -36,10 +36,10 @@ export function InlineBookingButton({
     if (envLink) return envLink;
     
     const templates: Record<string, string> = {
-      'discovery': 'rhigden-sonam-sherpa-624tui/discovery-call',
-      'sales-call': 'rhigden-sonam-sherpa-624tui/sales-call',
-      'product-consult': 'rhigden-sonam-sherpa-624tui/product-consult',
-      'partner-up': 'rhigden-sonam-sherpa-624tui/partner-up',
+      'discovery': 'rhigden-sonam-sherpa/discovery-call',
+      'sales-call': 'rhigden-sonam-sherpa/sales-call',
+      'product-consult': 'rhigden-sonam-sherpa/product-consult',
+      'partner-up': 'rhigden-sonam-sherpa/partner-up',
     };
     return templates[flow];
   };
