@@ -17,7 +17,7 @@ const DEFAULT_CONFIG = {
 
 export function InlineBookingButton({
   flow = 'discovery',
-  namespace = 'e2ePrerenderLightTheme',
+  namespace = 'syntolabs',
   className = '',
 }: InlineBookingButtonProps) {
   const [config] = useState(DEFAULT_CONFIG);
@@ -31,7 +31,7 @@ export function InlineBookingButton({
 
   // Get cal link for the flow
   const getCalLink = () => {
-    const envKey = `NEXT_PUBLIC_CAL_LINK_${flow.toUpperCase()}`;
+    const envKey = `NEXT_PUBLIC_CAL_LINK_${flow.toUpperCase().replace(/-/g, '_')}`;
     const envLink = process.env[envKey];
     if (envLink) return envLink;
     
@@ -62,8 +62,8 @@ export function InlineBookingDemo() {
     <div className="space-y-4">
       <p className="text-sm text-zinc-500 mb-4">Alternative: Inline embed (no modal)</p>
       <div className="flex flex-wrap gap-3">
-        <InlineBookingButton flow="discovery" namespace="e2ePrerenderLightTheme" />
-        <InlineBookingButton flow="sales-call" namespace="popupRescheduleWithReschedulePath" />
+        <InlineBookingButton flow="discovery" />
+        <InlineBookingButton flow="sales-call" />
       </div>
     </div>
   );

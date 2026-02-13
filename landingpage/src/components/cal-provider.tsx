@@ -1,6 +1,5 @@
 import { getCalApi } from "@calcom/embed-react";
-import { useEffect } from "react";
-import { MouseEvent } from "react";
+import { useEffect, useRef } from "react";
 
 interface CalProviderProps {
   children: React.ReactNode;
@@ -13,9 +12,24 @@ interface CalProviderProps {
 }
 
 type BookingFlow = 'discovery' | 'sales-call' | 'product-consult' | 'partner-up';
+type CalApi = Awaited<ReturnType<typeof getCalApi>>;
+
+// Module-level cache for Cal API promise
+let calApiPromise: Promise<CalApi> | null = null;
+
+function getCachedCalApi(): Promise<CalApi> {
+  if (!calApiPromise) {
+    calApiPromise = getCalApi({ embedJsUrl: "https://cal.com/embed/embed.js" }).catch((err) => {
+      // Reset cache on error so next call can retry
+      calApiPromise = null;
+      throw err;
+    });
+  }
+  return calApiPromise;
+}
 
 export function getCalLink(flow: BookingFlow = 'discovery'): string {
-  const template = "NEXT_PUBLIC_CAL_LINK_" + flow.toUpperCase();
+  const template = "NEXT_PUBLIC_CAL_LINK_" + flow.toUpperCase().replace(/-/g, '_');
   const envTemplate = process.env[template];
   if (envTemplate) return envTemplate;
 
@@ -29,14 +43,20 @@ export function getCalLink(flow: BookingFlow = 'discovery'): string {
   return templates[template];
 }
 
-export function openCalModal(calLink?: string, flow?: BookingFlow): void {
+export function openCalModal(calLink?: string, flow?: BookingFlow): Promise<void> {
+  console.log("[Cal.com] Opening modal for", calLink || flow);
   const link = calLink || process.env.NEXT_PUBLIC_CAL_LINK || getCalLink(flow);
-  getCalApi({ embedJsUrl: "https://cal.com/embed/embed.js" }).then((cal) => {
+
+  return getCachedCalApi().then((cal) => {
+    console.log("[Cal.com] API loaded, opening modal for:", link);
     cal("modal", {
       calLink: link,
     });
   }).catch((err) => {
-    console.error("Cal.com modal error:", err);
+    console.error("[Cal.com] Modal error:", err);
+    // Fallback: open in new tab
+    console.log("[Cal.com] Falling back to direct URL:", `https://cal.com/${link}`);
+    window.open(`https://cal.com/${link}`, '_blank');
   });
 }
 
@@ -46,15 +66,26 @@ export function CalProvider({
   accessToken,
   options,
 }: CalProviderProps) {
+  const initializedRef = useRef(false);
+
   useEffect(() => {
+    if (initializedRef.current) return;
+    initializedRef.current = true;
+
     (async function () {
-      const cal = await getCalApi({ embedJsUrl: "https://cal.com/embed/embed.js" });
-      cal("ui", {
-        theme: "dark",
-        styles: { branding: { brandColor: "#22c55e" } },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
+      console.log("[Cal.com] Loading embed API...");
+      try {
+        const cal = await getCachedCalApi();
+        console.log("[Cal.com] API loaded successfully");
+        cal("ui", {
+          theme: "dark",
+          styles: { branding: { brandColor: "#22c55e" } },
+          hideEventTypeDetails: false,
+          layout: "month_view",
+        });
+      } catch (err) {
+        console.error("[Cal.com] Failed to initialize CalProvider:", err);
+      }
     })();
   }, []);
 
