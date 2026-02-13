@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { HeroBackground } from "@/components/hero-background";
 import { FloatingCTA } from "@/components/floating-cta";
-import { CalProvider, openCalModal } from "@/components/cal-provider";
+import { CalProvider, openCalModal, getCalLink } from "@/components/cal-provider";
 import { ContactForm } from "@/components/contact-form";
 import { InlineBookingDemo } from "@/components/inline-booking-button";
 import { Disclosure, DisclosureButton, DisclosurePanel, Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
@@ -23,7 +23,7 @@ export default function Home() {
               <span className="text-sm font-medium tracking-tight text-zinc-400">SYNTO LABS</span>
             </Link>
             <button
-              onClick={openCalModal}
+              onClick={() => openCalModal(getCalLink('discovery'))}
               className="text-sm font-medium px-4 py-2 bg-white text-black hover:bg-zinc-200 transition-all duration-200 rounded-full cursor-pointer"
             >
               Apply
@@ -49,7 +49,7 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
               <button
-                onClick={openCalModal}
+                onClick={() => openCalModal(getCalLink('discovery'))}
                 className="btn-double text-base cursor-pointer"
               >
                 Book a free audit
@@ -117,7 +117,7 @@ export default function Home() {
                       </li>
                     </ul>
                     <button
-                      onClick={openCalModal}
+                      onClick={() => openCalModal(getCalLink('discovery'))}
                       className="btn-double text-sm inline-block cursor-pointer"
                     >
                       Get your free audit
@@ -146,7 +146,7 @@ export default function Home() {
                       </li>
                     </ul>
                     <button
-                      onClick={openCalModal}
+                      onClick={() => openCalModal(getCalLink('product-consult'))}
                       className="btn-double text-sm inline-block cursor-pointer"
                     >
                       Let's build something
@@ -176,7 +176,7 @@ export default function Home() {
                       </li>
                     </ul>
                     <button
-                      onClick={openCalModal}
+                      onClick={() => openCalModal(getCalLink('product-consult'))}
                       className="btn-double text-sm inline-block cursor-pointer"
                     >
                       Build my product
@@ -265,7 +265,7 @@ export default function Home() {
                   </li>
                 </ul>
                 <button
-                  onClick={openCalModal}
+                  onClick={() => openCalModal(getCalLink('discovery'))}
                   className="block w-full py-3.5 text-center border border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:border-zinc-600 hover:text-white transition-all duration-200 rounded-full font-medium cursor-pointer"
                 >
                   Get Started
@@ -313,7 +313,7 @@ export default function Home() {
                   </li>
                 </ul>
                 <button
-                  onClick={openCalModal}
+                  onClick={() => openCalModal(getCalLink('sales-call'))}
                   className="block w-full py-3.5 text-center bg-emerald-500 text-black hover:bg-emerald-400 transition-all duration-200 rounded-full font-medium shadow-lg shadow-emerald-500/20 cursor-pointer"
                 >
                   Get Started
@@ -358,7 +358,7 @@ export default function Home() {
                   </li>
                 </ul>
                 <button
-                  onClick={openCalModal}
+                  onClick={() => openCalModal(getCalLink('partner-up'))}
                   className="block w-full py-3.5 text-center border border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:border-zinc-600 hover:text-white transition-all duration-200 rounded-full font-medium cursor-pointer"
                 >
                   Contact Us
@@ -493,7 +493,7 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
               <button
-                onClick={openCalModal}
+                onClick={() => openCalModal(getCalLink('sales-call'))}
                 className="btn-double text-base cursor-pointer"
               >
                 FIX MY OPERATIONS

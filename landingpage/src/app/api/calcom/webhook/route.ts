@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Webhook } from 'svix';
+import { createHmac } from 'crypto';
 
 const webhookPayloadSchema = {
   type: 'string',
@@ -31,14 +31,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Verify webhook signature
-    const expectedSignature = await crypto.subtle.digest('SHA-256', webhookSecret)
-      .update(new TextEncoder().encode(payload))
-      .digest();
+    // Verify webhook signature using HMAC-SHA256
+    const hmac = createHmac('sha256', webhookSecret);
+    hmac.update(payload);
+    const expectedSignature = hmac.digest('base64');
 
-    const verifiedSignature = Buffer.from(expectedSignature).toString('base64');
-
-    if (calSignature !== verifiedSignature) {
+    if (calSignature !== expectedSignature) {
       console.error('Cal.com webhook signature verification failed');
       return NextResponse.json(
         { error: 'Invalid webhook signature' },

@@ -44,11 +44,10 @@ export function openCalModal(calLink?: string, flow?: BookingFlow) {
 }
 
 export function getCalLink(flow: BookingFlow = 'discovery'): string {
-  // Check for flow-specific env var (e.g., CAL_LINK_DISCOVERY)
-  const template = process.env[`CAL_LINK_${flow.toUpperCase()}`];
-  if (template) return template;
+  const template = "CAL_LINK_" + flow.toUpperCase();
+  const envTemplate = process.env[template];
+  if (envTemplate) return envTemplate;
 
-  // Fallback to default templates
   const templates: Record<BookingFlow, string> = {
     'discovery': 'rhigden/discovery',
     'sales-call': 'rhigden/sales-call',
