@@ -48,14 +48,14 @@ export function getCalLink(flow: BookingFlow = 'discovery'): string {
   const envTemplate = process.env[template];
   if (envTemplate) return envTemplate;
 
-  const templates: Record<BookingFlow, string> = {
-    'discovery': 'rhigden-sonam-sherpa-624tui/discovery-call',
-    'sales-call': 'rhigden-sonam-sherpa-624tui/sales-call',
-    'product-consult': 'rhigden-sonam-sherpa-624tui/product-consult',
-    'partner-up': 'rhigden-sonam-sherpa-624tui/partner-up',
+  const linkMap: Record<string, string> = {
+    'CAL_LINK_DISCOVERY': 'rhigden-sonam-sherpa-624tui/discovery-call',
+    'CAL_LINK_SALES_CALL': 'rhigden-sonam-sherpa-624tui/sales-call',
+    'CAL_LINK_PRODUCT_CONSULT': 'rhigden-sonam-sherpa-624tui/product-consult',
+    'CAL_LINK_PARTNER_UP': 'rhigden-sonam-sherpa-624tui/partner-up',
   };
 
-  return templates[flow];
+  return linkMap[template];
 }
 
 export { getCalLink };
