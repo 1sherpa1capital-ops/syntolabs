@@ -23,7 +23,7 @@ export function FloatingCTA() {
       }`}
     >
       <button
-        onClick={openCalModal}
+        onClick={() => openCalModal()}
         className="flex items-center gap-2 bg-white text-black px-6 py-3 text-sm font-medium hover:bg-zinc-200 hover:shadow-[0_8px_30px_rgba(255,255,255,0.25)] hover:scale-[1.02] transition-all duration-200 rounded-full cursor-pointer"
       >
         Book Audit
