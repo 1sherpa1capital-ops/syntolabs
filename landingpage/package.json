@@ -6,16 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "update-cal-fields": "bun run scripts/update-cal-fields.ts",
+    "create-cal-event-types": "bun run scripts/create-cal-event-types.js"
   },
   "dependencies": {
-    "agentmail": "^0.2.11",
     "@calcom/embed-core": "^1.5.3",
     "@calcom/embed-react": "^1.5.3",
     "@headlessui/react": "^2.2.9",
     "@heroicons/react": "^2.2.0",
     "@types/three": "^0.182.0",
+    "agentmail": "^0.2.11",
     "clsx": "^2.1.1",
+    "dotenv": "^17.3.1",
     "lucide-react": "^0.563.0",
     "next": "16.1.6",
     "react": "19.2.3",

@@ -31,11 +31,15 @@ export function InlineBookingButton({
 
   // Get cal link for the flow
   const getCalLink = () => {
+    const envKey = `NEXT_PUBLIC_CAL_LINK_${flow.toUpperCase()}`;
+    const envLink = process.env[envKey];
+    if (envLink) return envLink;
+    
     const templates: Record<string, string> = {
-      'discovery': 'rhigden/discovery',
-      'sales-call': 'rhigden/sales-call',
-      'product-consult': 'rhigden/product-consult',
-      'partner-up': 'rhigden/partner-up',
+      'discovery': 'rhigden-sonam-sherpa-624tui/discovery-call',
+      'sales-call': 'rhigden-sonam-sherpa-624tui/sales-call',
+      'product-consult': 'rhigden-sonam-sherpa-624tui/product-consult',
+      'partner-up': 'rhigden-sonam-sherpa-624tui/partner-up',
     };
     return templates[flow];
   };
