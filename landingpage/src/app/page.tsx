@@ -8,13 +8,16 @@ import { FloatingCTA } from "@/components/floating-cta";
 import { CalProvider, openCalModal, getCalLink } from "@/components/cal-provider";
 import { ContactForm } from "@/components/contact-form";
 import { InlineBookingDemo } from "@/components/inline-booking-button";
+import { BookingProvider } from "@/context/booking-context";
+import { BookingToasts } from "@/components/booking-toasts";
 import { Disclosure, DisclosureButton, DisclosurePanel, Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export default function Home() {
   return (
     <CalProvider>
-      <div className="min-h-screen bg-black text-white font-sans">
+      <BookingProvider>
+        <div className="min-h-screen bg-black text-white font-sans">
         {/* Floating Navigation */}
         <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
           <div className="flex items-center gap-4 px-6 py-3 bg-black/60 backdrop-blur-xl border border-zinc-800/50 rounded-full">
@@ -529,6 +532,8 @@ export default function Home() {
 
         <FloatingCTA />
       </div>
+      <BookingToasts />
+    </BookingProvider>
     </CalProvider>
   );
 }
