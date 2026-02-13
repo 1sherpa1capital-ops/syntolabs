@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowUpRight, Loader2 } from "lucide-react";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { getCalApi } from "@calcom/embed-react";
 
 interface InlineBookingButtonProps {
@@ -9,12 +9,6 @@ interface InlineBookingButtonProps {
   namespace?: string;
   className?: string;
 }
-
-const DEFAULT_CONFIG = {
-  theme: "dark" as const,
-  styles: { branding: { brandColor: "#22c55e" } },
-  layout: "month_view" as const,
-};
 
 // Module-level cache
 let calApiPromise: ReturnType<typeof getCalApi> | null = null;
@@ -53,8 +47,8 @@ export function InlineBookingButton({
         elementOrSelector: buttonElement,
         calLink: calLink,
         config: {
-          ...DEFAULT_CONFIG,
-          name: namespace,
+          theme: "dark",
+          layout: "month_view",
         },
       });
       
