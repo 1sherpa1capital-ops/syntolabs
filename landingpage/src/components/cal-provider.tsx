@@ -49,10 +49,10 @@ export function getCalLink(flow: BookingFlow = 'discovery'): string {
   if (envTemplate) return envTemplate;
 
   const templates: Record<BookingFlow, string> = {
-    'discovery': 'rhigden/discovery',
-    'sales-call': 'rhigden/sales-call',
-    'product-consult': 'rhigden/product-consult',
-    'partner-up': 'rhigden/partner-up',
+    'discovery': 'rhigden-sonam-sherpa-624tui/discovery-call',
+    'sales-call': 'rhigden-sonam-sherpa-624tui/sales-call',
+    'product-consult': 'rhigden-sonam-sherpa-624tui/product-consult',
+    'partner-up': 'rhigden-sonam-sherpa-624tui/partner-up',
   };
 
   return templates[flow];
