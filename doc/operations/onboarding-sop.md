@@ -1,6 +1,6 @@
 # Synto Labs Client Onboarding SOP
 
-**Version:** 2.0
+**Version:** 2.1
 **Philosophy:** 48-Hour Sprint. Zero Friction. Maximum Impact.
 **Core Principle:** Under-Promise. Over-Deliver.
 
@@ -33,10 +33,10 @@
 2.  **Dig:** "How many hours a week does that eat up? What is that costing you in lost deals/productivity?"
 3.  **Vision:** "If we could automate that completely—no humans involved—what would you do with those 15 hours?"
 4.  **Check:** "Does solving this become a priority *this month*?"
-5.  **Budget:** "Our custom builds start at $3k. Does that fit your budget to fix this problem permanently?"
+5.  **Budget:** "Our prototypes start at $2.5k. Does that fit your budget to prove this out?"
 
 **Qualification (BANT):**
-*   **Budget:** Can they afford $3k+?
+*   **Budget:** Can they afford $2.5k?
 *   **Authority:** Can they sign?
 *   **Need:** Is the pain real/urgent?
 *   **Timeline:** Do they want it now?
@@ -52,7 +52,7 @@
 **The Offer (Psychology: *Risk Reversal*):**
 *   **Scope:** Clear deliverables (e.g., "1 Scout Agent, 1 Research Agent, 1 Action Agent").
 *   **Timeline:** "Working prototype in 48 hours from kickoff."
-*   **Investment:** Fixed price. No hourly billing.
+*   **Investment:** Fixed price ($2.5k Prototype / $5k+ Full). No hourly billing.
 *   **Guarantee:** "If it doesn't work as promised, you don't pay."
 
 **Follow-Up Sequence:**

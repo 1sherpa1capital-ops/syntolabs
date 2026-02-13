@@ -2,7 +2,7 @@
 
 **Version:** 1.0
 **Date:** February 9, 2026
-**Target:** $50,000 MRR in 3-4 months
+**Target:** $50,000 MRR in 6 months
 
 ---
 
@@ -405,19 +405,22 @@ Overall: 9.6% end-to-end conversion
 
 ---
 
-## 4. 4-Month Revenue Model
+## 4. 6-Month Revenue Model (Unified Projection)
 
-| Month | Retainer Clients | One-Time Projects | MRR | One-Time Revenue | Total Revenue |
-|-------|------------------|-------------------|-----|------------------|---------------|
-| Month 1 | 0 | 1 | $0 | $5,000 | $5,000 |
-| Month 2 | 1 | 2 | $2,500 | $10,000 | $12,500 |
-| Month 3 | 3 | 1 | $7,500 | $5,000 | $12,500 |
-| Month 4 | 5 | 2 | $12,500 | $10,000 | $22,500 |
+| Month | Focus | Goal MRR | One-Time Fees | Total Rev |
+| :--- | :--- | :--- | :--- | :--- |
+| **1** | Validation | $0 | $5,000 | $5,000 |
+| **2** | First Retainer | $3,000 | $7,500 | $10,500 |
+| **3** | Systems & Hire | $8,000 | $7,500 | $15,500 |
+| **4** | Scaling | $15,000 | $10,000 | $25,000 |
+| **5** | Optimization | $25,000 | $10,000 | $35,000 |
+| **6** | Maturity | **$35,000** | $15,000 | **$50,000** |
 
-**Path to $50k MRR (Month 6-7):**
-- 10 retainers @ $2,500/mo avg = $25,000 MRR
-- Add 5 premium retainers @ $5,000/mo = $25,000 MRR
-- **Total: $50,000 MRR**
+**Path to $1M ARR (Month 12-18):**
+- 12 Retainer Clients @ $4k/mo avg = $48k MRR
+- 2 Premium Enterprise Clients @ $10k/mo = $20k MRR
+- Consistent One-Time Projects = $15k/mo
+- **Total: ~$83k/mo ($1M ARR run rate)**
 
 ---
 

@@ -1,0 +1,76 @@
+{
+  "tasks": [
+    {
+      "id": "agent-1-gap-analysis",
+      "name": "Copy Gap Analysis",
+      "description": "Analyze current landing page copy against brand guidelines",
+      "priority": "high",
+      "status": "ready",
+      "assignee": null,
+      "dependencies": []
+    },
+    {
+      "id": "agent-2-hero-copy",
+      "name": "Hero Section Copy",
+      "description": "Generate new headline and subheadline (3 variations)",
+      "priority": "high",
+      "status": "blocked",
+      "assignee": null,
+      "dependencies": ["agent-1-gap-analysis"]
+    },
+    {
+      "id": "agent-3-features-copy",
+      "name": "Features Section Copy",
+      "description": "Generate outcome-focused feature descriptions",
+      "priority": "high",
+      "status": "blocked",
+      "assignee": null,
+      "dependencies": ["agent-1-gap-analysis"]
+    },
+    {
+      "id": "agent-4-cta-copy",
+      "name": "CTA and Navigation Copy",
+      "description": "Generate action-oriented CTAs and navigation",
+      "priority": "medium",
+      "status": "blocked",
+      "assignee": null,
+      "dependencies": ["agent-1-gap-analysis"]
+    },
+    {
+      "id": "agent-5-meta-copy",
+      "name": "Meta and SEO Copy",
+      "description": "Generate title and meta description",
+      "priority": "medium",
+      "status": "blocked",
+      "assignee": null,
+      "dependencies": ["agent-1-gap-analysis"]
+    },
+    {
+      "id": "agent-6-quality-review",
+      "name": "Quality Review",
+      "description": "3 blind reviewers + aggregation + devil's advocate",
+      "priority": "high",
+      "status": "blocked",
+      "assignee": null,
+      "dependencies": ["agent-2-hero-copy", "agent-3-features-copy", "agent-4-cta-copy", "agent-5-meta-copy"]
+    },
+    {
+      "id": "agent-7-implementation",
+      "name": "Implementation",
+      "description": "Update page.tsx and layout.tsx with approved copy",
+      "priority": "high",
+      "status": "blocked",
+      "assignee": null,
+      "dependencies": ["agent-6-quality-review"]
+    },
+    {
+      "id": "agent-8-verification",
+      "name": "Verification",
+      "description": "Build and verify the updated landing page",
+      "priority": "high",
+      "status": "blocked",
+      "assignee": null,
+      "dependencies": ["agent-7-implementation"]
+    }
+  ]
+}

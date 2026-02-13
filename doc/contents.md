@@ -41,3 +41,4 @@
 | [legal/nda-template.md](legal/nda-template.md) | Non-Disclosure Agreement for contractors/clients. |
 | [legal/proposal-template.md](legal/proposal-template.md) | Template for project proposals. |
 | [legal/sow-template.md](legal/sow-template.md) | Statement of Work template. |
+| [legal/sla.md](legal/sla.md) | **NEW.** Service Level Agreement for Retainer clients (99% Uptime). |

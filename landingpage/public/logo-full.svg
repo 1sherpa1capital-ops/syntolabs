@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 64" fill="none">
+  <!-- Logo Icon -->
+  <rect width="48" height="48" rx="8" fill="#000"/>
+  <path d="M12 12h6v6h-6z" fill="#00ff41"/>
+  <path d="M24 12h6v6h-6z" fill="#00ff41" opacity="0.7"/>
+  <path d="M36 12h6v6h-6z" fill="#00ff41" opacity="0.4"/>
+  <path d="M12 24h6v6h-6z" fill="#00ff41" opacity="0.7"/>
+  <path d="M24 24h6v6h-6z" fill="#00ff41" opacity="0.4"/>
+  <path d="M36 24h6v6h-6z" fill="#00ff41" opacity="0.7"/>
+  <path d="M12 36h6v6h-6z" fill="#00ff41" opacity="0.4"/>
+  <path d="M24 36h6v6h-6z" fill="#00ff41" opacity="0.7"/>
+  <path d="M36 36h6v6h-6z" fill="#00ff41"/>
+  <!-- Text -->
+  <text x="60" y="24" font-family="monospace" font-size="14" font-weight="600" fill="#fff">SYNTO</text>
+  <text x="60" y="42" font-family="monospace" font-size="10" fill="#666" letter-spacing="4">LABS</text>
+</svg>

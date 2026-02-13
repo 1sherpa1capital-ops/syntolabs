@@ -1,39 +1,36 @@
-# Synto Labs Landing Page
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Immersive landing page for Synto Labs agency.
+## Getting Started
 
-**URL:** [syntolabs.xyz](https://syntolabs.xyz)
-
-## Features
-
-- **3D Immersive Design**: Built with Three.js and GSAP.
-- **ROI Calculator**: Interactive tool for business automation impact.
-- **AI Agent Demos**: Interactive voice and console demos.
-- **Case Studies**: Detailed business implementations.
-
-## Tech Stack
-
-- **React 19**
-- **Vite 6**
-- **Three.js**
-- **GSAP**
-- **Framer Motion**
-- **Tailwind CSS v4**
-- **Lenis** (Smooth Scrolling)
-
-## Development
+First, run the development server:
 
 ```bash
-# Install dependencies
-bun install
-
-# Run dev server
-bun run dev
-
-# Build
-bun run build
-
-# Deploy
-vercel --prod
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
-# Updated Tue Feb 10 14:09:01 EST 2026
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

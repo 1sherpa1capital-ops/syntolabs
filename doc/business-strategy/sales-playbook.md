@@ -480,17 +480,27 @@ Ready to move forward?
 **Value-Based, Not Hour-Based**
 
 | Factor | Consideration |
-|--------|---------------|
-| Time Saved | $X hours × hourly rate × 12 months |
-| Revenue Impact | $X additional deals × average deal size |
-| Competitive Advantage | Speed to market, differentiation |
-| Strategic Value | What is this worth to them? |
+| :--- | :--- |
+| **Time Saved** | $X hours × hourly rate × 12 months |
+| **Revenue Impact** | $X additional deals × average deal size |
+| **Competitive Advantage** | Speed to market, differentiation |
+| **Strategic Value** | What is this worth to them? |
 
-**Typical Ranges:**
-- Discovery-only: $2,500
-- Single workflow: $5,000-$8,000
-- Multi-workflow system: $10,000-$15,000
-- Monthly retainer: $2,000-$5,000
+**Service Tiers (Clear Distinction):**
+
+1.  **Discovery Prototype ($2,500 Fixed)**
+    *   **Deliverable:** Audit + 1 Core Agent Logic (Clickable/Limited Data).
+    *   **Goal:** Proof of Concept. Low risk entry.
+    *   **Timeline:** 48 Hours.
+
+2.  **Production Implementation ($5,000 - $10,000 Starting)**
+    *   **Deliverable:** Full Multi-Agent System (Scout -> Research -> Writer).
+    *   **Inclusions:** Live Integrations, Error Handling, Team Training.
+    *   **Timeline:** 2-3 Weeks.
+
+3.  **Monthly Retainer ($2,000 - $5,000/mo)**
+    *   **Deliverable:** Ongoing optimization, new workflows, priority support.
+    *   **Inclusions:** SLA (99% Uptime), Prompt Tuning, Model Upgrades.
 
 **Never discount.** If budget is an issue, reduce scope, not price.
 
@@ -583,8 +593,8 @@ Let's do this!
 | Objection | Response |
 |-----------|----------|
 | "It's too expensive" | "I get it. Let's look at ROI: [recap value]. If we reduce scope to [smaller project], we could do $[X]. Would that work?" |
-| "We need to think about it" | "Totally fair. What specific questions do you have? I can address them now." |
-| "We want to get other quotes" | "Smart. For comparison: [competitor] does [X], we do [Y]. We're custom, they're cookie-cutter. We deliver in 48 hours, they take months. We'll be here." |
+| "Need to think about it" | "Totally fair. What specific questions do you have? I can address them now." |
+| "Want other quotes" | "Smart. For comparison: [competitor] does [X], we do [Y]. We're custom, they're cookie-cutter. We deliver in 48 hours, they take months. We'll be here." |
 | "The timeline is too aggressive" | "48 hours to a working prototype, not final delivery. We iterate based on your feedback. Want me to walk through the process?" |
 
 ---
