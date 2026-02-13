@@ -109,7 +109,11 @@ See `q1_roadmap/` for roadmap documentation.
 - `syntolabs.xyz` domain is pre-assigned to the `syntolabs` Vercel project
 - Git author `agent@antigravity.ai` lacks team access — use GitHub push to trigger deployments
 - Three.js imports: use `'three'` not `'../../node_modules/@types/three'`
-- Booking URL: cal.com integration
+- **Cal.com Integration**: Flow-based booking system with API v2
+  - **Booking Flows**: `discovery` (15 min), `sales-call` (30 min), `product-consult` (60 min), `partner-up` (45 min)
+  - **Event Types**: Created via Cal.com API (discovery-call, sales-call, product-consult, partner-up)
+  - **Webhook**: `/api/calcom/webhook` endpoint for booking event tracking with HMAC-SHA256 verification
+  - **Booking UI**: Toast notifications for booking confirmations via `BookingProvider` and `BookingToasts`
 - Copy audit grade: B (see `landingpage/COPY_AUDIT.md`)
 
 ## Code Style

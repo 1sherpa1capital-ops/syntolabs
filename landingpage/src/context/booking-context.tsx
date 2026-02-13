@@ -41,7 +41,6 @@ export function BookingProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  // Poll for bookings every 10 seconds
   useEffect(() => {
     refresh();
     const interval = setInterval(refresh, 10000);
