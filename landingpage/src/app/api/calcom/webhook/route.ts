@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createHmac } from 'crypto';
 
-const webhookPayloadSchema = {
-  type: 'string',
-  data: 'unknown',
-} as const;
+
 
 // Simple in-memory store for recent booking events
 const recentBookings: Array<{
