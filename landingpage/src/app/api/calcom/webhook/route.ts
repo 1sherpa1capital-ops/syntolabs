@@ -13,7 +13,7 @@ const recentBookings: Array<{
   createdAt: string;
 }> = [];
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   // Return recent bookings for frontend polling
   return NextResponse.json({ bookings: recentBookings.slice(-10) });
 }
