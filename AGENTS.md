@@ -2,30 +2,41 @@
 
 ## Build & Development Commands
 
+### Landing Page (Next.js)
 ```bash
-# Development (Landing Page)
-cd landingpage && bun run dev
-
-# Development (Personal Page)
-cd mypage && bun run dev
-
-# Production Build
-cd landingpage && bun run build
-
-# Linting
-cd landingpage && bun run lint
-
-# Deploy to Production
-vercel --prod
-
-# Check Deployment Status
-vercel ls
+cd landingpage
+bun run dev          # Start development server
+bun run build        # Production build
+bun run start        # Start production server
+bun run lint         # Run ESLint
+bun run format       # Format with Prettier
+bun run format:check # Check formatting
 ```
+
+### Personal Page (Vite)
+```bash
+cd mypage
+bun run dev          # Start development server
+bun run build        # Production build
+bun run preview      # Preview production build
+bun run lint         # Run ESLint
+bun run format       # Format with Prettier
+bun run format:check # Check formatting
+```
+
+### Deployment
+```bash
+vercel --prod        # Deploy to production
+vercel ls            # Check deployment status
+```
+
+**Note:** No test suite is currently configured. To add tests, consider Vitest or Jest.
 
 ## Code Style Guidelines
 
 ### TypeScript & Types
-- Strict mode enabled (`strict: true` in tsconfig.json)
+- Strict mode enabled (`strict: true`)
+- Target: ES2020
 - Use explicit types for function parameters and return values
 - Prefer interfaces over type aliases for object shapes
 - Use `type` for unions, intersections, and mapped types
@@ -54,14 +65,13 @@ import { siblingComponent } from "./sibling";
 - **Constants**: UPPER_SNAKE_CASE for true constants
 - **Types/Interfaces**: PascalCase (`BookingFlow`, `UserProfile`)
 - **Files**: PascalCase for components, camelCase for utilities
-- **CSS Classes**: Tailwind utilities with consistent ordering
+- **CSS Classes**: Tailwind utilities
 
 ### React Patterns
 - Use functional components with hooks
 - Use `"use client"` directive for client components
 - Use `useCallback` for functions passed to child components
 - Use `useMemo` for expensive computations
-- Use `useRef` with callback refs when dynamic initialization needed
 - Prefix custom hooks with `use` (`useCalApi`)
 
 ### Error Handling
@@ -80,12 +90,22 @@ console.log("[ComponentName] Loading...");
 console.error("[ComponentName] Failed:", error);
 ```
 
+### Prettier Configuration
+```json
+{
+  "semi": true,
+  "singleQuote": false,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "plugins": ["prettier-plugin-tailwindcss"]
+}
+```
+
 ### Tailwind CSS v4
 - Use utility classes directly on elements
 - Extract repeated patterns to component classes in `globals.css`
 - Use CSS variables for theme values in `:root`
 - Prefer `flex` and `grid` layouts
-- Use `transition-all duration-200` for hover states
 
 ### Component Structure
 ```typescript
@@ -116,9 +136,9 @@ export function ComponentName({ prop }: Props) {
 ```
 
 ### Environment Variables
-- Use `NEXT_PUBLIC_` prefix for client-side variables
-- Replace hyphens with underscores in env var names: `NEXT_PUBLIC_CAL_LINK_SALES_CALL`
-- Provide fallback values for optional configuration
+- Use `NEXT_PUBLIC_` prefix for client-side variables (landingpage)
+- Use `VITE_` prefix for client-side variables (mypage)
+- Replace hyphens with underscores: `NEXT_PUBLIC_CAL_LINK_SALES_CALL`
 - Never commit secrets to the repository
 
 ### Performance
@@ -130,23 +150,35 @@ export function ComponentName({ prop }: Props) {
 ## Project Structure
 
 ```
-landingpage/
+landingpage/          # Next.js 16 App Router
 ├── src/
-│   ├── components/     # Reusable React components
-│   ├── app/           # Next.js App Router pages
-│   ├── lib/           # Utility functions
-│   ├── hooks/         # Custom React hooks
-│   ├── context/       # React context providers
-│   └── types/         # TypeScript type definitions
-├── docs/              # Documentation
-├── scripts/           # Build/util scripts
-└── public/            # Static assets
+│   ├── app/          # App Router pages & API routes
+│   ├── components/   # React components
+│   ├── lib/          # Utility functions
+│   ├── context/      # React context providers
+│   └── types/        # TypeScript definitions
+├── public/           # Static assets
+└── docs/             # Documentation
+
+mypage/               # Vite + React
+├── src/
+│   ├── pages/        # Page components
+│   ├── components/   # React components
+│   ├── lib/          # Utility functions
+│   └── hooks/        # Custom hooks
+└── public/           # Static assets
 ```
 
 ## Key Dependencies
-- **Framework**: Next.js 16.1.6, React 19.2.3
+- **Framework**: React 19.2.3, Next.js 16.1.6 (landingpage), Vite 6 (mypage)
 - **Styling**: Tailwind CSS v4, clsx, tailwind-merge
-- **UI**: Headless UI, Lucide React
-- **3D**: Three.js (lazy-loaded)
-- **Cal.com**: @calcom/embed-react, @calcom/embed-core
+- **UI**: Headless UI, Lucide React, Heroicons
+- **Cal.com**: @calcom/embed-react
+- **Validation**: Zod
 - **Package Manager**: Bun
+
+## Monorepo Notes
+- Each project has its own `package.json` and dependencies
+- No shared workspace configuration (projects are independent)
+- Both projects use Bun as package manager
+- ESLint and Prettier configurations are project-specific
