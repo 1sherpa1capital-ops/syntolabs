@@ -6,7 +6,7 @@ import Image from "next/image";
 import { HeroBackground } from "@/components/hero-background";
 import { FloatingCTA } from "@/components/floating-cta";
 import { CalProvider, openCalModal, getCalLink } from "@/components/cal-provider";
-import { ContactForm } from "@/components/contact-form";
+
 
 import { BookingProvider } from "@/context/booking-context";
 import { BookingToasts } from "@/components/booking-toasts";
@@ -460,16 +460,21 @@ export default function Home() {
 
 
 
-          {/* Contact Form */}
+          {/* Contact Section */}
           <section id="contact" className="py-32 bg-zinc-950">
-            <div className="mx-auto max-w-md px-6">
-              <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-white text-center">
+            <div className="mx-auto max-w-md px-6 text-center">
+              <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-white">
                 Get in touch
               </h2>
-              <p className="text-zinc-400 mb-12 text-center">
-                Send us a message and we'll get back to you within 24 hours.
+              <p className="text-zinc-400 mb-8">
+                We&apos;ll get back to you within 24 hours.
               </p>
-              <ContactForm />
+              <a
+                href="mailto:hello@syntolabs.xyz"
+                className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 text-base font-medium hover:bg-zinc-200 transition-all duration-200 rounded-full"
+              >
+                hello@syntolabs.xyz
+              </a>
             </div>
           </section>
 

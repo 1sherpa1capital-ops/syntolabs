@@ -8,22 +8,18 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "update-cal-fields": "bun run scripts/update-cal-fields.ts",
-    "create-cal-event-types": "bun run scripts/create-cal-event-types.js"
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@calcom/embed-core": "^1.5.3",
     "@calcom/embed-react": "^1.5.3",
     "@headlessui/react": "^2.2.9",
     "@heroicons/react": "^2.2.0",
-    "agentmail": "^0.2.11",
     "clsx": "^2.1.1",
     "lucide-react": "^0.563.0",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "svix": "^1.24.0",
     "tailwind-merge": "^3.4.0",
     "zod": "^3.24.0"
   },
