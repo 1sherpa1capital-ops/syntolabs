@@ -3,6 +3,7 @@
 import { ArrowUpRight, Loader2 } from "lucide-react";
 import { useState, useCallback } from "react";
 import { getCalApi } from "@calcom/embed-react";
+import { getCalLink } from "./cal-provider";
 
 interface InlineBookingButtonProps {
   flow?: 'discovery' | 'sales-call' | 'product-consult' | 'partner-up';
@@ -40,7 +41,7 @@ export function InlineBookingButton({
     setIsLoading(true);
     try {
       const cal = await getCachedCalApi();
-      const calLink = getCalLink();
+      const calLink = getCalLink(flow);
       
       // Initialize inline embed on this button
       cal("inline", {
@@ -56,24 +57,10 @@ export function InlineBookingButton({
     } catch (err) {
       console.error("[Cal.com] Inline embed error:", err);
       // Fallback: redirect to Cal.com
-      window.open(`https://cal.com/${getCalLink()}`, '_blank');
+      window.open(`https://cal.com/${getCalLink(flow)}`, '_blank');
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const getCalLink = () => {
-    const envKey = `NEXT_PUBLIC_CAL_LINK_${flow.toUpperCase().replace(/-/g, '_')}`;
-    const envLink = process.env[envKey];
-    if (envLink) return envLink;
-    
-    const templates: Record<string, string> = {
-      'discovery': 'rhigden-sonam-sherpa/discovery-call',
-      'sales-call': 'rhigden-sonam-sherpa/sales-call',
-      'product-consult': 'rhigden-sonam-sherpa/product-consult',
-      'partner-up': 'rhigden-sonam-sherpa/partner-up',
-    };
-    return templates[flow];
   };
 
   return (
