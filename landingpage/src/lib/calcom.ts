@@ -122,7 +122,7 @@ export const SYNTOLABS_BOOKING_FIELDS: CalBookingField[] = [
 ];
 
 export async function updateEventTypeWithBookingFields(
-  apiKey: string,
+  _apiKey: string,
   eventTypeId: string,
   bookingFields: CalBookingField[]
 ): Promise<void> {

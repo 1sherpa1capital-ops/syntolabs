@@ -62,9 +62,6 @@ export function openCalModal(calLink?: string, flow?: BookingFlow): Promise<void
 
 export function CalProvider({
   children,
-  clientId,
-  accessToken,
-  options,
 }: CalProviderProps) {
   const initializedRef = useRef(false);
 

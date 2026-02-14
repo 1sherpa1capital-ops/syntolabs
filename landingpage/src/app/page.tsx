@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Check } from "lucide-react";
+
 import Link from "next/link";
 import Image from "next/image";
 import { HeroBackground } from "@/components/hero-background";
