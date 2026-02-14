@@ -26,9 +26,43 @@ bun run format:check # Check formatting
 
 ### Deployment
 ```bash
-vercel --prod        # Deploy to production
+cd landingpage
+vercel --prod        # Deploy to syntolabs project (syntolabs.xyz)
 vercel ls            # Check deployment status
 ```
+
+**Important:** The landingpage directory is linked to the `syntolabs` Vercel project (syntolabs.xyz domain). Always deploy from the landingpage directory.
+
+### Resend Email Integration
+
+#### Environment Variables
+Add these to your local `.env.local`:
+```bash
+RESEND_API_KEY=re_xxxxxxxxxxxx  # Get from https://resend.com/dashboard/api-keys
+RESEND_WEBHOOK_SECRET=whsec_xxx # Get from https://resend.com/dashboard/webhooks
+```
+
+#### Sending Emails
+```typescript
+import { sendEmail } from "@/lib/email";
+
+const result = await sendEmail({
+  to: "recipient@example.com",
+  subject: "Hello",
+  text: "Plain text body",
+  html: "<h1>HTML body</h1>",
+});
+```
+
+#### Webhook Endpoint
+- **Route:** `/api/webhooks/resend`
+- **Events handled:** `email.received`
+- **File:** `landingpage/src/app/api/webhooks/resend/route.ts`
+
+#### Domain Configuration
+- **Domain:** syntolabs.xyz
+- **Status:** Verified (sending & receiving enabled)
+- **DNS records:** Configured via Resend dashboard
 
 **Note:** No test suite is currently configured. To add tests, consider Vitest or Jest.
 
@@ -140,6 +174,7 @@ export function ComponentName({ prop }: Props) {
 - Use `VITE_` prefix for client-side variables (mypage)
 - Replace hyphens with underscores: `NEXT_PUBLIC_CAL_LINK_SALES_CALL`
 - Never commit secrets to the repository
+- API keys should be added to Vercel project settings, not committed
 
 ### Performance
 - Lazy load 3D components and heavy features
@@ -176,6 +211,28 @@ mypage/               # Vite + React
 - **Cal.com**: @calcom/embed-react
 - **Validation**: Zod
 - **Package Manager**: Bun
+
+## Agent Skills
+
+Use available skills when working on specialized tasks. Skills activate automatically based on context.
+
+**Skill Locations (Global):**
+- `~/.claude/skills/` - Primary Claude skills (170+ skills, 34 categories)
+- `~/.config/opencode/skills/` - OpenCode skills (symlinked to Claude skills)
+- `~/.opencode/` - Global symlink for opencode
+
+**Available Skills:**
+
+| Skill | Triggers | Purpose |
+|-------|----------|---------|
+| **find-skills** | "find skill", "search skill" | Discover and install new skills |
+| **vercel-react-best-practices** | "react", "next.js", "performance" | React/Next.js optimization |
+| **web-design-guidelines** | "design", "ui", "ux", "accessibility" | Design patterns & a11y |
+| **vercel-composition-patterns** | "composition", "component" | React composition |
+| **agent-browser** | "browser", "scrape", "test page" | Browser automation |
+| **vercel-react-native-skills** | "react native", "mobile" | Mobile development |
+
+**Usage:** Skills work globally from any directory. When working on tasks, let relevant skills activate and follow their guidance. To find more skills: `npx skills find [query]`
 
 ## Monorepo Notes
 - Each project has its own `package.json` and dependencies
