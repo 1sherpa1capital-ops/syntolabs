@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Synto Labs Landing Page
 
-## Getting Started
+Synto Labs agency website built with Next.js 16 and Tailwind CSS v4.
 
-First, run the development server:
+## Features
+
+- ⚡ Next.js 16 with App Router
+- 🎨 Tailwind CSS v4
+- 📅 Cal.com booking integration
+- 📧 AgentMail contact forms
+- 📱 Responsive design
+- 🔍 SEO optimized
+- 🌙 Dark theme
+
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Install dependencies
+bun install
+
+# Start development server
+bun run dev
+
+# Build for production
+bun run build
+
+# Run linter
+bun run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/              # Next.js App Router pages
+├── components/       # React components
+├── lib/              # Utility functions
+├── hooks/            # Custom React hooks
+├── context/          # React context providers
+└── types/            # TypeScript type definitions
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Key Integrations
 
-## Learn More
+### Cal.com
+Booking system with 4 event types:
+- Discovery Call (15 min)
+- Sales Call (30 min)
+- Product Consult (60 min)
+- Partner Up (45 min)
 
-To learn more about Next.js, take a look at the following resources:
+### AgentMail
+Contact form handling with webhook support.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Deploy to production
+vercel --prod
+```
 
-## Deploy on Vercel
+## Environment Variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Required variables (set in Vercel dashboard):
+- `NEXT_PUBLIC_CAL_LINK_DISCOVERY`
+- `NEXT_PUBLIC_CAL_LINK_SALES_CALL`
+- `NEXT_PUBLIC_CAL_LINK_PRODUCT_CONSULT`
+- `NEXT_PUBLIC_CAL_LINK_PARTNER_UP`
+- `CAL_API_KEY`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See `.env.example` for full list.
+
+## Documentation
+
+- [Cal.com Setup Guide](./docs/CALCOM_SETUP.md)
+- [Code Style Guidelines](../AGENTS.md)

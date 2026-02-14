@@ -18,7 +18,7 @@ This monorepo contains multiple Vercel projects:
 | Component | Technology |
 |-----------|------------|
 | Framework | React 19 + TypeScript |
-| Build Tool | Vite 6 |
+| Build Tool | Next.js 16 (landingpage), Vite 6 (mypage) |
 | Styling | Tailwind CSS v4 |
 | Animations | Framer Motion, GSAP |
 | 3D Graphics | Three.js (landingpage only) |
@@ -27,16 +27,34 @@ This monorepo contains multiple Vercel projects:
 | Fonts | Geist |
 | Package Manager | Bun |
 
+### Project-Specific Architectures
+
+**Landing Page (landingpage/)**
+- Framework: Next.js 16 with App Router
+- Routing: Next.js App Router (File-based)
+- API Routes: Next.js API routes (/app/api/)
+
+**Personal Page (mypage/)**
+- Framework: Vite 6 with React
+- Routing: React Router v7
+
 ## Architecture
 
 ### Landing Page (`landingpage/`)
+
+**Next.js 16 App Router structure:**
 ```
 src/
+├── app/            # Next.js App Router pages
+│   ├── page.tsx    # Home
+│   ├── agents/     # Agents page
+│   ├── about/      # About/Team page
+│   ├── api/        # API routes
+│   └── layout.tsx  # Root layout
 ├── components/     # 35+ React components
 │   ├── ThreeHero.tsx, ThreeBackground.tsx, ThreeCard.tsx  # 3D
 │   ├── Scroll3DSection.tsx, Data3DVis.tsx, FloatingOrb.tsx
 │   └── ...
-├── pages/          # Home, Agents, AboutTeam, Privacy, Terms, NotFound
 ├── hooks/          # useLenis for smooth scrolling
 ├── lib/            # Utilities
 └── context/        # TryNowModalContext
@@ -49,6 +67,8 @@ src/
 - Comparison tables, FAQ section
 
 ### Personal Page (`mypage/`)
+
+**Vite + React Router v7 structure:**
 ```
 src/
 ├── components/     # Navbar, Footer, ProjectCard
